@@ -61,10 +61,10 @@
 		  	case "USS Constitution, Boston, MA":
 		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Gateway Arch, Washington Avenue, St Louis, MO":
+		  	case "Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL":
 		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Hanford Site, Benton County, WA":
+		  	case "Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936":
 		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  }
@@ -98,10 +98,10 @@
 					case "USS Constitution, Boston, MA":
 						directionsDisplay4.setDirections(response);
 						break;
-					case "Gateway Arch, Washington Avenue, St Louis, MO":
+					case "Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL":
 						directionsDisplay5.setDirections(response);
 						break;
-					case "Hanford Site, Benton County, WA":
+					case "Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936":
 						directionsDisplay6.setDirections(response);
 						break;
 				  }
@@ -145,30 +145,33 @@
 					"The Breakers, Ochre Point Avenue, Newport, RI"]);
 					
 		calcRoute("USS Constitution, Boston, MA",
-					"Gateway Arch, Washington Avenue, St Louis, MO",
+					"Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL",
 					["Acadia National Park, Maine",
 					"Omni Mount Washington Resort, Mount Washington Hotel Road, Bretton Woods, NH",
 					"Shelburne Farms, Harbor Road, Shelburne, VT",
+					"USS Cod Submarine Memorial, East 9th Street, Cleveland, OH",
 					"Olympia Entertainment, Woodward Avenue, Detroit, MI",
 					"Spring Grove Cemetery, Spring Grove Avenue, Cincinnati, OH",
 					"Mammoth Cave National Park, Mammoth Cave Pkwy, Mammoth Cave, KY",
 					"West Baden Springs Hotel, West Baden Avenue, West Baden Springs, IN",
-					"Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL"]);
+					]);
 					
-		calcRoute("Gateway Arch, Washington Avenue, St Louis, MO",
-					"Hanford Site, Benton County, WA",
-					["C. W. Parker Carousel Museum, South Esplanade Street, Leavenworth, KS",
+		calcRoute("Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL",
+					"Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936",
+					["Gateway Arch, Washington Avenue, St Louis, MO",
+					"C. W. Parker Carousel Museum, South Esplanade Street, Leavenworth, KS",
 					"Terrace Hill, Grand Avenue, Des Moines, IA",
 					"Taliesin, County Road C, Spring Green, Wisconsin",
 					"Fort Snelling, Tower Avenue, Saint Paul, MN",
 					"Ashfall Fossil Bed, Royal, NE",
 					"Mount Rushmore National Memorial, South Dakota 244, Keystone, SD",
 					"Fort Union Trading Post National Historic Site, Williston, North Dakota 1804, ND",
-					"Glacier National Park, West Glacier, MT"]);
+					]);
 						
-		calcRoute("Hanford Site, Benton County, WA",
+		calcRoute("Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936",
 					"Grand Canyon National Park Lodges, 88 Village Loop Drive, Grand Canyon Village, AZ 86023",
-					["Columbia River Gorge National Scenic Area, Oregon",
+					["Hanford Site, Benton County, WA",
+					"Columbia River Gorge National Scenic Area, Oregon",
 					"Cable Car Museum, 94108, 1201 Mason St, San Francisco, CA 94108",
 					"San Andreas Fault, San Benito County, CA",
 					"Hoover Dam, Boulder City, CO"]);
