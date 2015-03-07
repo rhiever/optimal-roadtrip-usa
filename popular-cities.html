@@ -49,22 +49,22 @@
 
 		function calcRoute(start, end, routes) {
 		  switch (start) {
-		  	case "Des Moines, Iowa":
+		  	case "Oklahoma City, Oklahoma":
 		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Jackson, Wyoming":
+		  	case "Boise, Idaho":
 		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Little Rock, Arkansas":
+		  	case "Chicago, Illinois":
 		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Charlotte, North Carolina":
+		  	case "Providence, Rhode Island":
 		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Philadelphia, Pennsylvania":
+		  	case "Charlotte, North Carolina":
 		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Milwaukee, Wisconsin":
+		  	case "Little Rock, Arkansas":
 		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  }
@@ -86,22 +86,22 @@
 		  directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				switch (start) {
-					case "Des Moines, Iowa":
+					case "Oklahoma City, Oklahoma":
 						directionsDisplay1.setDirections(response);
 						break;
-					case "Jackson, Wyoming":
+					case "Boise, Idaho":
 						directionsDisplay2.setDirections(response);
 						break;
-					case "Little Rock, Arkansas":
+					case "Chicago, Illinois":
 						directionsDisplay3.setDirections(response);
 						break;
-					case "Charlotte, North Carolina":
+					case "Providence, Rhode Island":
 						directionsDisplay4.setDirections(response);
 						break;
-					case "Philadelphia, Pennsylvania":
+					case "Charlotte, North Carolina":
 						directionsDisplay5.setDirections(response);
 						break;
-					case "Milwaukee, Wisconsin":
+					case "Little Rock, Arkansas":
 						directionsDisplay6.setDirections(response);
 						break;
 				  }
@@ -111,64 +111,12 @@
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-		calcRoute("Des Moines, Iowa",
-					"Jackson, Wyoming",
-					["Omaha, Nebraska",
-					"Sioux Falls, South Dakota",
-					"Billings, Montana",
-					//"Anchorage, Alaska",
-					"Seattle, Washington",
-					"Portland, Oregon",
-					"San Francisco, California",
-					"Boise, Idaho"]);
-					
-		calcRoute("Jackson, Wyoming",
-					"Little Rock, Arkansas",
-					["Park City, Utah",
-					"Las Vegas, Nevada",
-					"Phoenix, Arizona",
-					"Albuquerque, New Mexico",
-					"Denver, Colorado",
-					"Wichita, Kansas",
-					"Oklahoma City, Oklahoma",
-					"Branson, Missouri"]);
-					
-		calcRoute("Little Rock, Arkansas",
-					"Charlotte, North Carolina",
-					["Houston, Texas",
-					"New Orleans, Louisiana",
-					"Jackson, Mississippi",
-					"Birmingham, Alabama",
-					"Nashville, Tennessee",
-					"Atlanta, Georgia",
-					"Orlando, Florida",
-					"Charleston, South Carolina"]);
-					
-		calcRoute("Charlotte, North Carolina",
-					"Philadelphia, Pennsylvania",
-					["Virginia Beach, Virginia",
-					"Ocean City, New Jersey",
-					"Manchester, New Hampshire",
-					"Portland, Maine",
-					"Boston, Massachusetts",
-					"Providence, Rhode Island",
-					"New Haven, Connecticut",
-					"New York City, New York"]);
-					
-		calcRoute("Philadelphia, Pennsylvania",
-					"Milwaukee, Wisconsin",
-					["Wilmington, Delaware",
-					"Baltimore, Maryland",
-					"Washington, D.C.",
-					"Detroit, Michigan",
-					"Columbus, Ohio",
-					"Louisville, Kentucky",
-					"Indianapolis, Indiana",
-					"Chicago, Illinois"]);
-					
-		calcRoute("Milwaukee, Wisconsin",
-					"Des Moines, Iowa",
-					["Minneapolis, Minnesota"]);
+		calcRoute("Oklahoma City, Oklahoma", "Boise, Idaho", ["Wichita, Kansas", "Denver, Colorado", "Albuquerque, New Mexico", "Phoenix, Arizona", "Las Vegas, Nevada", "San Francisco, California", "Portland, Oregon", "Seattle, Washington"]);
+		calcRoute("Boise, Idaho", "Chicago, Illinois", ["Park City, Utah", "Jackson, Wyoming", "Billings, Montana", "Sioux Falls, South Dakota", "Omaha, Nebraska", "Des Moines, Iowa", "Minneapolis, Minnesota", "Milwaukee, Wisconsin"]);
+		calcRoute("Chicago, Illinois", "Providence, Rhode Island", ["Indianapolis, Indiana", "Louisville, Kentucky", "Columbus, Ohio", "Detroit, Michigan", "Cleveland, Ohio", "Manchester, New Hampshire", "Portland, Maine", "Boston, Massachusetts"]);
+		calcRoute("Providence, Rhode Island", "Charlotte, North Carolina", ["New Haven, Connecticut", "New York City, New York", "Ocean City, New Jersey", "Philadelphia, Pennsylvania", "Wilmington, Delaware", "Baltimore, Maryland", "Washington, D.C.", "Virginia Beach, Virginia"]);
+		calcRoute("Charlotte, North Carolina", "Little Rock, Arkansas", ["Charleston, South Carolina", "Orlando, Florida", "Atlanta, Georgia", "Nashville, Tennessee", "Birmingham, Alabama", "Jackson, Mississippi", "New Orleans, Louisiana", "Houston, Texas"]);
+		calcRoute("Little Rock, Arkansas", "Oklahoma City, Oklahoma", ["Branson, Missouri"]);
     </script>
   </head>
   <body>
