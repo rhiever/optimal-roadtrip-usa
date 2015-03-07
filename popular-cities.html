@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>The best road trip across the USA according to machine learning</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var directionsDisplay5, directionsDisplay6;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(39, -98.35);
+		  var mapOptions = {
+			zoom: 5,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		  directionsDisplay5.setMap(map);
+		  directionsDisplay6.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Des Moines, Iowa":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Jackson, Wyoming":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Little Rock, Arkansas":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Charlotte, North Carolina":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Philadelphia, Pennsylvania":
+		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Milwaukee, Wisconsin":
+		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Des Moines, Iowa":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Jackson, Wyoming":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Little Rock, Arkansas":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "Charlotte, North Carolina":
+						directionsDisplay4.setDirections(response);
+						break;
+					case "Philadelphia, Pennsylvania":
+						directionsDisplay5.setDirections(response);
+						break;
+					case "Milwaukee, Wisconsin":
+						directionsDisplay6.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		calcRoute("Des Moines, Iowa",
+					"Jackson, Wyoming",
+					["Omaha, Nebraska",
+					"Sioux Falls, South Dakota",
+					"Billings, Montana",
+					"Anchorage, Alaska",
+					"Seattle, Washington",
+					"Portland, Oregon",
+					"San Francisco, California",
+					"Boise, Idaho"]);
+					
+		calcRoute("Jackson, Wyoming",
+					"Little Rock, Arkansas",
+					["Park City, Utah",
+					"Las Vegas, Nevada",
+					"Phoenix, Arizona",
+					"Albuquerque, New Mexico",
+					"Denver, Colorado",
+					"Wichita, Kansas",
+					"Oklahoma City, Oklahoma",
+					"Branson, Missouri"]);
+					
+		calcRoute("Little Rock, Arkansas",
+					"Charlotte, North Carolina",
+					["Houston, Texas",
+					"New Orleans, Louisiana",
+					"Jackson, Mississippi",
+					"Birmingham, Alabama",
+					"Nashville, Tennessee",
+					"Atlanta, Georgia",
+					"Orlando, Florida",
+					"Charleston, South Carolina"]);
+					
+		calcRoute("Charlotte, North Carolina",
+					"Philadelphia, Pennsylvania",
+					["Virginia Beach, Virginia",
+					"Ocean City, New Jersey",
+					"Manchester, New Hampshire",
+					"Portland, Maine",
+					"Boston, Massachusetts",
+					"Providence, Rhode Island",
+					"New Haven, Connecticut",
+					"New York City, New York"]);
+					
+		calcRoute("Philadelphia, Pennsylvania",
+					"Milwaukee, Wisconsin",
+					["Wilmington, Delaware",
+					"Baltimore, Maryland",
+					"Washington, D.C.",
+					"Detroit, Michigan",
+					"Columbus, Ohio",
+					"Louisville, Kentucky",
+					"Indianapolis, Indiana",
+					"Chicago, Illinois"]);
+					
+		calcRoute("Milwaukee, Wisconsin",
+					"Des Moines, Iowa",
+					["Minneapolis, Minnesota"]);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
