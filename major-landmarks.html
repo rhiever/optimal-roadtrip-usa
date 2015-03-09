@@ -20,7 +20,7 @@
         margin-left: -180px;
         z-index: 5;
         background-color: #fff;
-        padding: 5px;
+        padding: 10px;
         border: 1px solid #999;
       }
     </style>
@@ -36,7 +36,7 @@
 		var map;
 
 		function initialize() {
-		  var center = new google.maps.LatLng(39, -98.35);
+		  var center = new google.maps.LatLng(39, -96);
 		  var mapOptions = {
 			zoom: 5,
 			center: center
@@ -182,5 +182,12 @@
   </head>
   <body>
     <div id="map-canvas"></div>
+    <div id="panel">
+    <center>
+    Map created by <strong><a href="http://www.randalolson.com">Randal S. Olson</a></strong>
+    <br />
+    See the details about this map <a href="http://www.randalolson.com/2015/03/08/computing-the-optimal-road-trip-across-the-u-s/">here</a>
+    </center>
+    </div>
   </body>
 </html>
