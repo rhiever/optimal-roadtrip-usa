@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  	<meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="An optimal route between all MLB ballparks">
+        <meta name="author" content="Randal S. Olson and Chris Ladd ">
+        
+        <title>An optimal route between all MLB ballparks</title>
+        <style>
+          html, body, #map-canvas {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+          }
+          #panel {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            margin-left: -180px;
+            z-index: 5;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #999;
+          }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+        <script>
+	    google.maps.event.addDomListener(window, 'load', function() {
+                var directionsService = new google.maps.DirectionsService(),
+                    map = new google.maps.Map(document.getElementById('map-canvas'), {
+			zoom: 5,
+			center: new google.maps.LatLng(39, -96)
+                    }),
+                    legs = [
+                        {
+                            start: 'Dodger Stadium, 1000 Elysian Park Ave, Los Angeles, CA 90012',
+                            end: 'Great American Ball Park, 100 Joe Nuxhall Way, Cincinnati, OH 45202',
+                            waypoints: [
+                                'Angel Stadium of Anaheim, 2000 E Gene Autry Way, Anaheim, CA 92806',
+                                'Petco Park, 100 Park Blvd, San Diego, CA 92101',
+                                'Chase Field, 401 E Jefferson St, Phoenix, AZ 85004',
+                                'Globe Life Park In Arlington, 1000 Ballpark Way, Arlington, TX 76011',
+                                'Minute Maid Park, 501 Crawford St, Houston, TX 77002',
+                                'Tropicana Field, 1 Tropicana Dr, St Petersburg, FL 33705',
+                                'Marlins Park, 501 Marlins Way, Miami, FL 33125',
+                                'Turner Field, 755 Hank Aaron Dr SE, Atlanta, GA 30315',
+                            ]
+                        },
+                        {
+                            start: 'Great American Ball Park, 100 Joe Nuxhall Way, Cincinnati, OH 45202',
+                            end: 'Rogers Centre, 1 Blue Jays Way, Toronto, ON M5V 1J1, Canada',
+                            waypoints: [
+                                'Progressive Field, 2401 Ontario St, Cleveland, OH 44115',
+                                'PNC Park, 115 Federal St, Pittsburgh, PA 15212',
+                                'Nationals Park, 1500 S Capitol St SE, Washington, DC 20003',
+                                'Oriole Park at Camden Yards, 333 W Camden St, Baltimore, MD 21201',
+                                'Citizens Bank Park, 1 Citizens Bank Way, Philadelphia, PA 19148',
+                                'Yankee Stadium, 1 E 161st St, Bronx, NY 10451',
+                                'Citi Field, 123-01 Roosevelt Ave, New York, NY 11368',
+                                'Fenway Park, 4 Yawkey Way, Boston, MA 02215',
+                            ]
+                        },
+                        {
+                            start: 'Rogers Centre, 1 Blue Jays Way, Toronto, ON M5V 1J1, Canada',
+                            end: 'Safeco Field, 1250 1st Avenue South, Seattle, WA 98134',
+                            waypoints: [
+                                'Comerica Park, 2100 Woodward Ave, Detroit, MI 48201',
+                                'U.S. Cellular Field, 333 W 35th St, Chicago, IL 60616',
+                                'Wrigley Field, 1060 W Addison St, Chicago, IL 60613',
+                                'Miller Park, 1 Brewers Way, Milwaukee, WI 53214',
+                                'Target Field, 353 N 5th St, Minneapolis, MN 55403',
+                                'Busch Stadium, 700 Clark Ave, St. Louis, MO 63102',
+                                'Kauffman Stadium, 1 Royal Way, Kansas City, MO 64129',
+                                'Coors Field, 2001 Blake St, Denver, CO 80205',
+                            ]
+                        },
+                        {
+                            start: 'Safeco Field, 1250 1st Avenue South, Seattle, WA 98134',
+                            end: 'Dodger Stadium, 1000 Elysian Park Ave, Los Angeles, CA 90012',
+                            waypoints: [
+                                'AT&T Park, 24 Willie Mays Plaza, San Francisco, CA 94107',
+                                'O.co Coliseum, 7000 Coliseum Way, Oakland, CA 94621'
+                            ]
+                        }
+                    ],
+                    i,
+                    j,
+                    request,
+                    waypoints;
+                
+                for (i = 0; i < legs.length; i += 1) {
+                    waypoints = []
+                    for (j = 0; j < legs[i].waypoints.length; j += 1) {
+                        waypoints.push({
+                            location: legs[i].waypoints[j],
+                            stopover: true
+                        });
+                    }
+                    
+                    request = {
+			origin: legs[i].start,
+			destination: legs[i].end,
+			waypoints: waypoints,
+			optimizeWaypoints: false,
+			travelMode: google.maps.TravelMode.DRIVING
+                    };
+                    
+                    directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+			    directionsDisplay = new google.maps.DirectionsRenderer({
+                                preserveViewport: true,
+                                markerOptions: {
+                                    icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"
+                                }
+                            });
+                            directionsDisplay.setDirections(response);
+                            directionsDisplay.setMap(map);
+			}
+                    });
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div id="map-canvas"></div>
+    </body>
+</html>
