@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Randy Olson uses machine learning to find the optimal road trip across South America.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>An optimal road trip across South America according to machine learning</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var directionsDisplay5;
+		var flightPath1, flightPath2;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(-18.7, -57.6);
+		  var mapOptions = {
+			zoom: 4,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		  directionsDisplay5.setMap(map);
+		  flightPath1.setMap(map);
+		  flightPath2.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Isla Margarita, Venezuela":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Rio de Janeiro, Brazil":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "El Calafate, Argentina":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Arequipa, Peru":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Bogota, Colombia":
+		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Isla Margarita, Venezuela":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Rio de Janeiro, Brazil":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "El Calafate, Argentina":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "Arequipa, Peru":
+						directionsDisplay4.setDirections(response);
+						break;
+					case "Bogota, Colombia":
+						directionsDisplay5.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		calcRoute("Isla Margarita, Venezuela", "Rio de Janeiro, Brazil", ["Parque Nacional Canaima, Venezuela", "Jericoacoara, Brazil", "Fortaleza, Brazil", "Natal, Brazil", "Salvador, Brazil", "Trancoso, Brazil", "Belo Horizonte, Brazil", "Buzios, Brazil"]);
+
+		calcRoute("Rio de Janeiro, Brazil", "El Calafate, Argentina", ["Sao Paulo, Brazil", "Curitiba, Brazil", "Florianopolis, Brazil", "Gramado, Brazil", "Punta del Este, Uruguay", "Asuncion, Paraguay", "Buenos Aires, Argentina", "Torres del Paine, Chile"]);
+
+		calcRoute("El Calafate, Argentina", "Arequipa, Peru", ["San Carlos de Bariloche, Argentina", "Santa Cruz, Chile", "Santiago, Chile", "Vina del Mar, Chile", "San Pedro de Atacama, Chile", "Nuestra Senora de La Paz, Bolivia", "Reserva Nacional Titicaca, Peru"]);
+
+		calcRoute("Arequipa, Peru", "Quito, Ecuador", ["Urubamba, Peru", "Cusco, Peru", "Lima, Peru", "Mancora, Peru"]);
+
+		calcRoute("Bogota, Colombia", "Taganga, Santa Marta, Magdalena, Colombia", ["Cartagena, Bolívar, Colombia", "Santa Marta, Magdalena, Colombia"]);
+
+		/* Flight between Quito & Bogota */
+		flightPath1 = new google.maps.Polyline({
+			path: [new google.maps.LatLng(-0.154687, -78.510119),
+				   new google.maps.LatLng(4.604248, -74.156505)],
+			geodesic: true,
+			strokeColor: '#3399FF',
+			strokeOpacity: 1.0,
+			strokeWeight: 6
+			});
+			
+		/* Flight between Santa Marta & Isla Margarita */
+		flightPath2 = new google.maps.Polyline({
+			path: [new google.maps.LatLng(11.240057, -74.190282),
+				   new google.maps.LatLng(10.998852, -63.929052)],
+			geodesic: true,
+			strokeColor: '#3399FF',
+			strokeOpacity: 1.0,
+			strokeWeight: 6
+			});
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
