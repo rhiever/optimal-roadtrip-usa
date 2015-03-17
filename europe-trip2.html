@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Randy Olson uses machine learning to find the optimal road trip across Europe.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>An optimal road trip across Europe according to machine learning</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var directionsDisplay5, directionsDisplay6;
+		var directionsDisplay7, directionsDisplay8;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(55.5, 13);
+		  var mapOptions = {
+			zoom: 4,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		  directionsDisplay5.setMap(map);
+		  directionsDisplay6.setMap(map);
+		  directionsDisplay7.setMap(map);
+		  directionsDisplay8.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "porto empedocle, sicily":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "milan":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "rouge":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "bergen":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "london":
+		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "paris":
+		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "porto":
+		  		directionsDisplay7 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "arles":
+		  		directionsDisplay8 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "porto empedocle, sicily":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "milan":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "rouge":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "bergen":
+						directionsDisplay4.setDirections(response);
+						break;
+					case "london":
+						directionsDisplay5.setDirections(response);
+						break;
+					case "paris":
+						directionsDisplay6.setDirections(response);
+						break;
+					case "porto":
+						directionsDisplay7.setDirections(response);
+						break;
+					case "arles":
+						directionsDisplay8.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		calcRoute("porto empedocle, sicily", "milan", ["dubrovnik", "chania, crete", "istanbul", "bucharest", "belgrade", "ljubljana", "venice", "bologna"]);
+
+		calcRoute("milan", "rouge", ["zurich", "heidelberg", "munich", "prague", "vienna", "budapest", "krakow", "warsaw"]);
+
+		calcRoute("rouge", "bergen", ["vöru", "kabli beach", "pärnu", "tallinn", "helsinki", "rovaniemi", "stockholm", "oslo"]);
+
+		calcRoute("bergen", "london", ["voss", "reykjavik", "gothenburg", "oresund bridge", "berlin", "amsterdam", "brussels", "ghent"]);
+
+		calcRoute("london", "paris", ["cambridge, u.k.", "edinburgh", "inverness", "belfast", "newgrange, meath", "dublin", "limerick", "carnac, brittany"]);
+
+		calcRoute("paris", "porto", ["lausanne", "montreaux", "chamonix", "geneva", "lyon", "vichy", "bilbao", "madrid"]);
+
+		calcRoute("porto", "arles", ["lisbon", "cadiz", "ceuta", "granada", "valencia", "barcelona", "figueres", "carcassonne"]);
+
+		calcRoute("arles", "porto empedocle, sicily", ["aix-en-provence", "monaco", "florence", "rome", "naples, italy"]);
+	
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
