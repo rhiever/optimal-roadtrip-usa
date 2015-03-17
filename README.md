@@ -10,6 +10,8 @@ Optimal road trip visiting:
 
 * [All 30 MLB ballparks](http://rhiever.github.io/optimal-roadtrip-usa/mlb-ballparks.html) by [Chris Ladd](https://www.particlestorm.net/)
 
+* [29 must-see stops in Canada](http://rhiever.github.io/optimal-roadtrip-usa/canada-trip.html)
+
 * [45 must-see locations in Europe](http://rhiever.github.io/optimal-roadtrip-usa/europe-trip.html)
 
 * [36 must-see sites in South America](http://rhiever.github.io/optimal-roadtrip-usa/south-america-trip.html)
