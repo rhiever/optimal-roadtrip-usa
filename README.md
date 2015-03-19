@@ -4,16 +4,18 @@ Contains maps for the article, "Computing the optimal road trip across the U.S."
 
 Optimal road trip visiting:
 
-* [50 major U.S. landmarks](major-landmarks.html)
+* [50 major U.S. landmarks](http://rhiever.github.io/optimal-roadtrip-usa/major-landmarks.html)
 
-* [47 popular U.S. cities](popular-cities.html)
+* [47 popular U.S. cities](http://rhiever.github.io/optimal-roadtrip-usa/popular-cities.html)
 
-* [All 30 MLB ballparks](mlb-ballparks.html) by [Chris Ladd](https://www.particlestorm.net/)
+* [All 30 MLB ballparks](http://rhiever.github.io/optimal-roadtrip-usa/mlb-ballparks.html) by [Chris Ladd](https://www.particlestorm.net/)
 
-* [29 must-see stops in Canada](canada-trip.html)
+* [Pure Michigan](http://rhiever.github.io/optimal-roadtrip-usa/pure-michigan.html)
 
-* [23 major Canadian landmarks](canada-trip-landmarks.html)
+* [29 must-see stops in Canada](http://rhiever.github.io/optimal-roadtrip-usa/canada-trip.html)
 
-* [45 must-see locations in Europe](europe-trip.html)
+* [23 major Canadian landmarks](http://rhiever.github.io/optimal-roadtrip-usa/canada-trip-landmarks.html)
 
-* [36 must-see sites in South America](south-america-trip.html)
+* [45 must-see locations in Europe](http://rhiever.github.io/optimal-roadtrip-usa/europe-trip.html)
+
+* [36 must-see sites in South America](http://rhiever.github.io/optimal-roadtrip-usa/south-america-trip.html)
