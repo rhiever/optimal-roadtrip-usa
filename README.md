@@ -19,3 +19,5 @@ Optimal road trip visiting:
 * [45 must-see locations in Europe](http://rhiever.github.io/optimal-roadtrip-usa/europe-trip.html)
 
 * [36 must-see sites in South America](http://rhiever.github.io/optimal-roadtrip-usa/south-america-trip.html)
+
+* [36 major Indian landmarks](http://github.com/varshapaidi/Optimal_Road_Trip/blob/master/major_landmarks_india.html) 
