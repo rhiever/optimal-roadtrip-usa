@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Randy Olson uses machine learning to find the optimal road trip across Canada.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>An optimal road trip across Canada according to machine learning</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(57, -95);
+		  var mapOptions = {
+			zoom: 4,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Inuvik, NT, Canada":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Inuvik, NT, Canada":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada":
+						directionsDisplay3.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		calcRoute("Inuvik, NT, Canada", "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", ["Dawson Historic Complex, Dawson, YT, Canada", "Kluane National Park and Reserve of Canada, Yukon Territory Y0B 1H0, Canada", "Wood Buffalo National Park of Canada, Canada", "Jasper National Park, Jasper, AB T0E 1E0, Canada", "Stanley Park, Vancouver, BC, Canada", "Banff National Park, Alberta T0L, Canada", "Fort Battleford National Historic Site, Battleford, SK, Canada", "Wanuskewin Heritage Park, RR #4, Penner Road, Saskatoon, SK S7K 3J7, Canada"]);
+
+		calcRoute("Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", ["Riel House National Historic Site, 330 River Road, Winnipeg, MB, Canada", "Niagara Falls, ON, Canada", "Parliament Buildings, Ottawa, ON, Canada", "Old Montreal, Montreal, QC, Canada", "Hartland Bridge, Hartland Covered Bridge, Hartland, E7P, Canada", "Parc National de l'Île-Bonaventure-et-du-Rocher-Percé, 4 Rue du Quai, Percé, QC G0C 2L0, Canada", "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", "Green Gables, 8619 Cavendish Road, Cavendish, PE C0A 1M0, Canada"]);
+
+		calcRoute("Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", "Signal Hill National Historic Site, St. John's, NL, Canada", ["Peggys Cove, NS, Canada", "Cabot Trail, Pleasant Bay, NS B0E 2P0, Canada", "Gros Morne National Park, Norris Point, NL A0K 3V0, Canada"]);
+	</script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
