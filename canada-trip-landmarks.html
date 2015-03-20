@@ -28,6 +28,7 @@
     <script>
 		var directionsDisplay1, directionsDisplay2;
 		var directionsDisplay3;
+		var marker;
 		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
 		var directionsDisplayOptions = {preserveViewport: true,
 										markerOptions: markerOptions};
@@ -44,6 +45,7 @@
 		  directionsDisplay1.setMap(map);
 		  directionsDisplay2.setMap(map);
 		  directionsDisplay3.setMap(map);
+		  marker.setMap(map);
 		}
 
 		function calcRoute(start, end, routes) {
@@ -94,9 +96,22 @@
 
 		calcRoute("Inuvik, NT, Canada", "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", ["Dawson Historic Complex, Dawson, YT, Canada", "Kluane National Park and Reserve of Canada, Yukon Territory Y0B 1H0, Canada", "Wood Buffalo National Park of Canada, Canada", "Jasper National Park, Jasper, AB T0E 1E0, Canada", "Stanley Park, Vancouver, BC, Canada", "Banff National Park, Alberta T0L, Canada", "Fort Battleford National Historic Site, Battleford, SK, Canada", "Wanuskewin Heritage Park, RR #4, Penner Road, Saskatoon, SK S7K 3J7, Canada"]);
 
-		calcRoute("Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", ["Riel House National Historic Site, 330 River Road, Winnipeg, MB, Canada", "Niagara Falls, ON, Canada", "Parliament Buildings, Ottawa, ON, Canada", "Old Montreal, Montreal, QC, Canada", "Hartland Bridge, Hartland Covered Bridge, Hartland, E7P, Canada", "Parc National de l'Île-Bonaventure-et-du-Rocher-Percé, 4 Rue du Quai, Percé, QC G0C 2L0, Canada", "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", "Green Gables, 8619 Cavendish Road, Cavendish, PE C0A 1M0, Canada"]);
+		calcRoute("Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", ["Riel House National Historic Site, 330 River Road, Winnipeg, MB, Canada", "Pukaskwa National Park, Heron Bay, ON, Canada", "Algonquin Provincial Park, Nipissing District, ON, Canada", "Niagara Falls, ON, Canada", "Parliament Buildings, Ottawa, ON, Canada", "Old Montreal, Montreal, QC, Canada", "Hartland Bridge, Hartland Covered Bridge, Hartland, E7P, Canada", "Parc National de l'Île-Bonaventure-et-du-Rocher-Percé, 4 Rue du Quai, Percé, QC G0C 2L0, Canada"]);
 
-		calcRoute("Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", "Signal Hill National Historic Site, St. John's, NL, Canada", ["Peggys Cove, NS, Canada", "Cabot Trail, Pleasant Bay, NS B0E 2P0, Canada", "Gros Morne National Park, Norris Point, NL A0K 3V0, Canada"]);
+		calcRoute("Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", "Signal Hill National Historic Site, St. John's, NL, Canada", ["Green Gables, 8619 Cavendish Road, Cavendish, PE C0A 1M0, Canada", "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", "Peggys Cove, NS, Canada", "Cabot Trail, Pleasant Bay, NS B0E 2P0, Canada", "Gros Morne National Park, Norris Point, NL A0K 3V0, Canada"]);
+	
+		var infowindow = new google.maps.InfoWindow({
+						content: "Haida Gwaii, Skeena-Queen Charlotte E, BC, Canada"
+						});
+		
+		marker = new google.maps.Marker({
+					position: new google.maps.LatLng(52.648634, -131.810510),
+					options: markerOptions,
+					title: "Haida Gwaii, Skeena-Queen Charlotte E, BC, Canada"
+					});
+		google.maps.event.addListener(marker, "click", function() {
+			infowindow.open(map,marker);
+		  });
 	</script>
   </head>
   <body>
