@@ -56,7 +56,7 @@
 		  	case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
 		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada":
+		  	case "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada":
 		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  }
@@ -84,7 +84,7 @@
 					case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
 						directionsDisplay2.setDirections(response);
 						break;
-					case "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada":
+					case "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada":
 						directionsDisplay3.setDirections(response);
 						break;
 				  }
@@ -109,8 +109,9 @@
 					options: markerOptions,
 					title: "Haida Gwaii, Skeena-Queen Charlotte E, BC, Canada"
 					});
+		
 		google.maps.event.addListener(marker, "click", function() {
-			infowindow.open(map,marker);
+			infowindow.open(map, marker);
 		  });
 	</script>
   </head>
