@@ -20,4 +20,4 @@ Optimal road trip visiting:
 
 * [36 must-see sites in South America](http://rhiever.github.io/optimal-roadtrip-usa/south-america-trip.html)
 
-* [36 major Indian landmarks](http://github.com/varshapaidi/Optimal_Road_Trip/blob/master/major_landmarks_india.html) 
+* [36 major Indian landmarks](http://rhiever.github.io/optimal-roadtrip-usa/major-landmarks-india.html) by [Varsha Paidi](https://github.com/varshapaidi)
