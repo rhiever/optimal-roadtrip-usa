@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>The optimal trip</title>
+    <style>
+      html, body, #map {height: 100%;margin:0;padding:0;}
+    </style>
+    <script src="//maps.googleapis.com/maps/api/js?v=3"></script>
+    <script>
+      // put your optimized route in this array!
+      var optimizedRoute = [
+        "Bru na Boinne, Meath, Ireland",
+        "Edinburgh Castle, Castlehill, Edinburgh, United Kingdom",
+        "Stonehenge, Amesbury, United Kingdom",
+        "Mont Saint-Michel, France",
+        "Chateau de Versailles, Versailles, France",
+        "Eiffel Tower, Paris, France",
+        "Chateau de Fontainebleau, Fontainebleau, France",
+        "Real Sitio de San Lorenzo de El Escorial, San Lorenzo de El Escorial, Spain",
+        "Batalha Kloster, Largo Infante Dom Henrique, Batalha, Portugal",
+        "Alhambra, Calle Real de la Alhambra, Granada, Spain",
+        "Sagrada Familia, Carrer de Mallorca, Barcelona, Spain",
+        "Vall del Madriu-Perafita-Claror, Les Escaldes, Andorra",
+        "Leaning Tower of Pisa, Pisa, Italy",
+        "Piazza S. Pietro, Vatican City",
+        "Colosseum, Piazza del Colosseo, Rome, Italy",
+        "it-Tempji tal-Ggantija, Triq Parsott, Xaghra, Malta",
+        "Old Town Dubrovnik, Dubrovnik, Croatia",
+        "Kotor, Montenegro",
+        "Old Bridge, Mostar, Federation of Bosnia and Herzegovina, Bosnia and Herzegovina",
+        "Studenica Monastery, Brezova, Serbia",
+        "Kloster Rila, Rilski manastir, Bulgaria",
+        "Ohrid, Macedonia (FYROM)",
+        "Berat, Albania",
+        "Acropolis of Athens, Athens, Kentrikos Tomeas Athinon, Greece",
+        "Hagia Sophia Museum, Istanbul, Turkey",
+        "Manastirea Humorului, Suceava County, Romania",
+        "Budai varnegyed, Budapest, Hungary",
+        "Old Town, Prague, Czech Republic",
+        "Museumsinsel, Berlin, Germany",
+        "Schloss Kronborg, Kronborg, Helsingor, Denmark",
+        "Naeroyfjord, Aurland, Norway",
+        "Bryggen, Bergen, Norway",
+        "Drottningholm Palace, Drottningholm, Sweden",
+        "Old Town Riga, Laipu iela, Riga, Rigas pilseta, Latvia",
+        "Russia, Moscow, Red Square",
+        "Hermitage Museum, Saint Petersburg, Russia",
+        "Petaejaeveden vanha kirkko, Vanhankirkontie, Petaejaevesi, Finland",
+        "Old Town of Tallinn, Tallinn, Tallinna linn, Estonia",
+        "Kernave, Vilnius County, Lithuania",
+        "Mir Castle Complex, Cyrvonaarmiejskaja vulica, Mir, Grodno Region, Belarus",
+        "St. Sophia's Cathedral, Volodymyrska Street, Kyiv, Ukraine",
+        "Stare Miasto, Krakow, Poland",
+        "Wieliczka Salt Mine, Wieliczka, Poland",
+        "Spis Castle, Zehra, Slovakia",
+        "Schoenbrunn Palace, Vienna, Austria",
+        "Skocjanske jame, Matavun, Slovenia",
+        "Ponte di Rialto, Venice, Italy",
+        "Altstadt von Salzburg, Salzburg, Austria",
+        "Neuschwanstein Castle, Bavaria, Germany",
+        "Zytglogge, Bim Zytglogge, Bern, Switzerland",
+        "Luxembourg City, Luxembourg",
+        "Cologne Cathedral, Cologne, Germany",
+        "Kinderdijk-elshouti malomrendszer, Netherlands",
+        "Grote Markt, Brussels, Belgium",
+        "Buckingham Palace, London, United Kingdom"
+      ];
+
+      // no need to edit below this line
+      if(optimizedRoute.length > 1) optimizedRoute.push(optimizedRoute[0]);
+
+      var optimizedArray = [],
+          nrItems = 10,
+          nrSets = Math.ceil(optimizedRoute.length/nrItems);
+      for(var i=0;i<nrSets;i++) {
+        var subset = optimizedRoute.slice(i*(nrItems-1),(i*(nrItems-1))+nrItems), 
+            start = subset.shift(), 
+            end = subset.pop();
+        optimizedArray.push({start: start, end: end, waypoints: []});
+        if(subset.length) {
+          for(var j=0;j<subset.length;j++) optimizedArray[optimizedArray.length - 1].waypoints.push(subset[j]);
+        }
+      }
+
+      var map, 
+          dirDisplay = [],
+          dirService = new google.maps.DirectionsService(),
+          bbox = new google.maps.LatLngBounds();
+
+      function initialize() {
+        var center = new google.maps.LatLng(0,0);
+        var mapOptions = {zoom:3,center: center};
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        for(var i=0;i<optimizedArray.length;i++) calcRoute(optimizedArray[i].start,optimizedArray[i].end,optimizedArray[i].waypoints);
+      }
+      
+      function calcRoute(start,end,waypoints) {
+        var stopovers = [];
+        for (var i=0; i<waypoints.length;i++) stopovers.push({location:waypoints[i],stopover:true});
+        var request = {origin: start, destination: end, waypoints: stopovers, optimizeWaypoints: false, travelMode: google.maps.TravelMode.DRIVING};
+        dirService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            dirDisplay.push(new google.maps.DirectionsRenderer({map:map,preserveViewport:true,markerOptions:{icon: "//maps.gstatic.com/mapfiles/markers2/marker.png"}}));
+            google.maps.event.addListener(dirDisplay[dirDisplay.length - 1], 'directions_changed', function() {
+              if(dirDisplay.length == nrSets) map.fitBounds(bbox);
+            })
+            if(response.routes.length) bbox.union(response.routes[0].bounds);
+            dirDisplay[dirDisplay.length - 1].setDirections(response);
+          }
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+      window.onresize = function() {
+        if(map != null) map.fitBounds(bbox);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
