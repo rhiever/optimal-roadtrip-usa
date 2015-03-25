@@ -50,13 +50,13 @@
 
 		function calcRoute(start, end, routes) {
 		  switch (start) {
-		  	case "Inuvik, NT, Canada":
+		  	case "Signal Hill National Historic Site, St. John's, NL, Canada":
 		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
+		  	case "Old Montreal, Montreal, QC, Canada":
 		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada":
+		  	case "Jasper National Park, Jasper, AB T0E 1E0, Canada":
 		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  }
@@ -78,13 +78,13 @@
 		  directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				switch (start) {
-					case "Inuvik, NT, Canada":
+					case "Signal Hill National Historic Site, St. John's, NL, Canada":
 						directionsDisplay1.setDirections(response);
 						break;
-					case "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada":
+					case "Old Montreal, Montreal, QC, Canada":
 						directionsDisplay2.setDirections(response);
 						break;
-					case "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada":
+					case "Jasper National Park, Jasper, AB T0E 1E0, Canada":
 						directionsDisplay3.setDirections(response);
 						break;
 				  }
@@ -94,12 +94,12 @@
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-		calcRoute("Inuvik, NT, Canada", "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", ["Dawson Historic Complex, Dawson, YT, Canada", "Kluane National Park and Reserve of Canada, Yukon Territory Y0B 1H0, Canada", "Wood Buffalo National Park of Canada, Canada", "Jasper National Park, Jasper, AB T0E 1E0, Canada", "Stanley Park, Vancouver, BC, Canada", "Banff National Park, Alberta T0L, Canada", "Fort Battleford National Historic Site, Battleford, SK, Canada", "Wanuskewin Heritage Park, RR #4, Penner Road, Saskatoon, SK S7K 3J7, Canada"]);
+		calcRoute("Signal Hill National Historic Site, St. John's, NL, Canada", "Old Montreal, Montreal, QC, Canada", ["Gros Morne National Park, Norris Point, NL A0K 3V0, Canada", "Cabot Trail, Pleasant Bay, NS B0E 2P0, Canada", "Peggys Cove, NS, Canada", "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", "Green Gables, 8619 Cavendish Road, Cavendish, PE C0A 1M0, Canada", "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", "Parc National de l'Île-Bonaventure-et-du-Rocher-Percé, 4 Rue du Quai, Percé, QC G0C 2L0, Canada", "Hartland Bridge, Hartland Covered Bridge, Hartland, E7P, Canada"]);
 
-		calcRoute("Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", "Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", ["Riel House National Historic Site, 330 River Road, Winnipeg, MB, Canada", "Pukaskwa National Park, Heron Bay, ON, Canada", "Algonquin Provincial Park, Nipissing District, ON, Canada", "Niagara Falls, ON, Canada", "Parliament Buildings, Ottawa, ON, Canada", "Old Montreal, Montreal, QC, Canada", "Hartland Bridge, Hartland Covered Bridge, Hartland, E7P, Canada", "Parc National de l'Île-Bonaventure-et-du-Rocher-Percé, 4 Rue du Quai, Percé, QC G0C 2L0, Canada"]);
+		calcRoute("Old Montreal, Montreal, QC, Canada", "Jasper National Park, Jasper, AB T0E 1E0, Canada", ["Parliament Buildings, Ottawa, ON, Canada", "Niagara Falls, ON, Canada", "Pukaskwa National Park, Canada", "Riel House National Historic Site, 330 River Road, Winnipeg, MB, Canada", "Riding Mountain National Park of Canada, Wasagaming, MB R0J 2H0, Canada", "Wanuskewin Heritage Park, RR #4, Penner Road, Saskatoon, SK S7K 3J7, Canada", "Fort Battleford National Historic Site, Battleford, SK, Canada", "Wood Buffalo National Park of Canada, Canada"]);
 
-		calcRoute("Hopewell Rocks Ocean Tidal, Discovery Road, Hopewell Cape, NB E4H 4Z5, Canada", "Signal Hill National Historic Site, St. John's, NL, Canada", ["Green Gables, 8619 Cavendish Road, Cavendish, PE C0A 1M0, Canada", "Province House National Hist, 165 Richmond Street, Charlottetown, PE C1A 1J1, Canada", "Peggys Cove, NS, Canada", "Cabot Trail, Pleasant Bay, NS B0E 2P0, Canada", "Gros Morne National Park, Norris Point, NL A0K 3V0, Canada"]);
-	
+		calcRoute("Jasper National Park, Jasper, AB T0E 1E0, Canada", "Inuvik, NT, Canada", ["Banff National Park, Alberta T0L, Canada", "Stanley Park, Vancouver, BC, Canada", "Prince Rupert, BC, Canada", "Kluane National Park and Reserve of Canada, Yukon Territory Y0B 1H0, Canada", "Dawson Historic Complex, Dawson, YT, Canada"]);
+		
 		var infowindow = new google.maps.InfoWindow({
 						content: "Haida Gwaii, Skeena-Queen Charlotte E, BC, Canada"
 						});
