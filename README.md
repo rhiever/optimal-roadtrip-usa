@@ -12,6 +12,10 @@ Optimal road trip visiting:
 
 * [Pure Michigan](http://rhiever.github.io/optimal-roadtrip-usa/pure-michigan.html)
 
+* [New York City walking tour](http://rhiever.github.io/optimal-roadtrip-usa/nyc-walking-tour.html)
+
+* [Philadelphia walking tour](http://rhiever.github.io/optimal-roadtrip-usa/philly-walking-tour.html)
+
 * [29 must-see stops in Canada](http://rhiever.github.io/optimal-roadtrip-usa/canada-trip.html)
 
 * [23 major Canadian landmarks](http://rhiever.github.io/optimal-roadtrip-usa/canada-trip-landmarks.html)

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Randy Olson uses machine learning to optimize a walking tour around NYC.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>An optimized walking tour around NYC</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(40.737, -73.985);
+		  var mapOptions = {
+			zoom: 13,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "American Museum of Natural History, Central Park West, New York, NY":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Times Square, New York, NY":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Chelsea Market, 9th Avenue, New York, NY":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.WALKING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "American Museum of Natural History, Central Park West, New York, NY":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Times Square, New York, NY":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Chelsea Market, 9th Avenue, New York, NY":
+						directionsDisplay3.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		calcRoute("American Museum of Natural History, Central Park West, New York, NY", "Times Square, New York, NY", ["The Metropolitan Museum of Art, 1000 5th Avenue, New York, NY 10028", "The Frick Collection, East 70th Street, New York, NY", "Central Park, New York, NY", "The Museum of Modern Art (MOMA), West 53rd Street, New York, NY", "St. Patrick's Cathedral, 5th Avenue, New York, NY", "Rockefeller Center, 45 Rockefeller Plaza, New York, NY 10111", "Radio City Music Hall, Avenue of the Americas, New York, NY", "Theater District, New York, NY"]);
+
+		calcRoute("Times Square, New York, NY", "Chelsea Market, 9th Avenue, New York, NY", ["Bryant Park, New York, NY", "New York Public Library, New York, NY", "Chrysler Building, Lexington Avenue, New York, NY", "Grand Central Terminal, New York, NY", "The Morgan Library & Museum, Madison Avenue, New York, NY", "Empire State Building Observation Deck, 5th Avenue, New York, NY", "Madison Square Garden, Pennsylvania Plaza, New York, NY", "The High Line, New York, NY 10011"]);
+
+		calcRoute("Chelsea Market, 9th Avenue, New York, NY", "Liberty Island Ferry, Brooklyn, NJ 11231", ["Ground Zero Museum Workshop, West 14th Street, New York, NY", "Greenwich Village, New York, NY", "Washington Square Park, New York, NY", "SoHo, New York, NY", "Tenement Museum, Orchard Street, New York, NY", "St. Paul's Chapel, Broadway, New York, NY", "The National September 11 Memorial & Museum, Greenwich Street & Liberty St, New York, NY 10006"]);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
