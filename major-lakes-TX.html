@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta name="description" content="Denise Turic uses machine learning to Map a road trip to all Texas lakes with a 
+Reservoir Storage (acre-ft) > 200K.">
+<meta name="author" content="Denise Turic based on code from Randal S. Olson">
+<title>The optimal road trip to Large Lakes in Texas according to machine learning</title>
+<style>
+html, body, #map-canvas {
+height: 100%;
+margin: 0px;
+padding: 0px
+}
+#panel {
+position: absolute;
+top: 5px;
+left: 50%;
+margin-left: -180px;
+z-index: 5;
+background-color: #fff;
+padding: 10px;
+border: 1px solid #999;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<script>
+var directionsDisplay1, directionsDisplay2;
+var directionsDisplay3, directionsDisplay4;
+var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+var directionsDisplayOptions = {preserveViewport: true,
+markerOptions: markerOptions};
+var directionsService = new google.maps.DirectionsService();
+var map;
+function initialize() {
+var center = new google.maps.LatLng(30, -97.5);
+var mapOptions = {
+zoom: 6,
+center: center
+};
+map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+directionsDisplay1.setMap(map);
+directionsDisplay2.setMap(map);
+directionsDisplay3.setMap(map);
+directionsDisplay4.setMap(map);
+}
+function calcRoute(start, end, routes) {
+switch (start) {
+case "Lake Texoma":
+directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+break;
+case "Caddo Lake":
+directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+break;
+case "Lake Whitney, TX":
+directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+break;
+case "Lake Ray Roberts, TX":
+directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+break;
+}
+var waypts = [];
+for (var i = 0; i < routes.length; i++) {
+waypts.push({
+location:routes[i],
+stopover:true});
+}
+var request = {
+origin: start,
+destination: end,
+waypoints: waypts,
+optimizeWaypoints: false,
+travelMode: google.maps.TravelMode.DRIVING
+};
+directionsService.route(request, function(response, status) {
+if (status == google.maps.DirectionsStatus.OK) {
+switch (start) {
+case "Lake Texoma":
+directionsDisplay1.setDirections(response);
+break;
+case "Caddo Lake":
+directionsDisplay2.setDirections(response);
+break;
+case "Lake Whitney, TX":
+directionsDisplay3.setDirections(response);
+break;
+case "Lake Ray Roberts, TX":
+directionsDisplay4.setDirections(response);
+break;
+}
+}
+});
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+calcRoute("Lake Texoma", 
+	"Caddo Lake", 
+	["Lavon Lake, TX", 
+	"Lake Ray Hubbard, TX", 
+	"Lake Tawakoni, TX", 
+	"Lake Fork, TX",
+	"Jim Chapman Lake, TX", 
+	"Lake Bob Sandlin, TX", 
+	"Lake O' the Pines, Texas", 
+	"Wright Patman Lake, TX"]);
+
+calcRoute("Caddo Lake", 
+	"Lake Whitney, TX", 
+	["Toledo Bend Reservoir", 
+	"Sam Rayburn Reservoir, Angelina National Forest,TX", 
+	"Lake Livingston, TX", 
+	"Conroe Lake, TX", 
+	"Lake Limestone, TX", 
+	"Richland Chambers Reservoir, TX", 
+	"Lake Palestine, TX", 
+	"Cedar Creek Reservoir, TX"]);
+
+calcRoute("Lake Whitney, TX", 
+	"Lake Ray Roberts, TX", 
+	["Belton Lake, Bell County, TX", 
+	"Buchanan Lake, TX", 
+	"Lake Travis, TX", 
+	"Canyon Lake, TX", 
+	"Falcon Reservoir", 
+	"Amistad National Recreation Area, Del Rio, TX", 
+	"Possum Kingdom Lake, TX", 
+	"Lewisville Lake, TX"]);
+
+calcRoute("Lake Ray Roberts, TX", 
+	"Lake Texoma", []);
+
+</script>
+</head>
+<body>
+<div id="map-canvas"></div>
+</body>
+</html>
