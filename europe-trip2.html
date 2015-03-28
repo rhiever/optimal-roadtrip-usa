@@ -55,28 +55,28 @@
 
 		function calcRoute(start, end, routes) {
 		  switch (start) {
-		  	case "porto empedocle, sicily":
+		  	case "wicklow mountains":
 		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "milan":
+		  	case "robin hood's bay":
 		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "rouge":
+		  	case "bilbao":
 		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "bergen":
+		  	case "nîmes":
 		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "london":
+		  	case "athens":
 		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "paris":
+		  	case "prague":
 		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "porto":
+		  	case "rovaniemi":
 		  		directionsDisplay7 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "arles":
+		  	case "copenhagen":
 		  		directionsDisplay8 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  }
@@ -98,28 +98,28 @@
 		  directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				switch (start) {
-					case "porto empedocle, sicily":
+					case "wicklow mountains":
 						directionsDisplay1.setDirections(response);
 						break;
-					case "milan":
+					case "robin hood's bay":
 						directionsDisplay2.setDirections(response);
 						break;
-					case "rouge":
+					case "bilbao":
 						directionsDisplay3.setDirections(response);
 						break;
-					case "bergen":
+					case "nîmes":
 						directionsDisplay4.setDirections(response);
 						break;
-					case "london":
+					case "athens":
 						directionsDisplay5.setDirections(response);
 						break;
-					case "paris":
+					case "prague":
 						directionsDisplay6.setDirections(response);
 						break;
-					case "porto":
+					case "rovaniemi":
 						directionsDisplay7.setDirections(response);
 						break;
-					case "arles":
+					case "copenhagen":
 						directionsDisplay8.setDirections(response);
 						break;
 				  }
@@ -129,21 +129,21 @@
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-		calcRoute("porto empedocle, sicily", "milan", ["dubrovnik", "chania, crete", "istanbul", "bucharest", "belgrade", "ljubljana", "venice", "bologna"]);
+		calcRoute("wicklow mountains", "robin hood's bay", ["cork", "dingle", "limerick", "galway", "newgrange, meath", "portree, isle of skye", "inverness", "edinburgh"]);
 
-		calcRoute("milan", "rouge", ["zurich", "heidelberg", "munich", "prague", "vienna", "budapest", "krakow", "warsaw"]);
+		calcRoute("robin hood's bay", "bilbao", ["york", "lower slaughter", "bath", "portsmouth", "st ives", "eden project", "carnac, brittany", "san sebastian"]);
 
-		calcRoute("rouge", "bergen", ["vöru", "kabli beach", "pärnu", "tallinn", "helsinki", "rovaniemi", "stockholm", "oslo"]);
+		calcRoute("bilbao", "nîmes", ["porto", "lisbon", "granada", "valencia", "barcelona", "carcassonne", "montpellier", "arles"]);
 
-		calcRoute("bergen", "london", ["voss", "reykjavik", "gothenburg", "oresund bridge", "berlin", "amsterdam", "brussels", "ghent"]);
+		calcRoute("nîmes", "athens", ["chamonix", "zurich", "milan", "florence", "siena", "rome", "naples, italy", "dubrovnik"]);
 
-		calcRoute("london", "paris", ["cambridge, u.k.", "edinburgh", "inverness", "belfast", "newgrange, meath", "dublin", "limerick", "carnac, brittany"]);
+		calcRoute("athens", "prague", ["istanbul", "bucharest", "belgrade", "budapest", "bratislava", "vienna", "ljubljana", "salzburg"]);
 
-		calcRoute("paris", "porto", ["lausanne", "montreaux", "chamonix", "geneva", "lyon", "vichy", "bilbao", "madrid"]);
+		calcRoute("prague", "rovaniemi", ["berlin", "poznan", "kraków", "vilnius", "kabli beach", "tallinn", "helsinki", "st petersburg"]);
 
-		calcRoute("porto", "arles", ["lisbon", "cadiz", "ceuta", "granada", "valencia", "barcelona", "figueres", "carcassonne"]);
+		calcRoute("rovaniemi", "copenhagen", ["kittilä", "stockholm", "oslo", "voss", "bergen", "gothenburg", "malmo", "öresund bridge"]);
 
-		calcRoute("arles", "porto empedocle, sicily", ["aix-en-provence", "monaco", "florence", "rome", "naples, italy"]);
+		calcRoute("copenhagen", "wicklow mountains", ["amsterdam", "brussels", "paris", "cambridge, u.k.", "snowdonia national park visitor centre, betws-y-coed", "dublin"]);
 	
     </script>
   </head>
