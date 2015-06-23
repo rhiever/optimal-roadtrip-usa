@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Ultimate 2015 Best Towns Road Trip">
+    <meta name="author" content="Outside Magazine">
+    
+    <title>The Ultimate 2015 Best Towns Road Trip</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var directionsDisplay5, directionsDisplay6;
+		var directionsDisplay7, directionsDisplay8;
+		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30, marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40, marker41, marker42, marker43, marker44, marker45, marker46, marker47, marker48, marker49, marker50, marker51, marker52, marker53, marker54, marker55, marker56, marker57, marker58, marker59, marker60, marker61, marker62, marker63, marker64;
+		var infoWindows = [];
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png", zIndex: 1};
+		var routeMarkerOptions = {visible: false, zIndex: 0};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: routeMarkerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(39, -96);
+		  var mapOptions = {
+			zoom: 5,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		  directionsDisplay5.setMap(map);
+		  directionsDisplay6.setMap(map);
+		  directionsDisplay7.setMap(map);
+		  directionsDisplay8.setMap(map);
+		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map); marker11.setMap(map); marker12.setMap(map); marker13.setMap(map); marker14.setMap(map); marker15.setMap(map); marker16.setMap(map); marker17.setMap(map); marker18.setMap(map); marker19.setMap(map); marker20.setMap(map); marker21.setMap(map); marker22.setMap(map); marker23.setMap(map); marker24.setMap(map); marker25.setMap(map); marker26.setMap(map); marker27.setMap(map); marker28.setMap(map); marker29.setMap(map); marker30.setMap(map); marker31.setMap(map); marker32.setMap(map); marker33.setMap(map); marker34.setMap(map); marker35.setMap(map); marker36.setMap(map); marker37.setMap(map); marker38.setMap(map); marker39.setMap(map); marker40.setMap(map); marker41.setMap(map); marker42.setMap(map); marker43.setMap(map); marker44.setMap(map); marker45.setMap(map); marker46.setMap(map); marker47.setMap(map); marker48.setMap(map); marker49.setMap(map); marker50.setMap(map); marker51.setMap(map); marker52.setMap(map); marker53.setMap(map); marker54.setMap(map); marker55.setMap(map); marker56.setMap(map); marker57.setMap(map); marker58.setMap(map); marker59.setMap(map); marker60.setMap(map); marker61.setMap(map); marker62.setMap(map); marker63.setMap(map); marker64.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Whitefish, MT":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Iowa City, IA":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Berea, KY":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Bar Harbor, ME":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Charlottesville, VA":
+		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Chattanooga, TN":
+		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Glenwood Springs, CO":
+		  		directionsDisplay7 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Bainbridge Island, WA":
+		  		directionsDisplay8 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Whitefish, MT":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Iowa City, IA":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Berea, KY":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "Bar Harbor, ME":
+						directionsDisplay4.setDirections(response);
+						break;
+					case "Charlottesville, VA":
+						directionsDisplay5.setDirections(response);
+						break;
+					case "Chattanooga, TN":
+						directionsDisplay6.setDirections(response);
+						break;
+					case "Glenwood Springs, CO":
+						directionsDisplay7.setDirections(response);
+						break;
+					case "Bainbridge Island, WA":
+						directionsDisplay8.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		calcRoute("Whitefish, MT", "Iowa City, IA", ["Ogden, UT", "Victor, ID", "Sheridan, WY", "Rapid City, SD", "Spearfish, SD", "Ely, MN", "Eau Claire, WI", "Rochester, MN"]);
+
+        calcRoute("Iowa City, IA", "Berea, KY", ["Milwaukee, WI", "Evanston, IL", "Saugatuck, MI", "Bellaire, MI", "Detroit, MI", "Columbus, OH", "Yellow Springs, OH", "Indianapolis, IN"]);
+
+        calcRoute("Berea, KY", "Bar Harbor, ME", ["Fayetteville, WV", "Pittsburgh, PA", "Elmira, NY", "East Stroudsburg, PA", "Cold Spring, NY", "New Haven, CT", "Providence, RI", "Portsmouth, NH"]);
+
+        calcRoute("Bar Harbor, ME", "Charlottesville, VA", ["Lake Placid, NY", "Middlebury, VT", "Lebanon, NH", "Brattleboro, VT", "Northampton, MA", "New York, NY", "Red Bank, NJ", "Annapolis, MD"]);
+
+        calcRoute("Charlottesville, VA", "Chattanooga, TN", ["Roanoke, VA", "Raleigh-Durham, NC", "Boone, NC", "Beaufort, SC", "Savannah, GA", "Ocala, FL", "Tampa, FL", "Athens, GA"]);
+
+        calcRoute("Chattanooga, TN", "Glenwood Springs, CO", ["Birmingham, AL", "Oxford, MS", "Kansas City, MO", "Bentonville, AR", "Houston, TX", "Alpine, TX", "Santa Fe, NM", "Pagosa Springs, CO"]);
+
+        calcRoute("Glenwood Springs, CO", "Whitefish, MT", ["Flagstaff, AZ", "Las Vegas, NV", "Santa Barbara, CA", "Fort Bragg, CA", "Ashland, OR", "Bainbridge Island, WA", "Port Angeles, WA", "Juneau, AK"]);
+        
+        calcRoute("Bainbridge Island, WA", "Whitefish, MT", []);
+        
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Whitefish, MT</h3><strong>Miles to Juneau, AK:</strong> 1,828<br /><strong>Miles to Bainbridge Island, WA:</strong> 540<br /><strong>Miles to Ogden, UT:</strong> 612<br /><strong>Population:</strong> 6,649<br /><strong>Housing Price:</strong> $260,800<br /><br />With 2,500 feet of vert, Whitefish Mountain Resort gives residents plenty of gravity to work with on skis during winter and mountain bikes in summer. Craft breweries, an artisan coffee roaster, and a dozen art galleries keep small-town life busy. If that’s still too crowded, drive an hour to Glacier National Park."
+        });
+
+        infoWindows.push(infoWindow1);
+        
+        marker1 = new google.maps.Marker({
+                                position: new google.maps.LatLng(48.4106373, -114.3352652),
+                                options: markerOptions,
+                                title: "Whitefish, MT"
+                                });
+
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
+
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Ogden, UT</h3><strong>Miles to Whitefish, MT:</strong> 612<br /><strong>Miles to Victor, ID:</strong> 244<br /><strong>Population:</strong> 84,249<br /><strong>Housing Price:</strong> $131,200<br /><br />When Ogden’s active population isn’t shredding Wasatch powder at one of the three resorts within 20 minutes of town, they’re playboating in Utah’s first kayak park, bouldering at the Ogden Boulder Field, hiking the 210 miles of nearby trails, or fishing on the Ogden River—one of the only urban Blue Ribbon Fisheries in the United States."
+        });
+
+        infoWindows.push(infoWindow2);
+        
+        marker2 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.223, -111.9738304),
+                                options: markerOptions,
+                                title: "Ogden, UT"
+                                });
+
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
+
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Victor, ID</h3><strong>Miles to Ogden, UT:</strong> 244<br /><strong>Miles to Sheridan, WY:</strong> 347<br /><strong>Population:</strong> 1,928<br /><strong>Housing Price:</strong> $222,700<br /><br />Just a few hours from Yellowstone and Grand Teton National Park, and near top-notch downhill, backcountry, and Nordic skiing, Victor is a less-trodden alternative to Jackson, WY. Camp to your heart’s content and hike all weekend. If you’re just running around town, do it on two wheels—bike lanes connect the entire town."
+        });
+
+        infoWindows.push(infoWindow3);
+        
+        marker3 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.6026976, -111.1113318),
+                                options: markerOptions,
+                                title: "Victor, ID"
+                                });
+
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Sheridan, WY</h3><strong>Miles to Victor, ID:</strong> 347<br /><strong>Miles to Rapid City, SD:</strong> 244<br /><strong>Population:</strong> 17,828<br /><strong>Housing Price:</strong> $189,100<br /><br />From the weeklong Sheridan WYO rodeo to still-standing cabins from pioneer days, the Old West is very much alive here. So is the spirit of adventure: The stunning Bighorn Mountains to the west make a rugged playground for rock climbers, fly-fishermen, campers, and hikers. Plus, the town hosts the Spuds ’n’ Spurs Brew Fest each September."
+        });
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.7971939, -106.9561791),
+                                options: markerOptions,
+                                title: "Sheridan, WY"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Rapid City, SD</h3><strong>Miles to Sheridan, WY:</strong> 244<br /><strong>Miles to Spearfish, SD:</strong> 47<br /><strong>Population:</strong> 70,812<br /><strong>Housing Price:</strong> $155,700<br /><br />Mountain bikers, rock climbers, hikers, and campers vacation here for a reason. Rapid City is an hour’s drive from five national parks—Badlands National Park is next door—giving residents access to thousands of miles of backcountry trails and pristine wilderness. Downtime is all about the area’s many wineries and pubs."
+        });
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.0805434, -103.2310149),
+                                options: markerOptions,
+                                title: "Rapid City, SD"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Spearfish, SD</h3><strong>Miles to Rapid City, SD:</strong> 47<br /><strong>Miles to Ely, MN:</strong> 772<br /><strong>Population:</strong> 11,107<br /><strong>Housing Price:</strong> $172,200<br /><br />Nestled in South Dakota’s Black Hills, on the periphery of 1.2 million acres of national forest and an hour from Mount Rushmore and Devil’s Tower, Spearfish is a quiet town with an adventurous streak. Spearfish Canyon, a 1.5-mile walk from town, is where locals like to rock climb, fly-fish, hike, camp, and mountain bike."
+        });
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.4908172, -103.8593698),
+                                options: markerOptions,
+                                title: "Spearfish, SD"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Ely, MN</h3><strong>Miles to Spearfish, SD:</strong> 772<br /><strong>Miles to Eau Claire, WI:</strong> 265<br /><strong>Population:</strong> 3,472<br /><strong>Housing Price:</strong> $90,400<br /><br />Nestled in Superior National Forest, Ely offers summer paddling through Boundary Waters Canoe Area or just hiking, camping, and fishing. Come winter, Nordic skiing, dogsledding, ice fishing, and snowshoeing take over. Hungry? The fresh walleye here is killer. Thirsty? Boathouse Brewpub has you covered."
+        });
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(47.9032372, -91.8670873),
+                                options: markerOptions,
+                                title: "Ely, MN"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Eau Claire, WI</h3><strong>Miles to Ely, MN:</strong> 265<br /><strong>Miles to Rochester, MN:</strong> 95<br /><strong>Population:</strong> 67,545<br /><strong>Housing Price:</strong> $138,600<br /><br />Every winter, Nordic skiers claim six parks, ski jumpers have the Eau Claire Ski Hill, and fat bikers conquer any number of trails before entering the locally run Powder Keg Race. Come summer, Eau Claire’s many paved and dirt bike trails come alive."
+        });
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.811349, -91.4984941),
+                                options: markerOptions,
+                                title: "Eau Claire, WI"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Rochester, MN</h3><strong>Miles to Eau Claire, WI:</strong> 95<br /><strong>Miles to Iowa City, IA:</strong> 196<br /><strong>Population:</strong> 110,742<br /><strong>Housing Price:</strong> $163,700<br /><br />Minnesota’s third-largest city is known for the Mayo Clinic, but less famous is its outside cred. The town has cultivated green spaces like Chester Woods Park, Quarry Hill Nature Center, and Cascade Meadow Wetlands, where residents cross-country ski, hike, and paddle. Plus, Rochester has 85 miles of paved bike lanes for getting around town."
+        });
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.0121221, -92.4801989),
+                                options: markerOptions,
+                                title: "Rochester, MN"
+                                });
+
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Iowa City, IA</h3><strong>Miles to Rochester, MN:</strong> 196<br /><strong>Miles to Milwaukee, WI:</strong> 264<br /><strong>Population:</strong> 71,591<br /><strong>Housing Price:</strong> $180,900<br /><br />The University of Iowa takes up about 2,000 acres of downtown, meaning you’re never too far from a funky café, bookstore, bar, or restaurant. Intellectuals here get active on the six-mile Iowa River Corridor, a green strip that runs through the center of town that offers running and biking trails, fishing, and boating."
+        });
+
+        infoWindows.push(infoWindow10);
+        
+        marker10 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.6611277, -91.5301683),
+                                options: markerOptions,
+                                title: "Iowa City, IA"
+                                });
+
+        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
+
+        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Milwaukee, WI</h3><strong>Miles to Iowa City, IA:</strong> 264<br /><strong>Miles to Evanston, IL:</strong> 79<br /><strong>Population:</strong> 599,164<br /><strong>Housing Price:</strong> $127,400<br /><br />You can’t talk beer history without mentioning Milwaukee—Schlitz, Miller, and Pabst all started here—but plenty of new-school breweries keep it relevant. Plus, the city features 15,000 acres of parks and miles of waterfront along Lake Michigan for biking, jogging, volleyball, and even lake surfing."
+        });
+
+        infoWindows.push(infoWindow11);
+        
+        marker11 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.0389025, -87.9064736),
+                                options: markerOptions,
+                                title: "Milwaukee, WI"
+                                });
+
+        google.maps.event.addListener(marker11, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow11.open(map, marker11); });
+
+        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Evanston, IL</h3><strong>Miles to Milwaukee, WI:</strong> 79<br /><strong>Miles to Saugatuck, MI:</strong> 159<br /><strong>Population:</strong> 75,570<br /><strong>Housing Price:</strong> $353,200<br /><br />Recognized by the World Wildlife Fund as one of the country’s most sustainable cities, the home of Northwestern University wants to become the most livable city in America. While city hall works toward greening Evanston’s infrastructure, you can take advantage of this city’s 92 parks, six lakeside beaches, and 30-minute drive or train ride to Chicago."
+        });
+
+        infoWindows.push(infoWindow12);
+        
+        marker12 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.0450722, -87.68769689999999),
+                                options: markerOptions,
+                                title: "Evanston, IL"
+                                });
+
+        google.maps.event.addListener(marker12, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow12.open(map, marker12); });
+
+        var infoWindow13 = new google.maps.InfoWindow({ content: "<h3>Saugatuck, MI</h3><strong>Miles to Evanston, IL:</strong> 159<br /><strong>Miles to Bellaire, MI:</strong> 195<br /><strong>Population:</strong> 2,944<br /><strong>Housing Price:</strong> $124,628<br /><br />This artsy, liberal beach town could stand up to competitors on either coast. There’s plenty of SUP and kayaking along Lake Michigan and Kalamazoo Lake, and Saugatuck Dunes State Park offers thousands of acres of hiking trails and a 200-foot-tall dune. (Surfing, anyone?) Plus, the lakeside Red Dock bar may be the best in the state."
+        });
+
+        infoWindows.push(infoWindow13);
+        
+        marker13 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.6550248, -86.2019825),
+                                options: markerOptions,
+                                title: "Saugatuck, MI"
+                                });
+
+        google.maps.event.addListener(marker13, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow13.open(map, marker13); });
+
+        var infoWindow14 = new google.maps.InfoWindow({ content: "<h3>Bellaire, MI</h3><strong>Miles to Saugatuck, MI:</strong> 195<br /><strong>Miles to Detroit, MI:</strong> 248<br /><strong>Population:</strong> 1,080<br /><strong>Housing Price:</strong> $91,768<br /><br />In winter, residents of this two-stoplight town on the northeastern edge of Michigan’s Lower Peninsula hit Shanty Creek Ski Area, one of the country’s best local hills. When it warms up, they’re fishing and paddling in nearby lakes and hiking, running, and cycling the area’s network of trails. Shorts Brewing Company serves world-class beers right in town."
+        });
+
+        infoWindows.push(infoWindow14);
+        
+        marker14 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.9802822, -85.2111728),
+                                options: markerOptions,
+                                title: "Bellaire, MI"
+                                });
+
+        google.maps.event.addListener(marker14, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow14.open(map, marker14); });
+
+        var infoWindow15 = new google.maps.InfoWindow({ content: "<h3>Detroit, MI</h3><strong>Miles to Bellaire, MI:</strong> 248<br /><strong>Miles to Columbus, OH:</strong> 202<br /><strong>Population:</strong> 688,701<br /><strong>Housing Price:</strong> $50,400<br /><br />Motor City is actually one of the country’s great bike towns. At least seven local companies are churning out handmade bikes, and you can ride the ever-growing network of bike lanes through revitalized urban greenways, along the waterfront, or to Detroit Eastern Market, one of the largest and longest-running farmers’ markets in the United States."
+        });
+
+        infoWindows.push(infoWindow15);
+        
+        marker15 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.331427, -83.0457538),
+                                options: markerOptions,
+                                title: "Detroit, MI"
+                                });
+
+        google.maps.event.addListener(marker15, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow15.open(map, marker15); });
+
+        var infoWindow16 = new google.maps.InfoWindow({ content: "<h3>Columbus, OH</h3><strong>Miles to Detroit, MI:</strong> 202<br /><strong>Miles to Yellow Springs, OH:</strong> 55<br /><strong>Population:</strong> 822,553<br /><strong>Housing Price:</strong> $130,700<br /><br />With 11 breweries and strong German roots, Columbus takes its beer seriously as its wurst. To stay fit, get around town using CoGo Bike Share, or take your own set of wheels along one of the city’s seven networks of recreational trails. For more adventure, drive 45 minutes to beautiful Hocking Hills State Park, where kayaking, canoeing, and zip-lining await."
+        });
+
+        infoWindows.push(infoWindow16);
+        
+        marker16 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9611755, -82.99879419999999),
+                                options: markerOptions,
+                                title: "Columbus, OH"
+                                });
+
+        google.maps.event.addListener(marker16, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow16.open(map, marker16); });
+
+        var infoWindow17 = new google.maps.InfoWindow({ content: "<h3>Yellow Springs, OH</h3><strong>Miles to Columbus, OH:</strong> 55<br /><strong>Miles to Indianapolis, IN:</strong> 133<br /><strong>Population:</strong> 3,513<br /><strong>Housing Price:</strong> $197,995<br /><br />You wouldn’t expect to find a town full of hippies and artists in south central Ohio, but that’s exactly what you’ll find in Yellow Springs. Hikers, campers, and cyclists take advantage of nearby Glen Helen Nature Preserve and two nearby state parks. Then there’s the 330-mile Little Miami Scenic Trail, the longest paved off-street trail system in the United States."
+        });
+
+        infoWindows.push(infoWindow17);
+        
+        marker17 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.8064486, -83.88687399999999),
+                                options: markerOptions,
+                                title: "Yellow Springs, OH"
+                                });
+
+        google.maps.event.addListener(marker17, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow17.open(map, marker17); });
+
+        var infoWindow18 = new google.maps.InfoWindow({ content: "<h3>Indianapolis, IN</h3><strong>Miles to Yellow Springs, OH:</strong> 133<br /><strong>Miles to Berea, KY:</strong> 225<br /><strong>Population:</strong> 843,393<br /><strong>Housing Price:</strong> $118,000<br /><br />Yes, it’s the seat of NCAA and American car racing, but there’s more here to keep you occupied, like the Cultural Trail, which connects neighborhoods via cycling and pedestrian paths adorned with public art. White River State Park, the only urban state park in the United States, is right downtown."
+        });
+
+        infoWindows.push(infoWindow18);
+        
+        marker18 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.768403, -86.158068),
+                                options: markerOptions,
+                                title: "Indianapolis, IN"
+                                });
+
+        google.maps.event.addListener(marker18, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow18.open(map, marker18); });
+
+        var infoWindow19 = new google.maps.InfoWindow({ content: "<h3>Berea, KY</h3><strong>Miles to Indianapolis, IN:</strong> 225<br /><strong>Miles to Fayetteville, WV:</strong> 247<br /><strong>Population:</strong> 14,374<br /><strong>Housing Price:</strong> $126,600<br /><br />Artisans and musicians have long flocked to this quirky college town (home to Berea College) on the edge of Kentucky’s Bluegrass Country. Berea is adjacent to the 706,000-acre Daniel Boone National Forest, where you’ll find the famed rock-climbing mecca of Red River Gorge, as well as cycling, hiking, camping, fishing, and boating."
+        });
+
+        infoWindows.push(infoWindow19);
+        
+        marker19 = new google.maps.Marker({
+                                position: new google.maps.LatLng(37.568694, -84.2963223),
+                                options: markerOptions,
+                                title: "Berea, KY"
+                                });
+
+        google.maps.event.addListener(marker19, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow19.open(map, marker19); });
+
+        var infoWindow20 = new google.maps.InfoWindow({ content: "<h3>Fayetteville, WV</h3><strong>Miles to Berea, KY:</strong> 247<br /><strong>Miles to Pittsburgh, PA:</strong> 218<br /><strong>Population:</strong> 2,890<br /><strong>Housing Price:</strong> $103,289<br /><br />Rock climbers, mountain bikers, and paddlers of all ilk have descended upon this sleepy town for its proximity to New River Gorge National River. “The New” contains 1,400 established climbs, more than 70 miles of biking trails, six different foot-trail systems, and up to Class V rafting on the New and Gauley Rivers."
+        });
+
+        infoWindows.push(infoWindow20);
+        
+        marker20 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.0528884, -81.1039911),
+                                options: markerOptions,
+                                title: "Fayetteville, WV"
+                                });
+
+        google.maps.event.addListener(marker20, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow20.open(map, marker20); });
+
+        var infoWindow21 = new google.maps.InfoWindow({ content: "<h3>Pittsburgh, PA</h3><strong>Miles to Fayetteville, WV:</strong> 218<br /><strong>Miles to Elmira, NY:</strong> 274<br /><strong>Population:</strong> 305,841<br /><strong>Housing Price:</strong> $89,400<br /><br />Perched on the confluence of the Monongahela, Ohio, and Allegheny rivers, Pittsburgh has plenty of put-ins for canoeing and kayaking, and its hilly/flat terrain mix is a cyclist’s dream. With farms circling town, finding a locally sourced meal is easy, whether it’s burgers or sushi."
+        });
+
+        infoWindows.push(infoWindow21);
+        
+        marker21 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.44062479999999, -79.9958864),
+                                options: markerOptions,
+                                title: "Pittsburgh, PA"
+                                });
+
+        google.maps.event.addListener(marker21, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow21.open(map, marker21); });
+
+        var infoWindow22 = new google.maps.InfoWindow({ content: "<h3>Elmira, NY</h3><strong>Miles to Pittsburgh, PA:</strong> 274<br /><strong>Miles to East Stroudsburg, PA:</strong> 157<br /><strong>Population:</strong> 28,899<br /><strong>Housing Price:</strong> $67,400<br /><br />This sleepy college town—home to Elmira College—is a 35-minute drive south of the Finger Lakes and New York’s wine country. The streets are lined with Victorian-era homes and towering trees, and you can fly-fish, paddle, and raft on the Chemung River, which cuts through town."
+        });
+
+        infoWindows.push(infoWindow22);
+        
+        marker22 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.0897965, -76.8077338),
+                                options: markerOptions,
+                                title: "Elmira, NY"
+                                });
+
+        google.maps.event.addListener(marker22, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow22.open(map, marker22); });
+
+        var infoWindow23 = new google.maps.InfoWindow({ content: "<h3>East Stroudsburg, PA</h3><strong>Miles to Elmira, NY:</strong> 157<br /><strong>Miles to Cold Spring, NY:</strong> 88<br /><strong>Population:</strong> 9,780<br /><strong>Housing Price:</strong> $200,000<br /><br />Located near the Delaware Water Gap, the Appalachian Trail, and Pocono ski resorts like Camelback, East Stroudsburg offers everything from rafting to fishing to hiking and skiing within a quick drive. Go just a bit farther and you’re in Philadelphia or New York City."
+        });
+
+        infoWindows.push(infoWindow23);
+        
+        marker23 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.9995386, -75.1812913),
+                                options: markerOptions,
+                                title: "East Stroudsburg, PA"
+                                });
+
+        google.maps.event.addListener(marker23, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow23.open(map, marker23); });
+
+        var infoWindow24 = new google.maps.InfoWindow({ content: "<h3>Cold Spring, NY</h3><strong>Miles to East Stroudsburg, PA:</strong> 88<br /><strong>Miles to New Haven, CT:</strong> 73<br /><strong>Population:</strong> 1,992<br /><strong>Housing Price:</strong> $369,900<br /><br />A 90-minute train ride from New York City, Cold Spring has the urban flair of Brooklyn but with Upstate’s easy access to nature. Located on the Hudson River and the edge of Hudson Highlands State Park, the area offers paddling, fishing, and hiking, plus quality rock climbing at Breakneck Ridge, just five miles away."
+        });
+
+        infoWindows.push(infoWindow24);
+        
+        marker24 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.4200937, -73.954583),
+                                options: markerOptions,
+                                title: "Cold Spring, NY"
+                                });
+
+        google.maps.event.addListener(marker24, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow24.open(map, marker24); });
+
+        var infoWindow25 = new google.maps.InfoWindow({ content: "<h3>New Haven, CT</h3><strong>Miles to Cold Spring, NY:</strong> 73<br /><strong>Miles to Providence, RI:</strong> 102<br /><strong>Population:</strong> 130,660<br /><strong>Housing Price:</strong> $209,300<br /><br />New Haven is known for Yale, but it makes our list for its proximity to Long Island Sound and the cliffs of West Rock Ridge State Park. The area offers miles of mountain biking trails and hundreds of climbing routes, plus ample opportunities for cross-country skiing, kayaking, and fishing. Refuel at New Haven’s bounty of international restaurants."
+        });
+
+        infoWindows.push(infoWindow25);
+        
+        marker25 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.308274, -72.9278835),
+                                options: markerOptions,
+                                title: "New Haven, CT"
+                                });
+
+        google.maps.event.addListener(marker25, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow25.open(map, marker25); });
+
+        var infoWindow26 = new google.maps.InfoWindow({ content: "<h3>Providence, RI</h3><strong>Miles to New Haven, CT:</strong> 102<br /><strong>Miles to Portsmouth, NH:</strong> 112<br /><strong>Population:</strong> 177,994<br /><strong>Housing Price:</strong> $196,300<br /><br />Rhode Island’s capital has been the recipient of foodie praise in the past few years, and a fresh seafood joint is never too far away. Plus, access to three rivers and the surrounding trails provides plenty of opportunities to paddle, sail, fish, hike, or bike."
+        });
+
+        infoWindows.push(infoWindow26);
+        
+        marker26 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.8239891, -71.4128343),
+                                options: markerOptions,
+                                title: "Providence, RI"
+                                });
+
+        google.maps.event.addListener(marker26, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow26.open(map, marker26); });
+
+        var infoWindow27 = new google.maps.InfoWindow({ content: "<h3>Portsmouth, NH</h3><strong>Miles to Providence, RI:</strong> 112<br /><strong>Miles to Bar Harbor, ME:</strong> 225<br /><strong>Population:</strong> 21,440<br /><strong>Housing Price:</strong> $327,900<br /><br />This seaside town has classic New England streets filled with cafés, breweries, restaurants, and art galleries. Go deep-sea fishing, explore the Great Bay Reserve, hit the trails on coastal Fort Foster, or relax on Hampton Beach."
+        });
+
+        infoWindows.push(infoWindow27);
+        
+        marker27 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.0717552, -70.7625532),
+                                options: markerOptions,
+                                title: "Portsmouth, NH"
+                                });
+
+        google.maps.event.addListener(marker27, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow27.open(map, marker27); });
+
+        var infoWindow28 = new google.maps.InfoWindow({ content: "<h3>Bar Harbor, ME</h3><strong>Miles to Portsmouth, NH:</strong> 225<br /><strong>Miles to Lake Placid, NY:</strong> 395<br /><strong>Population:</strong> 5,313<br /><strong>Housing Price:</strong> $309,000<br /><br />Walk northeast and you’ll hit the gorgeous Maine coast. Stroll the waterfront’s quaint shops and restaurants, or hop on a boat and go deep-sea fishing. Walk southwest and, in less than 25 minutes, you’ll be in Acadia National Park with access to world-class sea kayaking, camping, fishing, and plenty of rock climbing."
+        });
+
+        infoWindows.push(infoWindow28);
+        
+        marker28 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.3876119, -68.2039123),
+                                options: markerOptions,
+                                title: "Bar Harbor, ME"
+                                });
+
+        google.maps.event.addListener(marker28, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow28.open(map, marker28); });
+
+        var infoWindow29 = new google.maps.InfoWindow({ content: "<h3>Lake Placid, NY</h3><strong>Miles to Bar Harbor, ME:</strong> 395<br /><strong>Miles to Middlebury, VT:</strong> 69<br /><strong>Population:</strong> 2,616<br /><strong>Housing Price:</strong> $146,600<br /><br />The 1980 Winter Games were held in Lake Placid, and the area remains an athlete’s paradise. Ski, luge, or snowshoe all winter at Whiteface Mountain, and take advantage of the mountain biking, hiking, and fly-fishing when it warms up. There’s also a burgeoning farm-to-table restaurant scene."
+        });
+
+        infoWindows.push(infoWindow29);
+        
+        marker29 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.2794911, -73.9798713),
+                                options: markerOptions,
+                                title: "Lake Placid, NY"
+                                });
+
+        google.maps.event.addListener(marker29, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow29.open(map, marker29); });
+
+        var infoWindow30 = new google.maps.InfoWindow({ content: "<h3>Middlebury, VT</h3><strong>Miles to Lake Placid, NY:</strong> 69<br /><strong>Miles to Lebanon, NH:</strong> 66<br /><strong>Population:</strong> 8,501<br /><strong>Housing Price:</strong> $235,700<br /><br />Thanks to the 16-mile Trail Around Middlebury (TAM) loop, walking and hiking are a way of life here. So is biking—five Lake Champlain Bikeways pass through town, connecting it to New York and Quebec. You can also study brewing at the American Brewers Guild in nearby Salisbury."
+        });
+
+        infoWindows.push(infoWindow30);
+        
+        marker30 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.0153371, -73.16734),
+                                options: markerOptions,
+                                title: "Middlebury, VT"
+                                });
+
+        google.maps.event.addListener(marker30, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow30.open(map, marker30); });
+
+        var infoWindow31 = new google.maps.InfoWindow({ content: "<h3>Lebanon, NH</h3><strong>Miles to Middlebury, VT:</strong> 66<br /><strong>Miles to Brattleboro, VT:</strong> 66<br /><strong>Population:</strong> 13,599<br /><strong>Housing Price:</strong> $235,400<br /><br />Located next door to Dartmouth College, Lebanon has a smart and active vibe. The recently completed Northern Rail Trail—New Hampshire’s longest multiuse recreational pathway—braids the Mascoma River that cuts through town. Come winter, walk up to Storrs Hill Ski Area, just a half-mile from the town center."
+        });
+
+        infoWindows.push(infoWindow31);
+        
+        marker31 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.6422934, -72.2517569),
+                                options: markerOptions,
+                                title: "Lebanon, NH"
+                                });
+
+        google.maps.event.addListener(marker31, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow31.open(map, marker31); });
+
+        var infoWindow32 = new google.maps.InfoWindow({ content: "<h3>Brattleboro, VT</h3><strong>Miles to Lebanon, NH:</strong> 66<br /><strong>Miles to Northampton, MA:</strong> 39<br /><strong>Population:</strong> 11,798<br /><strong>Housing Price:</strong> $210,300<br /><br />Kayaking, canoeing, and fishing are front and center in Vermont’s fourth most populous city, which sits on the confluence of the Connecticut and West Rivers. On land, miles of trails take you through Fort Dummer State Park, Hogle Wildlife Sanctuary, and the Green Mountains. Also: Whetstone Station Brewery."
+        });
+
+        infoWindows.push(infoWindow32);
+        
+        marker32 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.8509152, -72.5578678),
+                                options: markerOptions,
+                                title: "Brattleboro, VT"
+                                });
+
+        google.maps.event.addListener(marker32, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow32.open(map, marker32); });
+
+        var infoWindow33 = new google.maps.InfoWindow({ content: "<h3>Northampton, MA</h3><strong>Miles to Brattleboro, VT:</strong> 39<br /><strong>Miles to New York, NY:</strong> 161<br /><strong>Population:</strong> 28,495<br /><strong>Housing Price:</strong> $284,400<br /><br />Northampton may be a small town, but go 10 minutes in any direction and you’ll hit one of five top-tier liberal arts schools, which help feed art galleries, farm-to-table restaurants, cafés, theaters, and, of course, biking and hiking trails. Oh, and the most serious team sport in this western Massachusetts town? Roller derby."
+        });
+
+        infoWindows.push(infoWindow33);
+        
+        marker33 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.3250896, -72.64120129999999),
+                                options: markerOptions,
+                                title: "Northampton, MA"
+                                });
+
+        google.maps.event.addListener(marker33, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow33.open(map, marker33); });
+
+        var infoWindow34 = new google.maps.InfoWindow({ content: "<h3>New York, NY</h3><strong>Miles to Northampton, MA:</strong> 161<br /><strong>Miles to Red Bank, NJ:</strong> 47<br /><strong>Population:</strong> 8,405,637<br /><strong>Housing Price:</strong> $554,200<br /><br />Yes, it's the concrete jungle, but New York’s many miles of protected bike lanes make the Big Apple one of the most cycle-friendly big cities in the country. The city has added miles of green space on its east and west waterfronts to complement Central Park. Surfers flock to Rockaway Beach, and world-class climbing is a quick train ride away."
+        });
+
+        infoWindows.push(infoWindow34);
+        
+        marker34 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.7127837, -74.0059413),
+                                options: markerOptions,
+                                title: "New York, NY"
+                                });
+
+        google.maps.event.addListener(marker34, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow34.open(map, marker34); });
+
+        var infoWindow35 = new google.maps.InfoWindow({ content: "<h3>Red Bank, NJ</h3><strong>Miles to New York, NY:</strong> 47<br /><strong>Miles to Annapolis, MD:</strong> 203<br /><strong>Population:</strong> 12,213<br /><strong>Housing Price:</strong> $357,700<br /><br />Paddling and rafting on the Navesink River is an easy walk from downtown Red Bank. If you crave open water, the undeveloped beaches of Sandy Hook are 30 minutes by car, and your commute to New York City is a 45-minute ferry. On dry ground, avail yourself of Monmouth County’s 2,700 acres of parkland."
+        });
+
+        infoWindows.push(infoWindow35);
+        
+        marker35 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.3470543, -74.0643065),
+                                options: markerOptions,
+                                title: "Red Bank, NJ"
+                                });
+
+        google.maps.event.addListener(marker35, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow35.open(map, marker35); });
+
+        var infoWindow36 = new google.maps.InfoWindow({ content: "<h3>Annapolis, MD</h3><strong>Miles to Red Bank, NJ:</strong> 203<br /><strong>Miles to Charlottesville, VA:</strong> 150<br /><strong>Population:</strong> 38,722<br /><strong>Housing Price:</strong> $377,200<br /><br />The U.S. Naval Academy is a big part of life in Annapolis, but so is the prime real estate on the Chesapeake Bay. That means eating plenty of fresh Maryland blue crab at incredible seafood joints. For the rest of your body, it’s all about the SUP, windsurfing, and 87 miles of multiuse trails through the bay terrain."
+        });
+
+        infoWindows.push(infoWindow36);
+        
+        marker36 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.9784453, -76.4921829),
+                                options: markerOptions,
+                                title: "Annapolis, MD"
+                                });
+
+        google.maps.event.addListener(marker36, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow36.open(map, marker36); });
+
+        var infoWindow37 = new google.maps.InfoWindow({ content: "<h3>Charlottesville, VA</h3><strong>Miles to Annapolis, MD:</strong> 150<br /><strong>Miles to Roanoke, VA:</strong> 120<br /><strong>Population:</strong> 44,349<br /><strong>Housing Price:</strong> $293,000<br /><br />Peach Pie Ice Cream is a dietary staple in Virginia’s beer and wine country, but working off calories is easy. Hike, bike, or run miles of wilderness on the AT in Shenandoah Valley National Park; kayak and raft the Rivanna River; cycle in town; and, come winter, shred the slopes at Wintergreen Ski Area."
+        });
+
+        infoWindows.push(infoWindow37);
+        
+        marker37 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.0293059, -78.47667810000002),
+                                options: markerOptions,
+                                title: "Charlottesville, VA"
+                                });
+
+        google.maps.event.addListener(marker37, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow37.open(map, marker37); });
+
+        var infoWindow38 = new google.maps.InfoWindow({ content: "<h3>Roanoke, VA</h3><strong>Miles to Charlottesville, VA:</strong> 120<br /><strong>Miles to Raleigh-Durham, NC:</strong> 148<br /><strong>Population:</strong> 98,465<br /><strong>Housing Price:</strong> $134,700<br /><br />Located in Virginia’s beautiful Blue Ridge Mountains, Roanoke has become a haven for mountain bikers who bomb 1,700 feet down the hills of Mill Mountain Park, just five minutes from downtown, or explore the 90 miles of singletrack in Carvins Cove. Then there’s Class I–III rafting on the James River, plenty of lakes for fishing, and enough craft breweries to warrant a tour."
+        });
+
+        infoWindows.push(infoWindow38);
+        
+        marker38 = new google.maps.Marker({
+                                position: new google.maps.LatLng(37.2709704, -79.9414266),
+                                options: markerOptions,
+                                title: "Roanoke, VA"
+                                });
+
+        google.maps.event.addListener(marker38, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow38.open(map, marker38); });
+
+        var infoWindow39 = new google.maps.InfoWindow({ content: "<h3>Raleigh-Durham, NC</h3><strong>Miles to Roanoke, VA:</strong> 148<br /><strong>Miles to Boone, NC:</strong> 173<br /><strong>Population:</strong> 677,221<br /><strong>Housing Price:</strong> $199,880<br /><br />When locals aren’t savoring the acclaimed beer and barbecue, they’re hiking or running in Umstead State Park’s 20 miles of singletrack and 13 miles of multiuse bridle trails; cycling converted rail lines around town; or canoeing, fly-fishing, and camping in nearby Eno River State Park."
+        });
+
+        infoWindows.push(infoWindow39);
+        
+        marker39 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.8991678, -78.86364019999999),
+                                options: markerOptions,
+                                title: "Raleigh-Durham, NC"
+                                });
+
+        google.maps.event.addListener(marker39, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow39.open(map, marker39); });
+
+        var infoWindow40 = new google.maps.InfoWindow({ content: "<h3>Boone, NC</h3><strong>Miles to Raleigh-Durham, NC:</strong> 173<br /><strong>Miles to Beaufort, SC:</strong> 324<br /><strong>Population:</strong> 18,211<br /><strong>Housing Price:</strong> $280,800<br /><br />The Blue Ridge Mountains are beautiful—and they provide ample opportunity for adventure, whether residents want to bomb the trails at Rocky Knob Mountain Bike Park or Beech Mountain; kayak, raft, and fly-fish the Nolichucky and Watauga Rivers; cycle the beautiful Blue Ridge back roads; or rock climb on Grandfather Mountain."
+        });
+
+        infoWindows.push(infoWindow40);
+        
+        marker40 = new google.maps.Marker({
+                                position: new google.maps.LatLng(36.216795, -81.6745517),
+                                options: markerOptions,
+                                title: "Boone, NC"
+                                });
+
+        google.maps.event.addListener(marker40, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow40.open(map, marker40); });
+
+        var infoWindow41 = new google.maps.InfoWindow({ content: "<h3>Beaufort, SC</h3><strong>Miles to Boone, NC:</strong> 324<br /><strong>Miles to Savannah, GA:</strong> 42<br /><strong>Population:</strong> 12,967<br /><strong>Housing Price:</strong> $252,700<br /><br />Lowcountry boils (feasts of shrimp, crab, sausage, and red potato) are a way of life in this oak- and palmetto-lined town nestled on a coastal island next to Hilton Head. Residents can kayak and canoe salty marshes right from downtown or cycle 16 miles to semitropical Hunting Island State Park."
+        });
+
+        infoWindows.push(infoWindow41);
+        
+        marker41 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.4315813, -80.6698286),
+                                options: markerOptions,
+                                title: "Beaufort, SC"
+                                });
+
+        google.maps.event.addListener(marker41, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow41.open(map, marker41); });
+
+        var infoWindow42 = new google.maps.InfoWindow({ content: "<h3>Savannah, GA</h3><strong>Miles to Beaufort, SC:</strong> 42<br /><strong>Miles to Ocala, FL:</strong> 237<br /><strong>Population:</strong> 142,772<br /><strong>Housing Price:</strong> $145,900<br /><br />This town is notorious for its cobblestone streets, Spanish moss–covered oaks, and seafood restaurants, but that’s not why it’s on our list. From the beaches of Tybee Island to the Savannah National Wildlife Refuge, there’s enough paddling, boating, hiking, and even surfing to keep your heart rate up."
+        });
+
+        infoWindows.push(infoWindow42);
+        
+        marker42 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.0835407, -81.09983419999999),
+                                options: markerOptions,
+                                title: "Savannah, GA"
+                                });
+
+        google.maps.event.addListener(marker42, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow42.open(map, marker42); });
+
+        var infoWindow43 = new google.maps.InfoWindow({ content: "<h3>Ocala, FL</h3><strong>Miles to Savannah, GA:</strong> 237<br /><strong>Miles to Tampa, FL:</strong> 97<br /><strong>Population:</strong> 57,486<br /><strong>Housing Price:</strong> $125,300<br /><br />Approximately 600 lakes in neighboring Ocala National Forest are full of lunkers for bass fishermen and fresh springs for swimmers. The rest of the 383,000-acre park is ideal for hiking, paddling, and even scuba diving. Like to bike? The Santos Mountain Bike Trails are one of the South’s most exciting new trail systems."
+        });
+
+        infoWindows.push(infoWindow43);
+        
+        marker43 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.1871986, -82.14009229999999),
+                                options: markerOptions,
+                                title: "Ocala, FL"
+                                });
+
+        google.maps.event.addListener(marker43, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow43.open(map, marker43); });
+
+        var infoWindow44 = new google.maps.InfoWindow({ content: "<h3>Tampa, FL</h3><strong>Miles to Ocala, FL:</strong> 97<br /><strong>Miles to Athens, GA:</strong> 471<br /><strong>Population:</strong> 352,957<br /><strong>Housing Price:</strong> $162,800<br /><br />Tampa may come as a surprise to some, but not to anyone who knows about its 18 area beaches, the mountain biking trails in Alafia River State Park, the 41-mile Suncoast Trail (a paved multiuse path), or the paddling opportunities through the 16,000-acre Lower Hillsborough Wilderness Preserve. It’s also home to one of the nation’s best craft-brewing scenes."
+        });
+
+        infoWindows.push(infoWindow44);
+        
+        marker44 = new google.maps.Marker({
+                                position: new google.maps.LatLng(27.950575, -82.4571776),
+                                options: markerOptions,
+                                title: "Tampa, FL"
+                                });
+
+        google.maps.event.addListener(marker44, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow44.open(map, marker44); });
+
+        var infoWindow45 = new google.maps.InfoWindow({ content: "<h3>Athens, GA</h3><strong>Miles to Tampa, FL:</strong> 471<br /><strong>Miles to Chattanooga, TN:</strong> 176<br /><strong>Population:</strong> 120,266<br /><strong>Housing Price:</strong> $133,800<br /><br />The home of University of Georgia is known for college rock and Southern cuisine, but it also has bike lanes throughout town and plenty to do in the area, from hiking the 24 miles of trails at nearby Hard Labor Creek State Park to paddling the Broad River."
+        });
+
+        infoWindows.push(infoWindow45);
+        
+        marker45 = new google.maps.Marker({
+                                position: new google.maps.LatLng(33.9519347, -83.357567),
+                                options: markerOptions,
+                                title: "Athens, GA"
+                                });
+
+        google.maps.event.addListener(marker45, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow45.open(map, marker45); });
+
+        var infoWindow46 = new google.maps.InfoWindow({ content: "<h3>Chattanooga, TN</h3><strong>Miles to Athens, GA:</strong> 176<br /><strong>Miles to Birmingham, AL:</strong> 147<br /><strong>Population:</strong> 173,366<br /><strong>Housing Price:</strong> $138,100<br /><br />Since Chattanooga won our Best Town award in 2011, its farm-to-table restaurant scene and whiskey distillery movement have boomed. As for the world-class rock climbing at Foster Falls, mountain bike trails, and Class IV and V rapids on the Ocoee? Well, those haven’t changed."
+        });
+
+        infoWindows.push(infoWindow46);
+        
+        marker46 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.0456297, -85.3096801),
+                                options: markerOptions,
+                                title: "Chattanooga, TN"
+                                });
+
+        google.maps.event.addListener(marker46, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow46.open(map, marker46); });
+
+        var infoWindow47 = new google.maps.InfoWindow({ content: "<h3>Birmingham, AL</h3><strong>Miles to Chattanooga, TN:</strong> 147<br /><strong>Miles to Oxford, MS:</strong> 185<br /><strong>Population:</strong> 212,113<br /><strong>Housing Price:</strong> $85,800<br /><br />With some of the best bass fishing in the United States (13-pounders are considered average here), anglers may find it hard to do anything other than fish. But there are 10 miles of forested hiking trails in the city and a burgeoning mountain bike scene heralded by the 17-mile Red Trail loop in nearby Oak Mountain State Park."
+        });
+
+        infoWindows.push(infoWindow47);
+        
+        marker47 = new google.maps.Marker({
+                                position: new google.maps.LatLng(33.5206608, -86.80248999999999),
+                                options: markerOptions,
+                                title: "Birmingham, AL"
+                                });
+
+        google.maps.event.addListener(marker47, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow47.open(map, marker47); });
+
+        var infoWindow48 = new google.maps.InfoWindow({ content: "<h3>Oxford, MS</h3><strong>Miles to Birmingham, AL:</strong> 185<br /><strong>Miles to Kansas City, MO:</strong> 534<br /><strong>Population:</strong> 20,865<br /><strong>Housing Price:</strong> $224,100<br /><br />Four James Beard–winning restaurants and plenty of soul food joints prove that Southern cuisine is a big part of life in the home of Ole Miss. Thanks to a growing number of urban bike lanes, you can pedal off the calories before you go to Holly Springs National Forest to fish for bass."
+        });
+
+        infoWindows.push(infoWindow48);
+        
+        marker48 = new google.maps.Marker({
+                                position: new google.maps.LatLng(34.3664951, -89.5192484),
+                                options: markerOptions,
+                                title: "Oxford, MS"
+                                });
+
+        google.maps.event.addListener(marker48, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow48.open(map, marker48); });
+
+        var infoWindow49 = new google.maps.InfoWindow({ content: "<h3>Kansas City, MO</h3><strong>Miles to Oxford, MS:</strong> 534<br /><strong>Miles to Bentonville, AR:</strong> 209<br /><strong>Population:</strong> 467,007<br /><strong>Housing Price:</strong> $134,600<br /><br />KC is an angler’s playground, thanks to the Missouri River, which cuts through town. Plenty of lakes make for good paddling and swimming. On land, biking and hiking happen at the 7,800-acre Fleming Park or on the 23 miles of continuous trail at Clay County Park. Also: BBQ."
+        });
+
+        infoWindows.push(infoWindow49);
+        
+        marker49 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.0997265, -94.5785667),
+                                options: markerOptions,
+                                title: "Kansas City, MO"
+                                });
+
+        google.maps.event.addListener(marker49, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow49.open(map, marker49); });
+
+        var infoWindow50 = new google.maps.InfoWindow({ content: "<h3>Bentonville, AR</h3><strong>Miles to Kansas City, MO:</strong> 209<br /><strong>Miles to Houston, TX:</strong> 596<br /><strong>Population:</strong> 40,167<br /><strong>Housing Price:</strong> $163,700<br /><br />Bentonville has one huge advantage: its trails. Mountain bikers descend Slaughter Pen, a 20-mile singletrack hot spot that connects to 20 miles of urban multiuse trails that pass through 16 city parks. If that’s not enough, there’s also the nearby 1.2 million–acre Ozark National Forest."
+        });
+
+        infoWindows.push(infoWindow50);
+        
+        marker50 = new google.maps.Marker({
+                                position: new google.maps.LatLng(36.3728538, -94.2088172),
+                                options: markerOptions,
+                                title: "Bentonville, AR"
+                                });
+
+        google.maps.event.addListener(marker50, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow50.open(map, marker50); });
+
+        var infoWindow51 = new google.maps.InfoWindow({ content: "<h3>Houston, TX</h3><strong>Miles to Bentonville, AR:</strong> 596<br /><strong>Miles to Alpine, TX:</strong> 571<br /><strong>Population:</strong> 2,195,914<br /><strong>Housing Price:</strong> $123,900<br /><br />Houston has more parkland (49,640 acres) than nearly any big U.S. city and is traversed by 300 miles of connected bikeways. Anglers have their pick of waterways to reel in redfish or trout, Armand Bayou Nature Center offers kayaking, and Lake Houston Wilderness and Sam Houston National Forest contain miles of multiuse trails."
+        });
+
+        infoWindows.push(infoWindow51);
+        
+        marker51 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.7604267, -95.3698028),
+                                options: markerOptions,
+                                title: "Houston, TX"
+                                });
+
+        google.maps.event.addListener(marker51, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow51.open(map, marker51); });
+
+        var infoWindow52 = new google.maps.InfoWindow({ content: "<h3>Alpine, TX</h3><strong>Miles to Houston, TX:</strong> 571<br /><strong>Miles to Santa Fe, NM:</strong> 460<br /><strong>Population:</strong> 6,054<br /><strong>Housing Price:</strong> $115,200<br /><br />Tiny Alpine is an old railroad town that’s best known as the hub for journeys into Big Bend National Park and its 100 miles of singletrack; five river canyons for rafting, kayaking, or canoeing; and 150 miles of hiking trails."
+        });
+
+        infoWindows.push(infoWindow52);
+        
+        marker52 = new google.maps.Marker({
+                                position: new google.maps.LatLng(30.3584919, -103.6610115),
+                                options: markerOptions,
+                                title: "Alpine, TX"
+                                });
+
+        google.maps.event.addListener(marker52, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow52.open(map, marker52); });
+
+        var infoWindow53 = new google.maps.InfoWindow({ content: "<h3>Santa Fe, NM</h3><strong>Miles to Alpine, TX:</strong> 460<br /><strong>Miles to Pagosa Springs, CO:</strong> 152<br /><strong>Population:</strong> 69,976<br /><strong>Housing Price:</strong> $282,400<br /><br />The city gets 300 days of sunshine a year, meaning you’ll get bluebird days whether mountain biking or trail running in the Sangre de Cristo Mountains, skiing at nearby Taos or the local ski basin, or feasting on green chile enchiladas on the patio at the Shed."
+        });
+
+        infoWindows.push(infoWindow53);
+        
+        marker53 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.6869752, -105.937799),
+                                options: markerOptions,
+                                title: "Santa Fe, NM"
+                                });
+
+        google.maps.event.addListener(marker53, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow53.open(map, marker53); });
+
+        var infoWindow54 = new google.maps.InfoWindow({ content: "<h3>Pagosa Springs, CO</h3><strong>Miles to Santa Fe, NM:</strong> 152<br /><strong>Miles to Glenwood Springs, CO:</strong> 281<br /><strong>Population:</strong> 1,727<br /><strong>Housing Price:</strong> $340,000<br /><br />The San Juan National Forest surrounds Pagosa Springs on all sides; take your pick of camping, hiking, fishing, climbing, and biking. About 30 minutes from town is the Wolf Creek Ski Area, which gets 430 inches of snow per year. Even better, the sun shines about 300 days out of the year."
+        });
+
+        infoWindows.push(infoWindow54);
+        
+        marker54 = new google.maps.Marker({
+                                position: new google.maps.LatLng(37.26945, -107.0097617),
+                                options: markerOptions,
+                                title: "Pagosa Springs, CO"
+                                });
+
+        google.maps.event.addListener(marker54, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow54.open(map, marker54); });
+
+        var infoWindow55 = new google.maps.InfoWindow({ content: "<h3>Glenwood Springs, CO</h3><strong>Miles to Pagosa Springs, CO:</strong> 281<br /><strong>Miles to Flagstaff, AZ:</strong> 521<br /><strong>Population:</strong> 9,837<br /><strong>Housing Price:</strong> $395,500<br /><br />Adventure is part of the locals’ genes, what with a whitewater park on the Colorado River; seven world-class ski resorts within 60 miles; nearby hot springs, lakes, caves, and canyons; and a network of forested mountain bike trails and rock climbing routes. So are beer and good food—breweries, taverns, and restaurants abound."
+        });
+
+        infoWindows.push(infoWindow55);
+        
+        marker55 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.5505376, -107.3247762),
+                                options: markerOptions,
+                                title: "Glenwood Springs, CO"
+                                });
+
+        google.maps.event.addListener(marker55, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow55.open(map, marker55); });
+
+        var infoWindow56 = new google.maps.InfoWindow({ content: "<h3>Flagstaff, AZ</h3><strong>Miles to Glenwood Springs, CO:</strong> 521<br /><strong>Miles to Las Vegas, NV:</strong> 249<br /><strong>Population:</strong> 68,667<br /><strong>Housing Price:</strong> $266,200<br /><br />This high desert town (7,000 feet) has one of the clearest night skies in the United States, is surrounded by the world’s largest ponderosa pine forest, and is just 80 miles from the Grand Canyon. Flagstaff is a year-round, high-altitude mecca for mountain bikers, campers, and hikers. In town, walk the Flagstaff-Grand Canyon Ale Trail."
+        });
+
+        infoWindows.push(infoWindow56);
+        
+        marker56 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.1982836, -111.651302),
+                                options: markerOptions,
+                                title: "Flagstaff, AZ"
+                                });
+
+        google.maps.event.addListener(marker56, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow56.open(map, marker56); });
+
+        var infoWindow57 = new google.maps.InfoWindow({ content: "<h3>Las Vegas, NV</h3><strong>Miles to Flagstaff, AZ:</strong> 249<br /><strong>Miles to Santa Barbara, CA:</strong> 347<br /><strong>Population:</strong> 603,488<br /><strong>Housing Price:</strong> $163,500<br /><br />Vegas may be known for the Strip, but it’s what lies beyond that puts this city on our list. Red Rock Canyon National Conservation Area’s miles of hiking and biking trails are just minutes away, as are the fishing and boating on Lake Mead. Plus, the Las Vegas Ski and Snowboard Resort has 30 trails and gets up to 240 inches of snowfall each year."
+        });
+
+        infoWindows.push(infoWindow57);
+        
+        marker57 = new google.maps.Marker({
+                                position: new google.maps.LatLng(36.1699412, -115.1398296),
+                                options: markerOptions,
+                                title: "Las Vegas, NV"
+                                });
+
+        google.maps.event.addListener(marker57, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow57.open(map, marker57); });
+
+        var infoWindow58 = new google.maps.InfoWindow({ content: "<h3>Santa Barbara, CA</h3><strong>Miles to Las Vegas, NV:</strong> 347<br /><strong>Miles to Fort Bragg, CA:</strong> 494<br /><strong>Population:</strong> 90,412<br /><strong>Housing Price:</strong> $832,100<br /><br />Perfect year-round weather is the perennial backdrop to this Southern California beach town. There’s the water—surf, kayak, and scuba, or sail out to Channel Islands National Park. On land, hike to the hot springs in Gaviota State Park or rock climb in San Ysidro Canyon. Nearby farms have produced a legion of organic eats."
+        });
+
+        infoWindows.push(infoWindow58);
+        
+        marker58 = new google.maps.Marker({
+                                position: new google.maps.LatLng(34.4208305, -119.6981901),
+                                options: markerOptions,
+                                title: "Santa Barbara, CA"
+                                });
+
+        google.maps.event.addListener(marker58, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow58.open(map, marker58); });
+
+        var infoWindow59 = new google.maps.InfoWindow({ content: "<h3>Fort Bragg, CA</h3><strong>Miles to Santa Barbara, CA:</strong> 494<br /><strong>Miles to Ashland, OR:</strong> 338<br /><strong>Population:</strong> 7,250<br /><strong>Housing Price:</strong> $303,400<br /><br />This coastal town is home to fishermen, loggers, and artists. Dive into the kayaking scene—sea or whitewater—and other nearby adventures, like surfing the Virgin Creek Break, mountain biking through redwoods in Jackson State Forest, and hiking along Ten Mile Beach."
+        });
+
+        infoWindows.push(infoWindow59);
+        
+        marker59 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.445723, -123.8052935),
+                                options: markerOptions,
+                                title: "Fort Bragg, CA"
+                                });
+
+        google.maps.event.addListener(marker59, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow59.open(map, marker59); });
+
+        var infoWindow60 = new google.maps.InfoWindow({ content: "<h3>Ashland, OR</h3><strong>Miles to Fort Bragg, CA:</strong> 338<br /><strong>Miles to Bainbridge Island, WA:</strong> 482<br /><strong>Population:</strong> 20,713<br /><strong>Housing Price:</strong> $345,600<br /><br />Ashland’s known as a hub for serious trail runners, but that’s not the only thing to do. Drive an hour out and ski Mount Ashland, raft the Rogue River, or hike the PCT. Add another half-hour and you’re in Crater Lake National Park."
+        });
+
+        infoWindows.push(infoWindow60);
+        
+        marker60 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.1945758, -122.7094767),
+                                options: markerOptions,
+                                title: "Ashland, OR"
+                                });
+
+        google.maps.event.addListener(marker60, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow60.open(map, marker60); });
+
+        var infoWindow61 = new google.maps.InfoWindow({ content: "<h3>Bainbridge Island, WA</h3><strong>Miles to Ashland, OR:</strong> 482<br /><strong>Miles to Whitefish, MT:</strong> 540<br /><strong>Miles to Port Angeles, WA:</strong> 72<br /><strong>Population:</strong> 23,196<br /><strong>Housing Price:</strong> $551,700<br /><br />Thirty miles of multiuse trails link Bainbridge Island, just a 35-minute ferry ride from Seattle. However you navigate it, you’ll pass a network of vineyards, organic farms, and nature reserves. You can even camp on the beach at Fay Bainbridge Park, 15 minutes from the shops and cafés of Winslow Way."
+        });
+
+        infoWindows.push(infoWindow61);
+        
+        marker61 = new google.maps.Marker({
+                                position: new google.maps.LatLng(47.6262081, -122.5212448),
+                                options: markerOptions,
+                                title: "Bainbridge Island, WA"
+                                });
+
+        google.maps.event.addListener(marker61, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow61.open(map, marker61); });
+
+        var infoWindow62 = new google.maps.InfoWindow({ content: "<h3>Port Angeles, WA</h3><strong>Miles to Bainbridge Island, WA:</strong> 72<br /><strong>Miles to Juneau, AK:</strong> 1,741<br /><strong>Population:</strong> 19,190<br /><strong>Housing Price:</strong> $201,900<br /><br />On one side of town, you’ve got Olympic National Park—nearly 1,500 square miles of wilderness for hiking, rafting, and camping. On the other side is the Strait of Juan de Fuca, where you can hop into a sea kayak to paddle the Whale Trail. And right in town? Easy access to the Olympic Discovery Trail for more than 60 miles of running or cycling."
+        });
+
+        infoWindows.push(infoWindow62);
+        
+        marker62 = new google.maps.Marker({
+                                position: new google.maps.LatLng(48.118146, -123.4307413),
+                                options: markerOptions,
+                                title: "Port Angeles, WA"
+                                });
+
+        google.maps.event.addListener(marker62, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow62.open(map, marker62); });
+
+        var infoWindow63 = new google.maps.InfoWindow({ content: "<h3>Juneau, AK</h3><strong>Miles to Port Angeles, WA:</strong> 1,741<br /><strong>Miles to Whitefish, MT:</strong> 1,828<br /><strong>Population:</strong> 32,660<br /><strong>Housing Price:</strong> $309,900<br /><br />Salmon—fishing, cooking, and eating—is a way of life in Alaska’s relatively isolated capital. Spotting bald eagles, black bears, whales, and other wildlife is as easy as hitting one of the 250 miles of trails in area forests. And you could spend days exploring glaciers at the Juneau Icefield, just 13 miles from downtown.<br /><br />The cheapest flights to Juneau originate from Seattle-Tacoma International Airport."
+        });
+
+        infoWindows.push(infoWindow63);
+        
+        marker63 = new google.maps.Marker({
+                                position: new google.maps.LatLng(58.3019444, -134.4197222),
+                                options: markerOptions,
+                                title: "Juneau, AK"
+                                });
+
+        google.maps.event.addListener(marker63, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow63.open(map, marker63); });
+
+        var infoWindow64 = new google.maps.InfoWindow({ content: "<h3>Hilo, HI</h3><strong>Population:</strong> 44,276<br /><strong>Housing Price:</strong> $303,800<br /><br />Hilo and its surrounding villages are on the less-touristy side of the Big Island, which keeps its Hawaiian mom-and-pop shops and farmers’ markets authentic. It’s also greener—hedged by jungle waterfalls, cove beaches, and surf spots. And Hilo is only 45 minutes from hiking and biking in Volcanoes National Park.<br /><br />The cheapest flights to Hilo originate from Oakland International Airport."
+        });
+        
+        infoWindows.push(infoWindow64);
+
+        marker64 = new google.maps.Marker({
+                                position: new google.maps.LatLng(19.7297222, -155.09),
+                                options: markerOptions,
+                                title: "Hilo, HI"
+                                });
+
+        google.maps.event.addListener(marker64, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow64.open(map, marker64); });
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
