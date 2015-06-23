@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Randy Olson uses machine learning to find the optimal road trip across France.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>An optimal road trip across France according to machine learning</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var mapOptions = {
+			zoom: 6,
+			center: new google.maps.LatLng(46.2157467, 2.2088258)
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Parc national des Écrins, France":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Association du Bassin Minier Uni Nord-Pas De Calais":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Les Machines de l'île, Nantes, France":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Promenade du Peyrou, Montpellier, France":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Parc national des Écrins, France":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Association du Bassin Minier Uni Nord-Pas De Calais":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Les Machines de l'île, Nantes, France":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "Promenade du Peyrou, Montpellier, France":
+						directionsDisplay4.setDirections(response);
+						break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		calcRoute("Parc national des Écrins, France", "Association du Bassin Minier Uni Nord-Pas De Calais", ["Vieux Lyon, Lyon, France", "Beaune, France", "Saline Royale d'Arc-et-Senans, France", "Neuf-Brisach, France", "Grande-Île de Strasbourg, Strasbourg, France", "Place Stanislas, Nancy, France", "Cathedrale Notre-Dame de Reims, France", "Vieux-Lille, Lille, France"]);
+
+		calcRoute("Association du Bassin Minier Uni Nord-Pas De Calais", "Les Machines de l'île, Nantes, France", ["Cathédrale Notre-Dame d'Amiens, Place Notre Dame, Amiens, France", "La Tour Eiffel, Avenue Anatole France, Paris, France", "Foret de Fontainebleau, Fontainebleau, France", "Chartres Cathedral, France", "Etretat, France", "Mont Saint-Michel, France", "Carnac, France", "Marais salants de Guérande, Route des Marais, Guérande 44350, France"]);
+
+		calcRoute("Les Machines de l'île, Nantes, France", "Promenade du Peyrou, Montpellier, France", ["Abbaye de Saint-Savin-sur-Gartempe, Place de la Libération, Saint-Savin, France", "Office de Tourisme de la Vallee des Peintres, Gr Grande Rue, Dun-le-Palestel, France", "Parc naturel regional des volcans d'Auvergne, France", "Grotte de Lascaux II, France", "Le Miroir d'eau, Bordeaux, France", "Pyrenees National Park, France", "Place du Capitole, Toulouse, France", "Carcassonne, France"]);
+
+		calcRoute("Promenade du Peyrou, Montpellier, France", "Parc national des Écrins, France", ["Anse de Malmousque, Marseille, France", "Promenade des Anglais, Nice, France", "Golfe de Porto, France", "Massif du Mont Blanc, Chamonix, France"]);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
