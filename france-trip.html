@@ -51,7 +51,7 @@
 		  	case "Parc national des Écrins, France":
 		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
-		  	case "Association du Bassin Minier Uni Nord-Pas De Calais":
+		  	case "Vieux-Lille, Lille, France":
 		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
 		  		break;
 		  	case "Les Machines de l'île, Nantes, France":
@@ -82,7 +82,7 @@
 					case "Parc national des Écrins, France":
 						directionsDisplay1.setDirections(response);
 						break;
-					case "Association du Bassin Minier Uni Nord-Pas De Calais":
+					case "Vieux-Lille, Lille, France":
 						directionsDisplay2.setDirections(response);
 						break;
 					case "Les Machines de l'île, Nantes, France":
@@ -98,9 +98,9 @@
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-		calcRoute("Parc national des Écrins, France", "Association du Bassin Minier Uni Nord-Pas De Calais", ["Vieux Lyon, Lyon, France", "Beaune, France", "Saline Royale d'Arc-et-Senans, France", "Neuf-Brisach, France", "Grande-Île de Strasbourg, Strasbourg, France", "Place Stanislas, Nancy, France", "Cathedrale Notre-Dame de Reims, France", "Vieux-Lille, Lille, France"]);
+		calcRoute("Parc national des Écrins, France", "Vieux-Lille, Lille, France", ["Vieux Lyon, Lyon, France", "Beaune, France", "Saline Royale d'Arc-et-Senans, France", "Neuf-Brisach, France", "Grande-Île de Strasbourg, Strasbourg, France", "Place Stanislas, Nancy, France", "Cathedrale Notre-Dame de Reims, France", "Centre Historique Minier, Rue d'Erchin, 59287 Lewarde, France"]);
 
-		calcRoute("Association du Bassin Minier Uni Nord-Pas De Calais", "Les Machines de l'île, Nantes, France", ["Cathédrale Notre-Dame d'Amiens, Place Notre Dame, Amiens, France", "La Tour Eiffel, Avenue Anatole France, Paris, France", "Foret de Fontainebleau, Fontainebleau, France", "Chartres Cathedral, France", "Etretat, France", "Mont Saint-Michel, France", "Carnac, France", "Marais salants de Guérande, Route des Marais, Guérande 44350, France"]);
+		calcRoute("Vieux-Lille, Lille, France", "Les Machines de l'île, Nantes, France", ["Cathédrale Notre-Dame d'Amiens, Place Notre Dame, Amiens, France", "La Tour Eiffel, Avenue Anatole France, Paris, France", "Foret de Fontainebleau, Fontainebleau, France", "Chartres Cathedral, France", "Etretat, France", "Mont Saint-Michel, France", "Carnac, France", "Marais salants de Guérande, Route des Marais, Guérande 44350, France"]);
 
 		calcRoute("Les Machines de l'île, Nantes, France", "Promenade du Peyrou, Montpellier, France", ["Abbaye de Saint-Savin-sur-Gartempe, Place de la Libération, Saint-Savin, France", "Crozant, France", "Parc naturel regional des volcans d'Auvergne, France", "Grotte de Lascaux II, France", "Le Miroir d'eau, Bordeaux, France", "Pyrenees National Park, France", "Place du Capitole, Toulouse, France", "Carcassonne, France"]);
 
