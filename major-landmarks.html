@@ -26,9 +26,7 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
-		var directionsDisplay1, directionsDisplay2;
-		var directionsDisplay3, directionsDisplay4;
-		var directionsDisplay5, directionsDisplay6;
+		var routes_list = []
 		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
 		var directionsDisplayOptions = {preserveViewport: true,
 										markerOptions: markerOptions};
@@ -42,36 +40,15 @@
 			center: center
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		  directionsDisplay1.setMap(map);
-		  directionsDisplay2.setMap(map);
-		  directionsDisplay3.setMap(map);
-		  directionsDisplay4.setMap(map);
-		  directionsDisplay5.setMap(map);
-		  directionsDisplay6.setMap(map);
+		  for (i=0; i<routes_list.length; i++) {
+		  	routes_list[i].setMap(map);	
+		  }
 		}
 
 		function calcRoute(start, end, routes) {
-		  switch (start) {
-		  	case "Grand Canyon National Park Lodges, 88 Village Loop Drive, Grand Canyon Village, AZ 86023":
-		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  	case "Graceland, Elvis Presley Boulevard, Memphis, TN":
-		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  	case "Mount Vernon, Fairfax County, Virginia":
-		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  	case "USS Constitution, Boston, MA":
-		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  	case "Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL":
-		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  	case "Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936":
-		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
-		  		break;
-		  }
 		  
+		  var directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+
 		  var waypts = [];
 		  for (var i = 0; i < routes.length; i++) {
 		  	waypts.push({
@@ -86,98 +63,39 @@
 			  optimizeWaypoints: false,
 			  travelMode: google.maps.TravelMode.DRIVING
 		  };
+
 		  directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
-				switch (start) {
-					case "Grand Canyon National Park Lodges, 88 Village Loop Drive, Grand Canyon Village, AZ 86023":
-						directionsDisplay1.setDirections(response);
-						break;
-					case "Graceland, Elvis Presley Boulevard, Memphis, TN":
-						directionsDisplay2.setDirections(response);
-						break;
-					case "Mount Vernon, Fairfax County, Virginia":
-						directionsDisplay3.setDirections(response);
-						break;
-					case "USS Constitution, Boston, MA":
-						directionsDisplay4.setDirections(response);
-						break;
-					case "Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL":
-						directionsDisplay5.setDirections(response);
-						break;
-					case "Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936":
-						directionsDisplay6.setDirections(response);
-						break;
-				  }
+				directionsDisplay.setDirections(response);		
 			}
 		  });
+
+		  routes_list.push(directionsDisplay);
 		}
 
-		google.maps.event.addDomListener(window, 'load', initialize);
+		function createRoutes(route) {
+			// Google's free map API is limited to 10 waypoints so need to break into batches
+			route.push(route[0]);
+			var subset = 0;
+			while (subset < route.length) {
+				var waypointSubset = route.slice(subset, subset + 10);
+
+				var startPoint = waypointSubset[0];
+				var midPoints = waypointSubset.slice(1, waypointSubset.length - 1);
+				var endPoint = waypointSubset[waypointSubset.length - 1];
+
+				calcRoute(startPoint, endPoint, midPoints);
+
+				subset += 9;
+			}
+		}
+
+		optimal_route = ['Graceland, Elvis Presley Boulevard, Memphis, TN', 'Vicksburg National Military Park, Clay Street, Vicksburg, MS', 'French Quarter, New Orleans, LA', 'USS Alabama, Battleship Parkway, Mobile, AL', 'Cape Canaveral, FL', 'Okefenokee Swamp Park, Okefenokee Swamp Park Road, Waycross, GA', "Fort Sumter National Monument, Sullivan's Island, SC", 'Wright Brothers National Memorial Visitor Center, Manteo, NC', 'Congress Hall, Congress Place, Cape May, NJ 08204', 'Shelburne Farms, Harbor Road, Shelburne, VT', 'Omni Mount Washington Resort, Mount Washington Hotel Road, Bretton Woods, NH', 'Acadia National Park, Maine', 'USS Constitution, Boston, MA', 'The Breakers, Ochre Point Avenue, Newport, RI', 'The Mark Twain House & Museum, Farmington Avenue, Hartford, CT', 'Statue of Liberty, Liberty Island, NYC, NY', 'Liberty Bell, 6th Street, Philadelphia, PA', 'New Castle Historic District, Delaware', 'Maryland State House, 100 State Cir, Annapolis, MD 21401', 'White House, Pennsylvania Avenue Northwest, Washington, DC', 'Mount Vernon, Fairfax County, Virginia', 'Lost World Caverns, Lewisburg, WV', 'Olympia Entertainment, Woodward Avenue, Detroit, MI', 'Spring Grove Cemetery, Spring Grove Avenue, Cincinnati, OH', 'Mammoth Cave National Park, Mammoth Cave Pkwy, Mammoth Cave, KY', 'West Baden Springs Hotel, West Baden Avenue, West Baden Springs, IN', 'Gateway Arch, Washington Avenue, St Louis, MO', 'Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL', 'Taliesin, County Road C, Spring Green, Wisconsin', 'Fort Snelling, Tower Avenue, Saint Paul, MN', 'Terrace Hill, Grand Avenue, Des Moines, IA', 'C. W. Parker Carousel Museum, South Esplanade Street, Leavenworth, KS', 'Ashfall Fossil Bed, Royal, NE', 'Mount Rushmore National Memorial, South Dakota 244, Keystone, SD', 'Fort Union Trading Post National Historic Site, Williston, North Dakota 1804, ND', 'Glacier National Park, West Glacier, MT', 'Yellowstone National Park, WY 82190', 'Craters of the Moon National Monument & Preserve, Arco, ID', 'Hanford Site, Benton County, WA', 'Columbia River Gorge National Scenic Area, Oregon', 'Cable Car Museum, 94108, 1201 Mason St, San Francisco, CA 94108', 'San Andreas Fault, San Benito County, CA', 'Hoover Dam, NV', 'Grand Canyon National Park, Arizona', 'Bryce Canyon National Park, Hwy 63, Bryce, UT', 'Pikes Peak, Colorado', 'Carlsbad Caverns National Park, Carlsbad, NM', 'The Alamo, Alamo Plaza, San Antonio, TX', 'Chickasaw National Recreation Area, 1008 W 2nd St, Sulphur, OK 73086', 'Toltec Mounds, Scott, AR']
 		
-		calcRoute("Grand Canyon National Park Lodges, 88 Village Loop Drive, Grand Canyon Village, AZ 86023",
-					"Graceland, Elvis Presley Boulevard, Memphis, TN",
-					["Bryce Canyon National Park, Hwy 63, Bryce, UT",
-					"Craters of the Moon National Monument & Preserve, Arco, ID",
-					"Yellowstone National Park, WY 82190",
-					"Pikes Peak, Colorado",
-					"Carlsbad Caverns National Park, Carlsbad, NM",
-					"The Alamo, Alamo Plaza, San Antonio, TX",
-					"Chickasaw National Recreation Area, 1008 W 2nd St, Sulphur, OK 73086",
-					"Toltec Mounds, Scott, AR"]);
-					
-		calcRoute("Graceland, Elvis Presley Boulevard, Memphis, TN",
-					"Mount Vernon, Fairfax County, Virginia",
-					["Vicksburg National Military Park, Clay Street, Vicksburg, MS",
-					"French Quarter, New Orleans, LA",
-					"USS Alabama, Battleship Parkway, Mobile, AL",
-					"Cape Canaveral, FL",
-					"Okefenokee Swamp Park, Okefenokee Swamp Park Road, Waycross, GA",
-					"Fort Sumter National Monument, Sullivan's Island, SC",
-					"Lost World Caverns, Lewisburg, WV",
-					"Wright Brothers National Memorial Visitor Center, Manteo, NC"]);
-					
-		calcRoute("Mount Vernon, Fairfax County, Virginia",
-					"USS Constitution, Boston, MA",
-					["White House, Pennsylvania Avenue Northwest, Washington, DC",
-					"Maryland State House, 100 State Cir, Annapolis, MD 21401",
-					"New Castle Historic District, Delaware",
-					"Congress Hall, Congress Place, Cape May, NJ 08204",
-					"Liberty Bell, 6th Street, Philadelphia, PA",
-					"Statue of Liberty, Liberty Island, NYC, NY",
-					"The Mark Twain House & Museum, Farmington Avenue, Hartford, CT",
-					"The Breakers, Ochre Point Avenue, Newport, RI"]);
-					
-		calcRoute("USS Constitution, Boston, MA",
-					"Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL",
-					["Acadia National Park, Maine",
-					"Omni Mount Washington Resort, Mount Washington Hotel Road, Bretton Woods, NH",
-					"Shelburne Farms, Harbor Road, Shelburne, VT",
-					"USS Cod Submarine Memorial, East 9th Street, Cleveland, OH",
-					"Olympia Entertainment, Woodward Avenue, Detroit, MI",
-					"Spring Grove Cemetery, Spring Grove Avenue, Cincinnati, OH",
-					"Mammoth Cave National Park, Mammoth Cave Pkwy, Mammoth Cave, KY",
-					"West Baden Springs Hotel, West Baden Avenue, West Baden Springs, IN",
-					]);
-					
-		calcRoute("Lincoln Home National Historic Site Visitor Center, 426 South 7th Street, Springfield, IL",
-					"Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936",
-					["Gateway Arch, Washington Avenue, St Louis, MO",
-					"C. W. Parker Carousel Museum, South Esplanade Street, Leavenworth, KS",
-					"Terrace Hill, Grand Avenue, Des Moines, IA",
-					"Taliesin, County Road C, Spring Green, Wisconsin",
-					"Fort Snelling, Tower Avenue, Saint Paul, MN",
-					"Ashfall Fossil Bed, Royal, NE",
-					"Mount Rushmore National Memorial, South Dakota 244, Keystone, SD",
-					"Fort Union Trading Post National Historic Site, Williston, North Dakota 1804, ND",
-					]);
-						
-		calcRoute("Glacier National Park, 64 Grinnell Drive, West Glacier, MT 59936",
-					"Grand Canyon National Park Lodges, 88 Village Loop Drive, Grand Canyon Village, AZ 86023",
-					["Hanford Site, Benton County, WA",
-					"Columbia River Gorge National Scenic Area, Oregon",
-					"Cable Car Museum, 94108, 1201 Mason St, San Francisco, CA 94108",
-					"San Andreas Fault, San Benito County, CA",
-					"Hoover Dam, Boulder City, CO"]);
+		createRoutes(optimal_route);
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
   </head>
   <body>
