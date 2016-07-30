@@ -1,0 +1,94 @@
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+            <meta name="description" content="Randy Olson uses machine learning to find the optimal road trip to the U.S. National Parks">
+            <meta name="author" content="Randal S. Olson">
+
+            <title>The optimal road trip across the U.S. stopping at the U.S. National Parks</title>
+            <style>
+              html, body, #map-canvas {
+                  height: 100%;
+                  margin: 0px;
+                  padding: 0px
+              }
+              #panel {
+                  position: absolute;
+                  top: 5px;
+                  left: 50%;
+                  margin-left: -180px;
+                  z-index: 5;
+                  background-color: #fff;
+                  padding: 10px;
+                  border: 1px solid #999;
+              }
+            </style>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+            <script>
+                var routesList = [];
+                var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+                var directionsDisplayOptions = {preserveViewport: true,
+                                                markerOptions: markerOptions};
+                var directionsService = new google.maps.DirectionsService();
+                var map;
+
+                function initialize() {
+                    var center = new google.maps.LatLng(39, -96);
+                    var mapOptions = {
+                        zoom: 5,
+                        center: center
+                    };
+                    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                    for (var i = 0; i < routesList.length; i++) {
+                        routesList[i].setMap(map); 
+                    }
+                }
+                function calcRoute(start, end, routes) {
+                    var directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+                    var waypts = [];
+                    for (var i = 0; i < routes.length; i++) {
+                        waypts.push({
+                            location:routes[i],
+                            stopover:true});
+                        }
+
+                    var request = {
+                        origin: start,
+                        destination: end,
+                        waypoints: waypts,
+                        optimizeWaypoints: false,
+                        travelMode: google.maps.TravelMode.DRIVING
+                    };
+                    directionsService.route(request, function(response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response);
+                            directionsDisplay.setMap(map);
+                        }
+                    });
+
+                    routesList.push(directionsDisplay);
+                }
+                function createRoutes(route) {
+                    // Google's free map API is limited to 10 waypoints so need to break into batches
+                    var subset = 0;
+                    while (subset < route.length) {
+                        var waypointSubset = route.slice(subset, subset + 10);
+                        var startPoint = waypointSubset[0];
+                        var midPoints = waypointSubset.slice(1, waypointSubset.length - 1);
+                        var endPoint = waypointSubset[waypointSubset.length - 1];
+                        calcRoute(startPoint, endPoint, midPoints);
+                        subset += 9;
+                    }
+                }
+
+                optimized_route = ['Mather Point, Rim Trail, Grand Canyon Village, Arizona', 'Petrified Forest National Park, Arizona', 'Saguaro National Park Visitor Center, North Kinney Road, Tucson, Arizona', 'Guadalupe Mountains National Park, Texas', 'Carlsbad Caverns National Park, New Mexico', 'Big Bend National Park, Texas', 'Hot Springs National Park, Hot Springs, Arizona 71901', 'Mammoth Cave National Park, Kentucky', 'Great Smoky Mountains National Park, Tennessee', 'Everglades National Park, Florida', 'Dry Tortugas National Park, Florida', 'Biscayne National Park, Florida', 'Congaree National Park, South Carolina', 'Shenandoah National Park, Virginia', 'Acadia National Park, Maine', 'Cuyahoga Valley National Park, Ohio', 'Isle Royale National Park, Michigan', 'Voyageurs National Park, International Falls, Minnesota 56649', 'Theodore Roosevelt National Park, North Dakota', 'Badlands National Park, South Dakota', 'Wind Cave National Park Visitor Center, Hot Springs, South Dakota', 'Rocky Mountain National Park, Colorado', 'Great Sand Dunes National Park and Preserve, Colorado', 'Black Canyon of the Gunnison National Park, Colorado', 'Mesa Verde National Park, Mesa Verde, Colorado', 'Canyonlands National Park, Utah', 'Arches National Park, Utah', 'Capitol Reef National Park Visitor Center, Scenic Drive, Torrey, Utah', 'Bryce Canyon National Park, Utah', 'Zion National Park, Utah', 'Great Basin National Park, Nevada', 'Grand Teton National Park, Wyoming', 'Yellowstone National Park, Wyoming', 'Glacier National Park, Montana', 'North Cascades National Park, Washington', 'Mount Rainier National Park, Washington', 'Olympic National Park, Washington', 'Crater Lake National Park, Oregon', 'Redwood National and State Parks, California', 'Lassen Volcanic National Park, California', 'Yosemite National Park, California', 'Kings Canyon National Park, California', 'Sequoia National Park, California', 'Pinnacles National Park, California', 'The Robert J. Lagomarsino Visitor Center at Channel Islands National Park, 1901 Spinnaker Drive, Ventura, California 93001', 'Joshua Tree National Park, Twentynine Palms Highway, Twentynine Palms, California', 'Death Valley National Park, California', 'Mather Point, Rim Trail, Grand Canyon Village, Arizona'];
+                createRoutes(optimized_route);
+                google.maps.event.addDomListener(window, "load", initialize);
+            </script>
+          </head>
+          <body>
+            <div id="map-canvas"></div>
+          </body>
+        </html>
+        
