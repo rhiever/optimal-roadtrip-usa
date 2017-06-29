@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="An optimized road trip to the most beautiful places in the USA.">
+    <meta name="author" content="Thrillist">
+    
+    <title>Thrillist - An optimized road trip to the most beautiful places in the USA</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=en"></script>
+    <script>
+		var directionsDisplay1, directionsDisplay2;
+		var directionsDisplay3, directionsDisplay4;
+		var directionsDisplay5, directionsDisplay6;
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: markerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(39, -96);
+		  var mapOptions = {
+			zoom: 5,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  directionsDisplay1.setMap(map);
+		  directionsDisplay2.setMap(map);
+		  directionsDisplay3.setMap(map);
+		  directionsDisplay4.setMap(map);
+		  directionsDisplay5.setMap(map);
+		  directionsDisplay6.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  switch (start) {
+		  	case "Ceasar's Head State Park, 8155 Geer Hwy, Cleveland, SC 29635":
+		  		directionsDisplay1 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Brownstone Exploration & Discovery Park, 161 Brownstone Ave, Portland, CT 06480":
+		  		directionsDisplay2 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Indiana Dunes State Park, 1600 N 25 East, Chesterton, IN 46304":
+		  		directionsDisplay3 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Yellowstone National Park, Wyoming 82190":
+		  		directionsDisplay4 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Marble, Colorado":
+		  		directionsDisplay5 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  	case "Gulf Shores, Alabama":
+		  		directionsDisplay6 = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+		  		break;
+		  }
+		  
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				switch (start) {
+					case "Ceasar's Head State Park, 8155 Geer Hwy, Cleveland, SC 29635":
+						directionsDisplay1.setDirections(response);
+						break;
+					case "Brownstone Exploration & Discovery Park, 161 Brownstone Ave, Portland, CT 06480":
+						directionsDisplay2.setDirections(response);
+						break;
+					case "Indiana Dunes State Park, 1600 N 25 East, Chesterton, IN 46304":
+						directionsDisplay3.setDirections(response);
+						break;
+					case "Yellowstone National Park, Wyoming 82190":
+						directionsDisplay4.setDirections(response);
+						break;
+					case "Marble, Colorado":
+						directionsDisplay5.setDirections(response);
+						break;
+                    case "Gulf Shores, Alabama":
+                        directionsDisplay6.setDirections(response);
+                        break;
+				  }
+			}
+		  });
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+calcRoute("Ceasar's Head State Park, 8155 Geer Hwy, Cleveland, SC 29635", "Brownstone Exploration & Discovery Park, 161 Brownstone Ave, Portland, CT 06480", ["Craggy Gardens, 364 Blue Ridge Pkwy, Black Mountain, NC 28711", "Ruby Falls, 1720 Scenic Hwy, Chattanooga, TN 37409", "Natural Bridge State Park, 2135 Natural Bridge Rd, Slade, KY 40376", "New River Gorge National River, Glen Jean, WV 25846", "Monticello Wine Trail, Charlottesville, VA, 22902 ", "St. Michaels Inn, 1228 S Talbot St, St Michaels, MD 21663", "Cape Henlopen State Park, 15099 Cape Henlopen Dr, Lewes, DE 19958", "Paterson Great Falls National Historical Park, 72 McBride Ave, Paterson, NJ 07501"]);
+
+calcRoute("Brownstone Exploration & Discovery Park, 161 Brownstone Ave, Portland, CT 06480", "Indiana Dunes State Park, 1600 N 25 East, Chesterton, IN 46304", ["Newport, Rhode Island", "Acadia National Park, Maine", "Cog Railway, Mount Washington, 3168 Base Station Rd, Mount Washington, NH 03575", "Northeast Kingdom, 2000 Memorial Dr, St Johnsbury, VT 05819", "66 Thunder Mountain Rd, Charlemont, MA 01339", "Niagara Falls, NY", "Mount Washington, Pittsburgh, Pennsylvania, 15211", "Cincinnati Museum Center, 1301 Western Ave, Cincinnati, OH 45203"]);
+
+calcRoute("Indiana Dunes State Park, 1600 N 25 East, Chesterton, IN 46304", "Yellowstone National Park, Wyoming 82190", ["Willis Tower, 233 S Wacker Dr, Chicago, IL 60606", "Maquoketa Caves State Park, 10970 98th St, Maquoketa, IA 52060", "Pictured Rocks National Lakeshore, Munising, MI 49862", "Apostle Islands National Lakeshore, 415 Washington Ave, Bayfield, WI 54814", "Boundary Waters Canoe Area Wilderness, Duluth, MN 55808", "Painted Canyon Visitor Center, Exit 32, Belfield, ND 58622", "Badlands National Park, SD", "Courthouse Rock, East Camp Clarke, NE 69336"]);
+
+calcRoute("Yellowstone National Park, Wyoming 82190", "Marble, Colorado", ["Paradise Valley, MT 59047", "Shoshone Falls, Idaho", "Columbia River Gorge, 754 Silica Road Northwest, George, WA 98848", "Crater Lake, Oregon", "Lake Tahoe, Nevada", "CA-1, Monterey, CA 93940", "Frazier Wells, AZ", "Bryce Canyon National Park, Utah"]);
+
+calcRoute("Marble, Colorado", "Gulf Shores, Alabama", ["Sandia Mountains, New Mexico, 87122", "Santa Elena Canyon, Big Bend National Park, Terlingua, TX 79852", "Chickasaw National Recreation Area, 901 W 1st St, Sulphur, OK 73086", "Elk Falls, Kansas, 67345", "Table Rock Lake, Missouri", "Whitaker Point Trail (Hawksbill Crag), Co Rd 5, Kingston, AR 72742", "Tishomingo State Park, 105 Co Rd 90, Tishomingo, MS 38873", "Atchafalaya National Wildpark Refuge, highway 190 & interstate 10, Lottie, LA 70756"]);
+
+calcRoute("Gulf Shores, Alabama", "Ceasar's Head State Park, 8155 Geer Hwy, Cleveland, SC 29635", ["Seven Mile Bridge, Florida", "Savannah Historic District, Georgia, 31401"]);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
