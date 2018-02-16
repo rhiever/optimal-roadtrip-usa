@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Midwest Family Road Trip by Chevrolet.">
+    <meta name="author" content="Chevrolet">
+    
+    <title>The Midwest Family Road Trip by Chevrolet</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var routes_list = [];
+		
+		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10;
+		var infoWindows = [];
+		
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var routeMarkerOptions = {visible: false, zIndex: 0};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: routeMarkerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(42.758075, -86.085717);
+		  var mapOptions = {
+			zoom: 7,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  for (i=0; i<routes_list.length; i++) {
+		  	routes_list[i].setMap(map);
+		  }
+		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  
+		  var directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);		
+			}
+		  });
+
+		  routes_list.push(directionsDisplay);
+		}
+
+		function createRoutes(route) {
+			// Google's free map API is limited to 10 waypoints so need to break into batches
+			route.push(route[0]);
+			var subset = 0;
+			while (subset < route.length) {
+				var waypointSubset = route.slice(subset, subset + 10);
+
+				var startPoint = waypointSubset[0];
+				var midPoints = waypointSubset.slice(1, waypointSubset.length - 1);
+				var endPoint = waypointSubset[waypointSubset.length - 1];
+
+				calcRoute(startPoint, endPoint, midPoints);
+
+				subset += 9;
+			}
+		}
+
+		optimal_route = ['700 Central Ave, Louisville, KY 40208', '3400 Vine St, Cincinnati, OH 45220', '1 Capitol Square, Columbus, OH 43215', '1100 E 9th St, Cleveland, OH 44114', '5200 Woodward Ave, Detroit, MI 48202', '286 Grand Ave, Mackinac Island, MI 49757', '333 E River Pkwy, Minneapolis, MN 55455', '400 W Canal St, Milwaukee, WI 53201', '201 E Randolph St, Chicago, IL 60602', '4790 W 16th St, Indianapolis, IN 46222']
+		
+		createRoutes(optimal_route);
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Churchill Downs</h3>"});
+
+        infoWindows.push(infoWindow1);
+        
+        marker1 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.2042473, -85.7716305),
+                                options: markerOptions,
+                                title: "Churchill Downs"
+                                });
+
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
+
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Cincinnati Zoo</h3>"});
+
+        infoWindows.push(infoWindow2);
+        
+        marker2 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.1433304, -84.50898719999999),
+                                options: markerOptions,
+                                title: "Cincinnati Zoo"
+                                });
+
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
+
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Ohio Statehouse</h3>"});
+
+        infoWindows.push(infoWindow3);
+        
+        marker3 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9616325, -82.9989541),
+                                options: markerOptions,
+                                title: "Ohio Statehouse"
+                                });
+
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Rock and Roll Hall of Fame Museum</h3>"});
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.5085183, -81.69550579999999),
+                                options: markerOptions,
+                                title: "Rock and Roll Hall of Fame Museum"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Detroit Institute of Arts</h3>"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.3594422, -83.0643655),
+                                options: markerOptions,
+                                title: "Detroit Institute of Arts"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Grand Hotel </h3>"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(45.851135, -84.626205),
+                                options: markerOptions,
+                                title: "Grand Hotel "
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Frederick R Weisman Art Museum</h3>"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.9730193, -93.237028),
+                                options: markerOptions,
+                                title: "Frederick R Weisman Art Museum"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Harley-Davidson Museum</h3>"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.0311282, -87.9162042),
+                                options: markerOptions,
+                                title: "Harley-Davidson Museum"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>The Bean at Millennium Park</h3>"});
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.8834354, -87.6218416),
+                                options: markerOptions,
+                                title: "The Bean at Millennium Park"
+                                });
+
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Indianapolis Motor Speedway</h3>"});
+
+        infoWindows.push(infoWindow10);
+        
+        marker10 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.79031459999999, -86.23366109999999),
+                                options: markerOptions,
+                                title: "Indianapolis Motor Speedway"
+                                });
+
+        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <a href="https://www.chevrolet.com/"><img src="images/chevrolet-logo.png" width="400px"  style="position: absolute; bottom: 25px; left: 7px;" /></a>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Florida Family Road Trip by Chevrolet.">
+    <meta name="author" content="Chevrolet">
+    
+    <title>The Florida Family Road Trip by Chevrolet</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var routes_list = [];
+		
+		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10;
+		var infoWindows = [];
+		
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var routeMarkerOptions = {visible: false, zIndex: 0};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: routeMarkerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(27.482861, -81.462625);
+		  var mapOptions = {
+			zoom: 8,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  for (i=0; i<routes_list.length; i++) {
+		  	routes_list[i].setMap(map);
+		  }
+		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  
+		  var directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);		
+			}
+		  });
+
+		  routes_list.push(directionsDisplay);
+		}
+
+		function createRoutes(route) {
+			// Google's free map API is limited to 10 waypoints so need to break into batches
+			route.push(route[0]);
+			var subset = 0;
+			while (subset < route.length) {
+				var waypointSubset = route.slice(subset, subset + 10);
+
+				var startPoint = waypointSubset[0];
+				var midPoints = waypointSubset.slice(1, waypointSubset.length - 1);
+				var endPoint = waypointSubset[waypointSubset.length - 1];
+
+				calcRoute(startPoint, endPoint, midPoints);
+
+				subset += 9;
+			}
+		}
+
+		optimal_route = ['2350 McGregor Blvd, Ft. Myers, FL 33901', '1241 Gulf Blvd, Clearwater, FL 33767', '5145 Harvey Tew Rd, Plant City, FL 33565', '1486 Buena Vista Dr, Lake Buena Vista, FL 32830', '12 N Ocean Ave, Daytona Beach, FL 32118', 'Kennedy Space Center, SR 405, Titusville, FL 32899', '12943 61st St N, West Palm Beach, FL 33412', '3251 S Miami Ave, Miami, FL 33129', 'Calle Ocho Walk of Fame, SW 8th St, Miami, FL 33135', '375 Sanctuary Rd W, Naples, FL 34120']
+		
+		createRoutes(optimal_route);
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Edison and Ford Winter Estates</h3>"});
+
+        infoWindows.push(infoWindow1);
+        
+        marker1 = new google.maps.Marker({
+                                position: new google.maps.LatLng(26.6343116, -81.87927119999999),
+                                options: markerOptions,
+                                title: "Edison and Ford Winter Estates"
+                                });
+
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
+
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Columbia Restaurant</h3>"});
+
+        infoWindows.push(infoWindow2);
+        
+        marker2 = new google.maps.Marker({
+                                position: new google.maps.LatLng(27.9525864, -82.82909719999999),
+                                options: markerOptions,
+                                title: "Columbia Restaurant"
+                                });
+
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
+
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Dinosaur World</h3>"});
+
+        infoWindows.push(infoWindow3);
+        
+        marker3 = new google.maps.Marker({
+                                position: new google.maps.LatLng(28.028151, -82.189472),
+                                options: markerOptions,
+                                title: "Dinosaur World"
+                                });
+
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Disney Springs/Downtown Disney</h3>"});
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(28.3703458, -81.522086),
+                                options: markerOptions,
+                                title: "Disney Springs/Downtown Disney"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Daytona Beach Boardwalk</h3>"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.23296819999999, -81.0100071),
+                                options: markerOptions,
+                                title: "Daytona Beach Boardwalk"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Kennedy Space Center</h3>"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(28.5728722, -80.64898079999999),
+                                options: markerOptions,
+                                title: "Kennedy Space Center"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>McCarthy's Wildlife Sanctuary</h3>"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(26.7675426, -80.2458322),
+                                options: markerOptions,
+                                title: "McCarthy's Wildlife Sanctuary"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Vizcaya Museum and Gardens</h3>"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(25.7444524, -80.21040649999999),
+                                options: markerOptions,
+                                title: "Vizcaya Museum and Gardens"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Little Havana</h3>"});
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
+                                position: new google.maps.LatLng(25.7656481, -80.2188956),
+                                options: markerOptions,
+                                title: "Little Havana"
+                                });
+
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Audubon Corkscrew Swamp Sanctuary (Everglades Ecosystem)</h3>"});
+
+        infoWindows.push(infoWindow10);
+        
+        marker10 = new google.maps.Marker({
+                                position: new google.maps.LatLng(26.375166, -81.60340099999999),
+                                options: markerOptions,
+                                title: "Audubon Corkscrew Swamp Sanctuary (Everglades Ecosystem)"
+                                });
+
+        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <a href="https://www.chevrolet.com/"><img src="images/chevrolet-logo.png" width="400px"  style="position: absolute; bottom: 25px; left: 7px;" /></a>
+  </body>
+</html>
