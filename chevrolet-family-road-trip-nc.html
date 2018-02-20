@@ -96,7 +96,7 @@
 			}
 		}
 
-		optimal_route = ['700 Central Ave, Louisville, KY 40208', '3400 Vine St, Cincinnati, OH 45220', '1 Capitol Square, Columbus, OH 43215', '1100 E 9th St, Cleveland, OH 44114', '5200 Woodward Ave, Detroit, MI 48202', '286 Grand Ave, Mackinac Island, MI 49757', '333 E River Pkwy, Minneapolis, MN 55455', '400 W Canal St, Milwaukee, WI 53201', '201 E Randolph St, Chicago, IL 60602', '4790 W 16th St, Indianapolis, IN 46222']
+		optimal_route = ['700 Central Ave, Louisville, KY 40208', '3400 Vine St, Cincinnati, OH 45220', '1 Capitol Square, Columbus, OH 43215', '1100 E 9th St, Cleveland, OH 44114', '5200 Woodward Ave, Detroit, MI 48202', '253 N State St, St Ignace, MI 49781', '333 E River Pkwy, Minneapolis, MN 55455', '400 W Canal St, Milwaukee, WI 53201', '201 E Randolph St, Chicago, IL 60602', '4790 W 16th St, Indianapolis, IN 46222']
 		
 		createRoutes(optimal_route);
 
@@ -162,14 +162,14 @@
 
         google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
 
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Grand Hotel </h3>"});
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Mackinac Island</h3>"});
 
         infoWindows.push(infoWindow6);
         
         marker6 = new google.maps.Marker({
-                                position: new google.maps.LatLng(45.851135, -84.626205),
+                                position: new google.maps.LatLng(45.868585, -84.726774),
                                 options: markerOptions,
-                                title: "Grand Hotel "
+                                title: "Mackinac Island"
                                 });
 
         google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
