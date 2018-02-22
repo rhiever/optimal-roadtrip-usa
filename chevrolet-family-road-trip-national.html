@@ -96,25 +96,25 @@
 			}
 		}
 
-		optimal_route = ['4 Tonto St, Grand Canyon Village, AZ 86023', 'Carlsbad Caverns National Park, New Mexico 88220', '2201 E Road to Six Flags St, Arlington, TX 76010', '1700 NE 63rd St, Oklahoma City, OK 73111', '13800 Switzer Rd, Overland Park, KS 66221', 'The Gateway Arch, St. Louis, MO 63102', '3000 N Meridian St, Indianapolis, IN 46208', '711 Mammoth Cave Rd, Cave City, KY 42127', '3729 County Road 98, Bridgeport, AL 35740', '225 Baker St NW, Atlanta, GA 30313', 'Elvis Presley Blvd, Memphis, TN 38116', '209 State Park Rd, Murfreesboro, AR 71958', '800 Decatur St, New Orleans, LA 70116', '3500 Park Rd, Ocean Springs, MS 39564', 'Walt Disney World Resort, Orlando, FL 32830', '40 Patriots Point Rd, Mt Pleasant, SC 29464', '400 E M.L.K. Jr Blvd, Charlotte, NC 28202', '242 Main St, Cass, WV 24927', '101 S Henry St, Williamsburg, VA 23185', ' 205 W Potomac St, Williamsport, MD 21795', '1301 Heritage Rd, Dover AFB, DE 19902', '1441 Boardwalk, Atlantic City, NJ 08401', '100 Sesame Rd, Langhorne, PA 19047 ', 'Coney Island, Brooklyn NY', ' 67 River Rd, East Haddam, CT 06423', 'Fort Adams State Park, Newport, RI 02840', '19 1/2 Washington Square, Salem, MA 01970', '12 Captain Strout Cir, Cape Elizabeth, ME 04107 ', 'Flume Gorge, Daniel Webster Hwy, Lincoln, NH 03251', 'Waterfront Park, 20 Lake St, Burlington, VT 05401', '1100 E 9th St, Cleveland, OH 44114', 'Sleeping Bear Dunes National Seashore, Michigan', '201 E Randolph St, Chicago, IL 60602', '350 E 3rd St, Dubuque, IA 52001', '1410 Wisconsin Dells Pkwy, Wisconsin Dells, WI 53965', '60 E Broadway, Bloomington, MN 55425 ', '607 Main St, Regent, ND 58650', '13000 SD-244, Keystone, SD 57751', '2151 Co Rd 59, Alliance, NE 69301', '1000 US-36, Estes Park, CO 80517', '3419 Olympic Pkwy, Park City, UT 84098', 'West Yellowstone Visitor Information Center, 30 Yellowstone Ave, West Yellowstone, MT 59758', '64 Grinnell Drive, West Glacier,\xa0MT\xa059936\xa0  ', '610 Bunker Ave, Kellogg, ID 83837', '85 Pike Street, Seattle, WA 98101', 'Steel Visitor Center, Rim Drive, Crater Lake, OR', '10 Lake St, Reno, NV 89501', '1313 Disneyland Dr, Anaheim, CA 92802']
+		optimal_route = ['4 Tonto St, Grand Canyon Village, AZ 86023', 'Carlsbad Caverns National Park, New Mexico 88220', '2201 E Road to Six Flags St, Arlington, TX 76010', '1700 NE 63rd St, Oklahoma City, OK 73111', '13800 Switzer Rd, Overland Park, KS 66221', 'The Gateway Arch, St. Louis, MO 63102', '3000 N Meridian St, Indianapolis, IN 46208', '711 Mammoth Cave Rd, Cave City, KY 42127', '3729 County Road 98, Bridgeport, AL 35740', '225 Baker St NW, Atlanta, GA 30313', 'Elvis Presley Blvd, Memphis, TN 38116', '209 State Park Rd, Murfreesboro, AR 71958', '800 Decatur St, New Orleans, LA 70116', '3500 Park Rd, Ocean Springs, MS 39564', 'Walt Disney World Resort, Orlando, FL 32830', '40 Patriots Point Rd, Mt Pleasant, SC 29464', '400 E M.L.K. Jr Blvd, Charlotte, NC 28202', '242 Main St, Cass, WV 24927', '101 S Henry St, Williamsburg, VA 23185', ' 205 W Potomac St, Williamsport, MD 21795', '1301 Heritage Rd, Dover AFB, DE 19902', '1441 Boardwalk, Atlantic City, NJ 08401', '100 Sesame Rd, Langhorne, PA 19047 ', 'Coney Island, Brooklyn NY', ' 67 River Rd, East Haddam, CT 06423', 'Fort Adams State Park, Newport, RI 02840', '19 1/2 Washington Square, Salem, MA 01970', '12 Captain Strout Cir, Cape Elizabeth, ME 04107 ', 'Flume Gorge, Daniel Webster Hwy, Lincoln, NH 03251', 'Waterfront Park, 20 Lake St, Burlington, VT 05401', '1100 E 9th St, Cleveland, OH 44114', 'Sleeping Bear Dunes National Seashore, Michigan', '201 E Randolph St, Chicago, IL 60602', '350 E 3rd St, Dubuque, IA 52001', '1410 Wisconsin Dells Pkwy, Wisconsin Dells, WI 53965', '60 E Broadway, Bloomington, MN 55425 ', '607 Main St, Regent, ND 58650', '13000 SD-244, Keystone, SD 57751', '2151 Co Rd 59, Alliance, NE 69301', '1000 US-36, Estes Park, CO 80517', '3419 Olympic Pkwy, Park City, UT 84098', 'West Yellowstone Visitor Information Center, 30 Yellowstone Ave, West Yellowstone, MT 59758', '64 Grinnell Drive, West Glacier, MT 59936', '610 Bunker Ave, Kellogg, ID 83837', '85 Pike Street, Seattle, WA 98101', 'Steel Visitor Center, Rim Drive, Crater Lake, OR', '10 Lake St, Reno, NV 89501', '1313 Disneyland Dr, Anaheim, CA 92802']
 		
 		createRoutes(optimal_route);
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Grand Canyon National Park</h3>"});
+      var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>The Grand Canyon<br />4 Tonto St, Grand Canyon Village, AZ 86023</h3>"});
 
         infoWindows.push(infoWindow1);
         
         marker1 = new google.maps.Marker({
                                 position: new google.maps.LatLng(36.0553322, -112.1368092),
                                 options: markerOptions,
-                                title: "Grand Canyon National Park"
+                                title: "The Grand Canyon"
                                 });
 
         google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
 
-        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Carlsbad Caverns</h3>"});
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Carlsbad Caverns<br />Carlsbad Caverns National Park, New Mexico 88220</h3>"});
 
         infoWindows.push(infoWindow2);
         
@@ -126,19 +126,19 @@
 
         google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
 
-        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Six Flags Over Texas</h3>"});
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Six Flags Over Texas<br />2201 E Road to Six Flags St, Arlington, TX 76010</h3>"});
 
         infoWindows.push(infoWindow3);
         
         marker3 = new google.maps.Marker({
-                                position: new google.maps.LatLng(32.75322, -97.0724395),
+                                position: new google.maps.LatLng(32.7524928, -97.0699775),
                                 options: markerOptions,
                                 title: "Six Flags Over Texas"
                                 });
 
         google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
 
-        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>National Cowboy & Western Heritage Museum</h3>"});
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>National Cowboy & Western Heritage Museum<br />1700 NE 63rd St, Oklahoma City, OK 73111</h3>"});
 
         infoWindows.push(infoWindow4);
         
@@ -150,7 +150,7 @@
 
         google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
 
-        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Deanna Rose Children's Farmstead</h3>"});
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Deanna Rose Children's Farmstead<br />13800 Switzer Rd, Overland Park, KS 66221</h3>"});
 
         infoWindows.push(infoWindow5);
         
@@ -162,7 +162,7 @@
 
         google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
 
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Gateway Arch</h3>"});
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Gateway Arch<br />The Gateway Arch, St. Louis, MO 63102</h3>"});
 
         infoWindows.push(infoWindow6);
         
@@ -174,7 +174,7 @@
 
         google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
 
-        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Children's Museum of Indianapolis</h3>"});
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Children's Museum of Indianapolis<br />3000 N Meridian St, Indianapolis, IN 46208</h3>"});
 
         infoWindows.push(infoWindow7);
         
@@ -186,7 +186,7 @@
 
         google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
 
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Dinosaur World</h3>"});
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Dinosaur World<br />711 Mammoth Cave Rd, Cave City, KY 42127</h3>"});
 
         infoWindows.push(infoWindow8);
         
@@ -198,19 +198,19 @@
 
         google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Russel Cave National Monument</h3>"});
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Russel Cave National Monument <br />3729 County Road 98, Bridgeport, AL 35740</h3>"});
 
         infoWindows.push(infoWindow9);
         
         marker9 = new google.maps.Marker({
                                 position: new google.maps.LatLng(34.9807897, -85.8063073),
                                 options: markerOptions,
-                                title: "Russel Cave National Monument"
+                                title: "Russel Cave National Monument "
                                 });
 
         google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Georgia Aquarium</h3>"});
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Georgia Aquarium<br />225 Baker St NW, Atlanta, GA 30313</h3>"});
 
         infoWindows.push(infoWindow10);
         
@@ -222,19 +222,19 @@
 
         google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
 
-        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Graceland</h3>"});
+        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Graceland<br />Elvis Presley Blvd, Memphis, TN 38116</h3>"});
 
         infoWindows.push(infoWindow11);
         
         marker11 = new google.maps.Marker({
-                                position: new google.maps.LatLng(35.0302462, -90.0251703),
+                                position: new google.maps.LatLng(35.0355079, -90.02515009999999),
                                 options: markerOptions,
                                 title: "Graceland"
                                 });
 
         google.maps.event.addListener(marker11, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow11.open(map, marker11); });
 
-        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Crater of Diamonds State Park</h3>"});
+        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Crater of Diamonds State Park<br />209 State Park Rd, Murfreesboro, AR 71958</h3>"});
 
         infoWindows.push(infoWindow12);
         
@@ -246,7 +246,7 @@
 
         google.maps.event.addListener(marker12, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow12.open(map, marker12); });
 
-        var infoWindow13 = new google.maps.InfoWindow({ content: "<h3>Café du Monde & French Quarter</h3>"});
+        var infoWindow13 = new google.maps.InfoWindow({ content: "<h3>Café du Monde & French Quarter<br />800 Decatur St, New Orleans, LA 70116</h3>"});
 
         infoWindows.push(infoWindow13);
         
@@ -258,19 +258,19 @@
 
         google.maps.event.addListener(marker13, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow13.open(map, marker13); });
 
-        var infoWindow14 = new google.maps.InfoWindow({ content: "<h3>Gulf Islands National Seashore</h3>"});
+        var infoWindow14 = new google.maps.InfoWindow({ content: "<h3>Gulf Islands National Seashore<br />3500 Park Rd, Ocean Springs, MS 39564</h3>"});
 
         infoWindows.push(infoWindow14);
         
         marker14 = new google.maps.Marker({
-                                position: new google.maps.LatLng(30.3987638, -88.7848178),
+                                position: new google.maps.LatLng(30.391386, -88.79098900000001),
                                 options: markerOptions,
                                 title: "Gulf Islands National Seashore"
                                 });
 
         google.maps.event.addListener(marker14, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow14.open(map, marker14); });
 
-        var infoWindow15 = new google.maps.InfoWindow({ content: "<h3>Disney World</h3>"});
+        var infoWindow15 = new google.maps.InfoWindow({ content: "<h3>Disney World<br />Walt Disney World Resort, Orlando, FL 32830</h3>"});
 
         infoWindows.push(infoWindow15);
         
@@ -282,7 +282,7 @@
 
         google.maps.event.addListener(marker15, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow15.open(map, marker15); });
 
-        var infoWindow16 = new google.maps.InfoWindow({ content: "<h3>Patriots Point</h3>"});
+        var infoWindow16 = new google.maps.InfoWindow({ content: "<h3>Patriots Point<br />40 Patriots Point Rd, Mt Pleasant, SC 29464</h3>"});
 
         infoWindows.push(infoWindow16);
         
@@ -294,7 +294,7 @@
 
         google.maps.event.addListener(marker16, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow16.open(map, marker16); });
 
-        var infoWindow17 = new google.maps.InfoWindow({ content: "<h3>NASCAR Hall of Fame</h3>"});
+        var infoWindow17 = new google.maps.InfoWindow({ content: "<h3>NASCAR Hall of Fame<br />400 E M.L.K. Jr Blvd, Charlotte, NC 28202</h3>"});
 
         infoWindows.push(infoWindow17);
         
@@ -306,7 +306,7 @@
 
         google.maps.event.addListener(marker17, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow17.open(map, marker17); });
 
-        var infoWindow18 = new google.maps.InfoWindow({ content: "<h3>Cass Scenic Railroad State Park</h3>"});
+        var infoWindow18 = new google.maps.InfoWindow({ content: "<h3>Cass Scenic Railroad State Park<br />242 Main St, Cass, WV 24927</h3>"});
 
         infoWindows.push(infoWindow18);
         
@@ -318,7 +318,7 @@
 
         google.maps.event.addListener(marker18, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow18.open(map, marker18); });
 
-        var infoWindow19 = new google.maps.InfoWindow({ content: "<h3>Colonial Williamsburg</h3>"});
+        var infoWindow19 = new google.maps.InfoWindow({ content: "<h3>Colonial Williamsburg<br />101 S Henry St, Williamsburg, VA 23185</h3>"});
 
         infoWindows.push(infoWindow19);
         
@@ -330,7 +330,7 @@
 
         google.maps.event.addListener(marker19, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow19.open(map, marker19); });
 
-        var infoWindow20 = new google.maps.InfoWindow({ content: "<h3>Chesapeake and Ohio Canal National Historical Park</h3>"});
+        var infoWindow20 = new google.maps.InfoWindow({ content: "<h3>Chesapeake and Ohio Canal National Historical Park<br />205 W Potomac St, Williamsport, MD 21795</h3>"});
 
         infoWindows.push(infoWindow20);
         
@@ -342,7 +342,7 @@
 
         google.maps.event.addListener(marker20, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow20.open(map, marker20); });
 
-        var infoWindow21 = new google.maps.InfoWindow({ content: "<h3>Air Mobility Command Museum</h3>"});
+        var infoWindow21 = new google.maps.InfoWindow({ content: "<h3>Air Mobility Command Museum<br />1301 Heritage Rd, Dover AFB, DE 19902</h3>"});
 
         infoWindows.push(infoWindow21);
         
@@ -354,7 +354,7 @@
 
         google.maps.event.addListener(marker21, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow21.open(map, marker21); });
 
-        var infoWindow22 = new google.maps.InfoWindow({ content: "<h3>Ripley's Believe It or Not!</h3>"});
+        var infoWindow22 = new google.maps.InfoWindow({ content: "<h3>Ripley's Believe It or Not!<br />1441 Boardwalk, Atlantic City, NJ 08401</h3>"});
 
         infoWindows.push(infoWindow22);
         
@@ -366,7 +366,7 @@
 
         google.maps.event.addListener(marker22, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow22.open(map, marker22); });
 
-        var infoWindow23 = new google.maps.InfoWindow({ content: "<h3>Sesame Place</h3>"});
+        var infoWindow23 = new google.maps.InfoWindow({ content: "<h3>Sesame Place<br />100 Sesame Rd, Langhorne, PA 19047 </h3>"});
 
         infoWindows.push(infoWindow23);
         
@@ -378,7 +378,7 @@
 
         google.maps.event.addListener(marker23, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow23.open(map, marker23); });
 
-        var infoWindow24 = new google.maps.InfoWindow({ content: "<h3>Coney Island</h3>"});
+        var infoWindow24 = new google.maps.InfoWindow({ content: "<h3>Coney Island<br />Brooklyn, NY</h3>"});
 
         infoWindows.push(infoWindow24);
         
@@ -390,7 +390,7 @@
 
         google.maps.event.addListener(marker24, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow24.open(map, marker24); });
 
-        var infoWindow25 = new google.maps.InfoWindow({ content: "<h3>Sherlock Holmes Castle</h3>"});
+        var infoWindow25 = new google.maps.InfoWindow({ content: "<h3>Sherlock Holmes Castle<br />67 River Rd, East Haddam, CT 06423</h3>"});
 
         infoWindows.push(infoWindow25);
         
@@ -402,31 +402,31 @@
 
         google.maps.event.addListener(marker25, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow25.open(map, marker25); });
 
-        var infoWindow26 = new google.maps.InfoWindow({ content: "<h3>Fort Adams</h3>"});
+        var infoWindow26 = new google.maps.InfoWindow({ content: "<h3>Fort Adams<br />Fort Adams State Park, Newport, RI 02840</h3>"});
 
         infoWindows.push(infoWindow26);
         
         marker26 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.4769028, -71.3410244),
+                                position: new google.maps.LatLng(41.4790898, -71.33582439999999),
                                 options: markerOptions,
                                 title: "Fort Adams"
                                 });
 
         google.maps.event.addListener(marker26, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow26.open(map, marker26); });
 
-        var infoWindow27 = new google.maps.InfoWindow({ content: "<h3>Salem Witch Museum</h3>"});
+        var infoWindow27 = new google.maps.InfoWindow({ content: "<h3>Salem Witch Museum<br />19 1/2 Washington Square, Salem, MA 01970</h3>"});
 
         infoWindows.push(infoWindow27);
         
         marker27 = new google.maps.Marker({
-                                position: new google.maps.LatLng(42.523651, -70.8910922),
+                                position: new google.maps.LatLng(42.5237208, -70.8911),
                                 options: markerOptions,
                                 title: "Salem Witch Museum"
                                 });
 
         google.maps.event.addListener(marker27, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow27.open(map, marker27); });
 
-        var infoWindow28 = new google.maps.InfoWindow({ content: "<h3>Portland Head Light and Fort Williams Park</h3>"});
+        var infoWindow28 = new google.maps.InfoWindow({ content: "<h3>Portland Head Light and Fort Williams Park<br />12 Captain Strout Cir, Cape Elizabeth, ME 04107 </h3>"});
 
         infoWindows.push(infoWindow28);
         
@@ -438,7 +438,7 @@
 
         google.maps.event.addListener(marker28, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow28.open(map, marker28); });
 
-        var infoWindow29 = new google.maps.InfoWindow({ content: "<h3>Franconia Notch State Park</h3>"});
+        var infoWindow29 = new google.maps.InfoWindow({ content: "<h3>Franconia Notch State Park<br />Flume Gorge, Daniel Webster Hwy, Lincoln, NH 03251</h3>"});
 
         infoWindows.push(infoWindow29);
         
@@ -450,7 +450,7 @@
 
         google.maps.event.addListener(marker29, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow29.open(map, marker29); });
 
-        var infoWindow30 = new google.maps.InfoWindow({ content: "<h3>Lake Champlain</h3>"});
+        var infoWindow30 = new google.maps.InfoWindow({ content: "<h3>Lake Champlain<br />Waterfront Park, 20 Lake St, Burlington, VT 05401</h3>"});
 
         infoWindows.push(infoWindow30);
         
@@ -462,7 +462,7 @@
 
         google.maps.event.addListener(marker30, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow30.open(map, marker30); });
 
-        var infoWindow31 = new google.maps.InfoWindow({ content: "<h3>Rock and Roll Hall of Fame Museum</h3>"});
+        var infoWindow31 = new google.maps.InfoWindow({ content: "<h3>Rock and Roll Hall of Fame Museum<br />1100 E 9th St, Cleveland, OH 44114</h3>"});
 
         infoWindows.push(infoWindow31);
         
@@ -474,7 +474,7 @@
 
         google.maps.event.addListener(marker31, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow31.open(map, marker31); });
 
-        var infoWindow32 = new google.maps.InfoWindow({ content: "<h3>Sleeping Bear Dunes National Seashore</h3>"});
+        var infoWindow32 = new google.maps.InfoWindow({ content: "<h3>Sleeping Bear Dunes National Seashore<br />Sleeping Bear Dunes National Seashore, Michigan</h3>"});
 
         infoWindows.push(infoWindow32);
         
@@ -486,19 +486,19 @@
 
         google.maps.event.addListener(marker32, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow32.open(map, marker32); });
 
-        var infoWindow33 = new google.maps.InfoWindow({ content: "<h3>The Bean at Millennium Park</h3>"});
+        var infoWindow33 = new google.maps.InfoWindow({ content: "<h3>The Bean at Millennium Park<br />201 E Randolph St, Chicago, IL 60602</h3>"});
 
         infoWindows.push(infoWindow33);
         
         marker33 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.8834354, -87.6218416),
+                                position: new google.maps.LatLng(41.8821051, -87.6229572),
                                 options: markerOptions,
                                 title: "The Bean at Millennium Park"
                                 });
 
         google.maps.event.addListener(marker33, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow33.open(map, marker33); });
 
-        var infoWindow34 = new google.maps.InfoWindow({ content: "<h3>National Mississippi River Museum & Aquarium</h3>"});
+        var infoWindow34 = new google.maps.InfoWindow({ content: "<h3>National Mississippi River Museum & Aquarium<br />350 E 3rd St, Dubuque, IA 52001</h3>"});
 
         infoWindows.push(infoWindow34);
         
@@ -510,19 +510,19 @@
 
         google.maps.event.addListener(marker34, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow34.open(map, marker34); });
 
-        var infoWindow35 = new google.maps.InfoWindow({ content: "<h3>Noah's Ark</h3>"});
+        var infoWindow35 = new google.maps.InfoWindow({ content: "<h3>Noah's Ark<br />1410 Wisconsin Dells Pkwy, Wisconsin Dells, WI 53965</h3>"});
 
         infoWindows.push(infoWindow35);
         
         marker35 = new google.maps.Marker({
-                                position: new google.maps.LatLng(43.605108, -89.7905705),
+                                position: new google.maps.LatLng(43.6025302, -89.78608489999999),
                                 options: markerOptions,
                                 title: "Noah's Ark"
                                 });
 
         google.maps.event.addListener(marker35, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow35.open(map, marker35); });
 
-        var infoWindow36 = new google.maps.InfoWindow({ content: "<h3>Mall of America</h3>"});
+        var infoWindow36 = new google.maps.InfoWindow({ content: "<h3>Mall of America<br />60 E Broadway, Bloomington, MN 55425 </h3>"});
 
         infoWindows.push(infoWindow36);
         
@@ -534,7 +534,7 @@
 
         google.maps.event.addListener(marker36, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow36.open(map, marker36); });
 
-        var infoWindow37 = new google.maps.InfoWindow({ content: "<h3>The Enchanted Highway</h3>"});
+        var infoWindow37 = new google.maps.InfoWindow({ content: "<h3>The Enchanted Highway<br />607 Main St, Regent, ND 58650</h3>"});
 
         infoWindows.push(infoWindow37);
         
@@ -546,19 +546,19 @@
 
         google.maps.event.addListener(marker37, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow37.open(map, marker37); });
 
-        var infoWindow38 = new google.maps.InfoWindow({ content: "<h3>Mount Rushmore</h3>"});
+        var infoWindow38 = new google.maps.InfoWindow({ content: "<h3>Mount Rushmore<br />13000 SD-244, Keystone, SD 57751</h3>"});
 
         infoWindows.push(infoWindow38);
         
         marker38 = new google.maps.Marker({
-                                position: new google.maps.LatLng(43.8755815, -103.4555724),
+                                position: new google.maps.LatLng(43.87679869999999, -103.4558733),
                                 options: markerOptions,
                                 title: "Mount Rushmore"
                                 });
 
         google.maps.event.addListener(marker38, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow38.open(map, marker38); });
 
-        var infoWindow39 = new google.maps.InfoWindow({ content: "<h3>Carhenge</h3>"});
+        var infoWindow39 = new google.maps.InfoWindow({ content: "<h3>Carhenge<br />2151 Co Rd 59, Alliance, NE 69301</h3>"});
 
         infoWindows.push(infoWindow39);
         
@@ -570,7 +570,7 @@
 
         google.maps.event.addListener(marker39, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow39.open(map, marker39); });
 
-        var infoWindow40 = new google.maps.InfoWindow({ content: "<h3>Rocky Mountain National Park</h3>"});
+        var infoWindow40 = new google.maps.InfoWindow({ content: "<h3>Rocky Mountain National Park<br />1000 US-36, Estes Park, CO 80517</h3>"});
 
         infoWindows.push(infoWindow40);
         
@@ -582,7 +582,7 @@
 
         google.maps.event.addListener(marker40, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow40.open(map, marker40); });
 
-        var infoWindow41 = new google.maps.InfoWindow({ content: "<h3>Utah Olympic Park</h3>"});
+        var infoWindow41 = new google.maps.InfoWindow({ content: "<h3>Utah Olympic Park<br />3419 Olympic Pkwy, Park City, UT 84098</h3>"});
 
         infoWindows.push(infoWindow41);
         
@@ -594,7 +594,7 @@
 
         google.maps.event.addListener(marker41, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow41.open(map, marker41); });
 
-        var infoWindow42 = new google.maps.InfoWindow({ content: "<h3>Yellowstone National Park</h3>"});
+        var infoWindow42 = new google.maps.InfoWindow({ content: "<h3>Yellowstone National Park<br />Yellowstone National Park, WY 82190</h3>"});
 
         infoWindows.push(infoWindow42);
         
@@ -606,7 +606,7 @@
 
         google.maps.event.addListener(marker42, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow42.open(map, marker42); });
 
-        var infoWindow43 = new google.maps.InfoWindow({ content: "<h3>Hidden Lake, Glacier National Park</h3>"});
+        var infoWindow43 = new google.maps.InfoWindow({ content: "<h3>Hidden Lake, Glacier National Park<br />64 Grinnell Drive, West Glacier, MT 59936   </h3>"});
 
         infoWindows.push(infoWindow43);
         
@@ -618,7 +618,7 @@
 
         google.maps.event.addListener(marker43, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow43.open(map, marker43); });
 
-        var infoWindow44 = new google.maps.InfoWindow({ content: "<h3>Silver Rapids Indoor Water Park</h3>"});
+        var infoWindow44 = new google.maps.InfoWindow({ content: "<h3>Silver Rapids Indoor Water Park<br />610 Bunker Ave, Kellogg, ID 83837</h3>"});
 
         infoWindows.push(infoWindow44);
         
@@ -630,31 +630,31 @@
 
         google.maps.event.addListener(marker44, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow44.open(map, marker44); });
 
-        var infoWindow45 = new google.maps.InfoWindow({ content: "<h3>Pike Place Market</h3>"});
+        var infoWindow45 = new google.maps.InfoWindow({ content: "<h3>Pike Place Market<br />85 Pike Street, Seattle, WA 98101</h3>"});
 
         infoWindows.push(infoWindow45);
         
         marker45 = new google.maps.Marker({
-                                position: new google.maps.LatLng(47.6084445, -122.3405493),
+                                position: new google.maps.LatLng(47.6084444, -122.3405493),
                                 options: markerOptions,
                                 title: "Pike Place Market"
                                 });
 
         google.maps.event.addListener(marker45, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow45.open(map, marker45); });
 
-        var infoWindow46 = new google.maps.InfoWindow({ content: "<h3>Crater Lake National Park</h3>"});
+        var infoWindow46 = new google.maps.InfoWindow({ content: "<h3>Crater Lake National Park<br />Crater Lake National Park, Oregon</h3>"});
 
         infoWindows.push(infoWindow46);
         
         marker46 = new google.maps.Marker({
-                                position: new google.maps.LatLng(42.8684411, -122.1684785),
+                                position: new google.maps.LatLng(42.9445872, -122.1090039),
                                 options: markerOptions,
                                 title: "Crater Lake National Park"
                                 });
 
         google.maps.event.addListener(marker46, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow46.open(map, marker46); });
 
-        var infoWindow47 = new google.maps.InfoWindow({ content: "<h3>National Automobile Museum</h3>"});
+        var infoWindow47 = new google.maps.InfoWindow({ content: "<h3>National Automobile Museum<br />10 Lake St, Reno, NV 89501</h3>"});
 
         infoWindows.push(infoWindow47);
         
@@ -666,18 +666,17 @@
 
         google.maps.event.addListener(marker47, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow47.open(map, marker47); });
 
-        var infoWindow48 = new google.maps.InfoWindow({ content: "<h3>Disneyland Park</h3>"});
+        var infoWindow48 = new google.maps.InfoWindow({ content: "<h3>Disneyland<br />1313 Disneyland Dr, Anaheim, CA 92802</h3>"});
 
         infoWindows.push(infoWindow48);
         
         marker48 = new google.maps.Marker({
-                                position: new google.maps.LatLng(33.8126774, -117.9203217),
+                                position: new google.maps.LatLng(33.8153959, -117.9263991),
                                 options: markerOptions,
-                                title: "Disneyland Park"
+                                title: "Disneyland"
                                 });
 
         google.maps.event.addListener(marker48, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow48.open(map, marker48); });
-
     </script>
   </head>
   <body>

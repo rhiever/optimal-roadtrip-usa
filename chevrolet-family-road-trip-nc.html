@@ -96,128 +96,128 @@
 			}
 		}
 
-		optimal_route = ['700 Central Ave, Louisville, KY 40208', '3400 Vine St, Cincinnati, OH 45220', '1 Capitol Square, Columbus, OH 43215', '1100 E 9th St, Cleveland, OH 44114', '5200 Woodward Ave, Detroit, MI 48202', '253 N State St, St Ignace, MI 49781', '333 E River Pkwy, Minneapolis, MN 55455', '400 W Canal St, Milwaukee, WI 53201', '201 E Randolph St, Chicago, IL 60602', '4790 W 16th St, Indianapolis, IN 46222']
+		optimal_route = ['4790 W 16th St, Indianapolis, IN 46222', '201 E Randolph St, Chicago, IL 60602', '400 W Canal St, Milwaukee, WI 53201', '333 E River Pkwy, Minneapolis, MN 55455', 'Sleeping Bear Dunes National Seashore, Michigan', '5200 Woodward Ave, Detroit, MI 48202', '1100 E 9th St, Cleveland, OH 44114', '1 Capitol Square, Columbus, OH 43215', '3400 Vine St, Cincinnati, OH 45220', '700 Central Ave, Louisville, KY 40208']
 		
 		createRoutes(optimal_route);
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-		var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Churchill Downs</h3>"});
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Indianapolis Motor Speedway<br />4790 W 16th St, Indianapolis, IN 46222</h3>"});
 
         infoWindows.push(infoWindow1);
         
         marker1 = new google.maps.Marker({
-                                position: new google.maps.LatLng(38.2042473, -85.7716305),
+                                position: new google.maps.LatLng(39.79031459999999, -86.23366109999999),
                                 options: markerOptions,
-                                title: "Churchill Downs"
+                                title: "Indianapolis Motor Speedway"
                                 });
 
         google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
 
-        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Cincinnati Zoo</h3>"});
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>The Bean at Millennium Park<br />201 E Randolph St, Chicago, IL 60602</h3>"});
 
         infoWindows.push(infoWindow2);
         
         marker2 = new google.maps.Marker({
-                                position: new google.maps.LatLng(39.1433304, -84.50898719999999),
+                                position: new google.maps.LatLng(41.8821051, -87.6229572),
                                 options: markerOptions,
-                                title: "Cincinnati Zoo"
+                                title: "The Bean at Millennium Park"
                                 });
 
         google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
 
-        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Ohio Statehouse</h3>"});
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Harley-Davidson Museum<br />400 W Canal St, Milwaukee, WI 53201</h3>"});
 
         infoWindows.push(infoWindow3);
         
         marker3 = new google.maps.Marker({
-                                position: new google.maps.LatLng(39.9616325, -82.9989541),
-                                options: markerOptions,
-                                title: "Ohio Statehouse"
-                                });
-
-        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
-
-        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Rock and Roll Hall of Fame Museum</h3>"});
-
-        infoWindows.push(infoWindow4);
-        
-        marker4 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.5085183, -81.69550579999999),
-                                options: markerOptions,
-                                title: "Rock and Roll Hall of Fame Museum"
-                                });
-
-        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
-
-        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Detroit Institute of Arts</h3>"});
-
-        infoWindows.push(infoWindow5);
-        
-        marker5 = new google.maps.Marker({
-                                position: new google.maps.LatLng(42.3594422, -83.0643655),
-                                options: markerOptions,
-                                title: "Detroit Institute of Arts"
-                                });
-
-        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
-
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Mackinac Island</h3>"});
-
-        infoWindows.push(infoWindow6);
-        
-        marker6 = new google.maps.Marker({
-                                position: new google.maps.LatLng(45.868585, -84.726774),
-                                options: markerOptions,
-                                title: "Mackinac Island"
-                                });
-
-        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
-
-        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Frederick R Weisman Art Museum</h3>"});
-
-        infoWindows.push(infoWindow7);
-        
-        marker7 = new google.maps.Marker({
-                                position: new google.maps.LatLng(44.9730193, -93.237028),
-                                options: markerOptions,
-                                title: "Frederick R Weisman Art Museum"
-                                });
-
-        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
-
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Harley-Davidson Museum</h3>"});
-
-        infoWindows.push(infoWindow8);
-        
-        marker8 = new google.maps.Marker({
                                 position: new google.maps.LatLng(43.0311282, -87.9162042),
                                 options: markerOptions,
                                 title: "Harley-Davidson Museum"
                                 });
 
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Frederick R Weisman Art Museum<br />333 E River Pkwy, Minneapolis, MN 55455</h3>"});
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.9730193, -93.237028),
+                                options: markerOptions,
+                                title: "Frederick R Weisman Art Museum"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Sleeping Bear Dunes National Seashore<br />Sleeping Bear Dunes National Seashore, Michigan</h3>"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.8757238, -85.9996747),
+                                options: markerOptions,
+                                title: "Sleeping Bear Dunes National Seashore"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Detroit Institute of Arts<br />5200 Woodward Ave, Detroit, MI 48202</h3>"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.3594422, -83.0643655),
+                                options: markerOptions,
+                                title: "Detroit Institute of Arts"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Rock and Roll Hall of Fame Museum<br />1100 E 9th St, Cleveland, OH 44114</h3>"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.5085183, -81.69550579999999),
+                                options: markerOptions,
+                                title: "Rock and Roll Hall of Fame Museum"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Ohio Statehouse<br />1 Capitol Square, Columbus, OH 43215</h3>"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9613745, -82.9989103),
+                                options: markerOptions,
+                                title: "Ohio Statehouse"
+                                });
+
         google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>The Bean at Millennium Park</h3>"});
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Cincinnati Zoo<br />3400 Vine St, Cincinnati, OH 45220</h3>"});
 
         infoWindows.push(infoWindow9);
         
         marker9 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.8834354, -87.6218416),
+                                position: new google.maps.LatLng(39.1433304, -84.50898719999999),
                                 options: markerOptions,
-                                title: "The Bean at Millennium Park"
+                                title: "Cincinnati Zoo"
                                 });
 
         google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Indianapolis Motor Speedway</h3>"});
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Churchill Downs<br />700 Central Ave, Louisville, KY 40208</h3>"});
 
         infoWindows.push(infoWindow10);
         
         marker10 = new google.maps.Marker({
-                                position: new google.maps.LatLng(39.79031459999999, -86.23366109999999),
+                                position: new google.maps.LatLng(38.2042473, -85.7716305),
                                 options: markerOptions,
-                                title: "Indianapolis Motor Speedway"
+                                title: "Churchill Downs"
                                 });
 
         google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });

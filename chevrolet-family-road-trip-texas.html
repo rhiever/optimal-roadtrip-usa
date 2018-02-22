@@ -102,7 +102,7 @@
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>The Rory Meyers Children's Adventure Garden - Dallas Arboretum and Botanical Garden</h3>"});
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>The Rory Meyers Children's Adventure Garden<br />Dallas Arboretum and Botanical Garden<br />8525 Garland Rd, Dallas, TX 75218</h3>"});
 
         infoWindows.push(infoWindow1);
         
@@ -114,7 +114,7 @@
 
         google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
 
-        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Moody Gardens</h3>"});
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Moody Gardens<br />1 Hope Blvd, Galveston, TX 77554</h3>"});
 
         infoWindows.push(infoWindow2);
         
@@ -126,7 +126,7 @@
 
         google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
 
-        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Space Center Houston</h3>"});
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Space Center Houston<br />1601 E NASA Pkwy, Houston, TX 77058</h3>"});
 
         infoWindows.push(infoWindow3);
         
@@ -138,7 +138,7 @@
 
         google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
 
-        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Children’s Museum of Houston</h3>"});
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Children’s Museum of Houston<br />1500 Binz St, Houston, TX 77004</h3>"});
 
         infoWindows.push(infoWindow4);
         
@@ -150,19 +150,19 @@
 
         google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
 
-        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Schlitterbahn Waterpark New Braunfels</h3>"});
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Schlitterbahn Waterpark<br />588 S Union Ave, New Braunfels, TX 78130</h3>"});
 
         infoWindows.push(infoWindow5);
         
         marker5 = new google.maps.Marker({
                                 position: new google.maps.LatLng(29.706318, -98.1173013),
                                 options: markerOptions,
-                                title: "Schlitterbahn Waterpark New Braunfels"
+                                title: "Schlitterbahn Waterpark"
                                 });
 
         google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
 
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>The Alamo</h3>"});
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>The Alamo<br />300 Alamo Plaza, San Antonio, TX 78205</h3>"});
 
         infoWindows.push(infoWindow6);
         
@@ -174,19 +174,19 @@
 
         google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
 
-        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Sea World San Antonio</h3>"});
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Sea World<br />10500 Sea World Dr, San Antonio, TX‎</h3>"});
 
         infoWindows.push(infoWindow7);
         
         marker7 = new google.maps.Marker({
                                 position: new google.maps.LatLng(29.4583528, -98.7001956),
                                 options: markerOptions,
-                                title: "Sea World San Antonio"
+                                title: "Sea World"
                                 });
 
         google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
 
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Dinosaur Valley State Park</h3>"});
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Dinosaur Valley State Park<br />1629 Park Rd 59, Glen Rose, TX 76043</h3>"});
 
         infoWindows.push(infoWindow8);
         
@@ -198,30 +198,29 @@
 
         google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Fort Worth Zoo</h3>"});
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Fort Worth Zoo<br />1989 Colonial Pkwy, Fort Worth, TX 76110</h3>"});
 
         infoWindows.push(infoWindow9);
         
         marker9 = new google.maps.Marker({
-                                position: new google.maps.LatLng(32.7210991, -97.3560309),
+                                position: new google.maps.LatLng(32.7210971, -97.3560292),
                                 options: markerOptions,
                                 title: "Fort Worth Zoo"
                                 });
 
         google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Six Flags Over Texas</h3>"});
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Six Flags Over Texas<br />2201 E Road to Six Flags St, Arlington, TX 76010</h3>"});
 
         infoWindows.push(infoWindow10);
         
         marker10 = new google.maps.Marker({
-                                position: new google.maps.LatLng(32.75322, -97.0724395),
+                                position: new google.maps.LatLng(32.7524928, -97.0699775),
                                 options: markerOptions,
                                 title: "Six Flags Over Texas"
                                 });
 
         google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
-
     </script>
   </head>
   <body>
