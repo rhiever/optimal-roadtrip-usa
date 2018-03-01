@@ -96,152 +96,152 @@
 			}
 		}
 
-		optimal_route = ['400 Broad St, Seattle, WA 98109', '3002 Mt Angeles Rd, Port Angeles, WA 98362', '2864 S. Pacific St., Cannon Beach, OR 97110', '4175 US-101, Tillamook, OR 97141', '855 U.S. 101, Reedsport, OR 97467', 'Golden Gate Bridge, San Francisco, CA 94129', '400 Beach St, Santa Cruz, CA 95060', '886 Cannery Row, Monterey, CA 93940', 'Oceano Dunes State Vehicular Recreation Area, Oceano, CA 93445', '200 Santa Monica Pier A, Santa Monica, CA 90401', '1549 El Prado, San Diego, CA 92101', '85 Pike Street, Seattle, WA 98101']
+		optimal_route = ['400 Beach St, Santa Cruz, CA 95060', '886 Cannery Row, Monterey, CA 93940', 'Oceano Dunes State Vehicular Recreation Area, Oceano, CA 93445', '200 Santa Monica Pier A, Santa Monica, CA 90401', '1549 El Prado, San Diego, CA 92101', '855 U.S. 101, Reedsport, OR 97467', '4175 US-101, Tillamook, OR 97141', '2864 S. Pacific St., Cannon Beach, OR 97110', '3002 Mt Angeles Rd, Port Angeles, WA 98362', 'Seattle Aquarium, Alaskan Way, Seattle, WA', '85 Pike Street, Seattle, WA 98101', 'Golden Gate Bridge, San Francisco, CA 94129']
 		
 		createRoutes(optimal_route);
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 
-        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Seattle Space Needle<br />400  Broad St, Seattle, WA 98109</h3>"});
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Santa Cruz Beach Board Walk<br />400 Beach St, Santa Cruz, CA 95060</h3>"});
 
         infoWindows.push(infoWindow1);
         
         marker1 = new google.maps.Marker({
-                                position: new google.maps.LatLng(47.6204232, -122.3493553),
-                                options: markerOptions,
-                                title: "Seattle Space Needle"
-                                });
-
-        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
-
-        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Olympic National Park<br />3002 Mt Angeles Rd, Port Angeles, WA 98362</h3>"});
-
-        infoWindows.push(infoWindow2);
-        
-        marker2 = new google.maps.Marker({
-                                position: new google.maps.LatLng(47.9691847, -123.4984814),
-                                options: markerOptions,
-                                title: "Olympic National Park"
-                                });
-
-        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
-
-        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Cannon Beach, Haystack Rock<br />2864 S. Pacific St., Cannon Beach, OR 97110</h3>"});
-
-        infoWindows.push(infoWindow3);
-        
-        marker3 = new google.maps.Marker({
-                                position: new google.maps.LatLng(45.8821096, -123.962944),
-                                options: markerOptions,
-                                title: "Cannon Beach, Haystack Rock"
-                                });
-
-        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
-
-        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Tillamook Cheese Factory<br />4175 US-101, Tillamook, OR 97141</h3>"});
-
-        infoWindows.push(infoWindow4);
-        
-        marker4 = new google.maps.Marker({
-                                position: new google.maps.LatLng(45.4850325, -123.8448034),
-                                options: markerOptions,
-                                title: "Tillamook Cheese Factory"
-                                });
-
-        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
-
-        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Oregon Dunes National Recreation Area<br />855 U.S. 101, Reedsport, OR 97467</h3>"});
-
-        infoWindows.push(infoWindow5);
-        
-        marker5 = new google.maps.Marker({
-                                position: new google.maps.LatLng(43.706537, -124.1027681),
-                                options: markerOptions,
-                                title: "Oregon Dunes National Recreation Area"
-                                });
-
-        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
-
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Golden Gate Bridge<br />Golden Gate Bridge, San Francisco, CA 94129</h3>"});
-
-        infoWindows.push(infoWindow6);
-        
-        marker6 = new google.maps.Marker({
-                                position: new google.maps.LatLng(37.8080561, -122.4763625),
-                                options: markerOptions,
-                                title: "Golden Gate Bridge"
-                                });
-
-        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
-
-        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Santa Cruz Beach Board Walk<br />400 Beach St, Santa Cruz, CA 95060</h3>"});
-
-        infoWindows.push(infoWindow7);
-        
-        marker7 = new google.maps.Marker({
                                 position: new google.maps.LatLng(36.9642107, -122.0185246),
                                 options: markerOptions,
                                 title: "Santa Cruz Beach Board Walk"
                                 });
 
-        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
 
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Monterey Bay Aquarium<br />886 Cannery Row, Monterey, CA 93940</h3>"});
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Monterey Bay Aquarium<br />886 Cannery Row, Monterey, CA 93940</h3>"});
 
-        infoWindows.push(infoWindow8);
+        infoWindows.push(infoWindow2);
         
-        marker8 = new google.maps.Marker({
+        marker2 = new google.maps.Marker({
                                 position: new google.maps.LatLng(36.617578, -121.901173),
                                 options: markerOptions,
                                 title: "Monterey Bay Aquarium"
                                 });
 
-        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Pismo Sand Dunes<br />Oceano Dunes State Vehicular Recreation Area, Oceano, CA 93445</h3>"});
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Pismo Sand Dunes<br />Oceano Dunes State Vehicular Recreation Area, Oceano, CA 93445</h3>"});
 
-        infoWindows.push(infoWindow9);
+        infoWindows.push(infoWindow3);
         
-        marker9 = new google.maps.Marker({
+        marker3 = new google.maps.Marker({
                                 position: new google.maps.LatLng(35.1102862, -120.6326629),
                                 options: markerOptions,
                                 title: "Pismo Sand Dunes"
                                 });
 
-        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Santa Monica Pier<br />200 Santa Monica Pier A, Santa Monica, CA 90401</h3>"});
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Santa Monica Pier<br />200 Santa Monica Pier A, Santa Monica, CA 90401</h3>"});
 
-        infoWindows.push(infoWindow10);
+        infoWindows.push(infoWindow4);
         
-        marker10 = new google.maps.Marker({
+        marker4 = new google.maps.Marker({
                                 position: new google.maps.LatLng(34.0100878, -118.4961372),
                                 options: markerOptions,
                                 title: "Santa Monica Pier"
                                 });
 
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Balboa Park<br />1549 El Prado, San Diego, CA 92101</h3>"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.7324985, -117.1492236),
+                                options: markerOptions,
+                                title: "Balboa Park"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Oregon Dunes National Recreation Area<br />855 U.S. 101, Reedsport, OR 97467</h3>"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.706537, -124.1027681),
+                                options: markerOptions,
+                                title: "Oregon Dunes National Recreation Area"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Tillamook Cheese Factory<br />4175 US-101, Tillamook, OR 97141</h3>"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(45.4850325, -123.8448034),
+                                options: markerOptions,
+                                title: "Tillamook Cheese Factory"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Cannon Beach, Haystack Rock<br />2864 S. Pacific St., Cannon Beach, OR 97110</h3>"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(45.8821096, -123.962944),
+                                options: markerOptions,
+                                title: "Cannon Beach, Haystack Rock"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Olympic National Park<br />3002 Mt Angeles Rd, Port Angeles, WA 98362</h3>"});
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
+                                position: new google.maps.LatLng(47.9691847, -123.4984814),
+                                options: markerOptions,
+                                title: "Olympic National Park"
+                                });
+
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Seattle Aquarium<br />1483 Alaskan Way, Seattle, WA 98101</h3>"});
+
+        infoWindows.push(infoWindow10);
+        
+        marker10 = new google.maps.Marker({
+                                position: new google.maps.LatLng(47.607445, -122.3429996),
+                                options: markerOptions,
+                                title: "Seattle Aquarium"
+                                });
+
         google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
 
-        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Balboa Park San Diego<br />1549 El Prado, San Diego, CA 92101</h3>"});
+        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Pike Place Market<br />85 Pike Street, Seattle, WA 98101</h3>"});
 
         infoWindows.push(infoWindow11);
         
         marker11 = new google.maps.Marker({
-                                position: new google.maps.LatLng(32.7324985, -117.1492236),
+                                position: new google.maps.LatLng(47.6084444, -122.3405493),
                                 options: markerOptions,
-                                title: "Balboa Park San Diego"
+                                title: "Pike Place Market"
                                 });
 
         google.maps.event.addListener(marker11, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow11.open(map, marker11); });
 
-        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Pike Place Market<br />85 Pike Street, Seattle, WA 98101</h3>"});
+        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Golden Gate Bridge<br />Golden Gate Bridge, San Francisco, CA 94129</h3>"});
 
         infoWindows.push(infoWindow12);
         
         marker12 = new google.maps.Marker({
-                                position: new google.maps.LatLng(47.6084444, -122.3405493),
+                                position: new google.maps.LatLng(37.8080561, -122.4763625),
                                 options: markerOptions,
-                                title: "Pike Place Market"
+                                title: "Golden Gate Bridge"
                                 });
 
         google.maps.event.addListener(marker12, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow12.open(map, marker12); });
