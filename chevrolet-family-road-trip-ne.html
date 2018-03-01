@@ -96,128 +96,128 @@
 			}
 		}
 
-		optimal_route = ['Coney Island, Brooklyn NY', 'Cape May, New Jersey 08204', '3001 Connecticut Ave NW, Washington, DC 20008', '101 S Henry St, Williamsburg, VA 23185', 'N 6th St & Market St, Philadelphia, PA 19106', '12 Captain Strout Cir, Cape Elizabeth, ME 04107 ', '19 1/2 Washington Square, Salem, MA 01970', '4 Yawkey Way, Boston, MA 02215', '424 Bellevue Ave, Newport, RI 02840', ' 67 River Rd, East Haddam, CT 06423']
+		optimal_route = ['4 Yawkey Way, Boston, MA 02215', '19 1/2 Washington Square, Salem, MA 01970', '12 Captain Strout Cir, Cape Elizabeth, ME 04107 ', 'N 6th St & Market St, Philadelphia, PA 19106', '101 S Henry St, Williamsburg, VA 23185', '3001 Connecticut Ave NW, Washington, DC 20008', 'Cape May, New Jersey 08204', '2300 Southern Blvd, Bronx, NY 10460', ' 67 River Rd, East Haddam, CT 06423', '424 Bellevue Ave, Newport, RI 02840']
 		
 		createRoutes(optimal_route);
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Coney Island<br />Brooklyn, NY</h3>"});
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>Fenway Park<br />4 Yawkey Way, Boston, MA 02215</h3>"});
 
         infoWindows.push(infoWindow1);
         
         marker1 = new google.maps.Marker({
-                                position: new google.maps.LatLng(40.5755438, -73.9707016),
-                                options: markerOptions,
-                                title: "Coney Island"
-                                });
-
-        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
-
-        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Cape May<br />Cape May, New Jersey 08204</h3>"});
-
-        infoWindows.push(infoWindow2);
-        
-        marker2 = new google.maps.Marker({
-                                position: new google.maps.LatLng(38.9351125, -74.90600529999999),
-                                options: markerOptions,
-                                title: "Cape May"
-                                });
-
-        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
-
-        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>National Zoo<br />3001 Connecticut Ave NW, Washington, DC 20008</h3>"});
-
-        infoWindows.push(infoWindow3);
-        
-        marker3 = new google.maps.Marker({
-                                position: new google.maps.LatLng(38.9319273, -77.0524404),
-                                options: markerOptions,
-                                title: "National Zoo"
-                                });
-
-        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
-
-        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Colonial Williamsburg<br />101 S Henry St, Williamsburg, VA 23185</h3>"});
-
-        infoWindows.push(infoWindow4);
-        
-        marker4 = new google.maps.Marker({
-                                position: new google.maps.LatLng(37.2707562, -76.7055796),
-                                options: markerOptions,
-                                title: "Colonial Williamsburg"
-                                });
-
-        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
-
-        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Liberty Bell<br />N 6th St & Market St, Philadelphia, PA 19106</h3>"});
-
-        infoWindows.push(infoWindow5);
-        
-        marker5 = new google.maps.Marker({
-                                position: new google.maps.LatLng(39.9507426, -75.15037459999999),
-                                options: markerOptions,
-                                title: "Liberty Bell"
-                                });
-
-        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
-
-        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Portland Head Light and Fort Williams Park<br />12 Captain Strout Cir, Cape Elizabeth, ME 04107 </h3>"});
-
-        infoWindows.push(infoWindow6);
-        
-        marker6 = new google.maps.Marker({
-                                position: new google.maps.LatLng(43.623104, -70.2081123),
-                                options: markerOptions,
-                                title: "Portland Head Light and Fort Williams Park"
-                                });
-
-        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
-
-        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Salem Witch Museum<br />19 1/2 Washington Square, Salem, MA 01970</h3>"});
-
-        infoWindows.push(infoWindow7);
-        
-        marker7 = new google.maps.Marker({
-                                position: new google.maps.LatLng(42.5237208, -70.8911),
-                                options: markerOptions,
-                                title: "Salem Witch Museum"
-                                });
-
-        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
-
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Fenway Park<br />4 Yawkey Way, Boston, MA 02215</h3>"});
-
-        infoWindows.push(infoWindow8);
-        
-        marker8 = new google.maps.Marker({
                                 position: new google.maps.LatLng(42.34584359999999, -71.09878189999999),
                                 options: markerOptions,
                                 title: "Fenway Park"
                                 });
 
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
+
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Salem Witch Museum<br />19 1/2 Washington Square, Salem, MA 01970</h3>"});
+
+        infoWindows.push(infoWindow2);
+        
+        marker2 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.523651, -70.8910922),
+                                options: markerOptions,
+                                title: "Salem Witch Museum"
+                                });
+
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
+
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Portland Head Light and Fort Williams Park<br />12 Captain Strout Cir, Cape Elizabeth, ME 04107 </h3>"});
+
+        infoWindows.push(infoWindow3);
+        
+        marker3 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.623104, -70.2081123),
+                                options: markerOptions,
+                                title: "Portland Head Light and Fort Williams Park"
+                                });
+
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Liberty Bell<br />N 6th St & Market St, Philadelphia, PA 19106</h3>"});
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9507426, -75.15037459999999),
+                                options: markerOptions,
+                                title: "Liberty Bell"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>Colonial Williamsburg<br />101 S Henry St, Williamsburg, VA 23185</h3>"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(37.2707562, -76.7055796),
+                                options: markerOptions,
+                                title: "Colonial Williamsburg"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>National Zoo<br />3001 Connecticut Ave NW, Washington, DC 20008</h3>"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.9319273, -77.0524404),
+                                options: markerOptions,
+                                title: "National Zoo"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>Cape May<br />Cape May, New Jersey 08204</h3>"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.9351125, -74.90600529999999),
+                                options: markerOptions,
+                                title: "Cape May"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>The Bronx Zoo<br />2300 Southern Blvd, Bronx, NY 10460</h3>"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.8502883, -73.8786113),
+                                options: markerOptions,
+                                title: "The Bronx Zoo"
+                                });
+
         google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Newport Mansions<br />424 Bellevue Ave, Newport, RI 02840</h3>"});
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Gillette Castle State Park<br />67 River Rd, East Haddam, CT 06423</h3>"});
 
         infoWindows.push(infoWindow9);
         
         marker9 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.4749879, -71.3073161),
+                                position: new google.maps.LatLng(41.4271657, -72.4286718),
                                 options: markerOptions,
-                                title: "Newport Mansions"
+                                title: "Gillette Castle State Park"
                                 });
 
         google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Gillette Castle State Park<br />67 River Rd, East Haddam, CT 06423</h3>"});
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Newport Mansions<br />424 Bellevue Ave, Newport, RI 02840</h3>"});
 
         infoWindows.push(infoWindow10);
         
         marker10 = new google.maps.Marker({
-                                position: new google.maps.LatLng(41.4271657, -72.4286718),
+                                position: new google.maps.LatLng(41.4750152, -71.3072335),
                                 options: markerOptions,
-                                title: "Gillette Castle State Park"
+                                title: "Newport Mansions"
                                 });
 
         google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
@@ -226,6 +226,6 @@
   </head>
   <body>
     <div id="map-canvas"></div>
-    <a href="https://www.chevrolet.com/"><img src="images/chevrolet-logo.png" width="400px"  style="position: absolute; bottom: 35px; left: 7px;" /></a>
+    <!-- <a href="https://www.chevrolet.com/"><img src="images/chevrolet-logo.png" width="400px"  style="position: absolute; bottom: 35px; left: 7px;" /></a> -->
   </body>
 </html>
