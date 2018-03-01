@@ -28,7 +28,7 @@
     <script>
 		var routes_list = [];
 		
-		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10;
+		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11;
 		var infoWindows = [];
 		
 		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
@@ -48,7 +48,7 @@
 		  for (i=0; i<routes_list.length; i++) {
 		  	routes_list[i].setMap(map);
 		  }
-		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map);
+		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map); marker11.setMap(map);
 		}
 
 		function calcRoute(start, end, routes) {
@@ -96,7 +96,7 @@
 			}
 		}
 
-		optimal_route = ['2350 McGregor Blvd, Ft. Myers, FL 33901', '1241 Gulf Blvd, Clearwater, FL 33767', '5145 Harvey Tew Rd, Plant City, FL 33565', '1486 Buena Vista Dr, Lake Buena Vista, FL 32830', '12 N Ocean Ave, Daytona Beach, FL 32118', '28.52330, -80.68190', '12943 61st St N, West Palm Beach, FL 33412', '3251 S Miami Ave, Miami, FL 33129', 'Calle Ocho Walk of Fame, SW 8th St, Miami, FL 33135', '375 Sanctuary Rd W, Naples, FL 34120']
+		optimal_route = ['1486 Buena Vista Dr, Lake Buena Vista, FL 32830', '5145 Harvey Tew Rd, Plant City, FL 33565', '1241 Gulf Blvd, Clearwater, FL 33767', '2350 McGregor Blvd, Ft. Myers, FL 33901', '375 Sanctuary Rd W, Naples, FL 34120', '3251 S Miami Ave, Miami, FL 33129', 'Calle Ocho Walk of Fame, SW 8th St, Miami, FL 33135', 'Butterfly World, West Sample Road, Coconut Creek, FL', '12943 61st St N, West Palm Beach, FL 33412', '28.52330, -80.68190', '12 N Ocean Ave, Daytona Beach, FL 32118']
 		
 		createRoutes(optimal_route);
 
@@ -119,7 +119,7 @@
         infoWindows.push(infoWindow2);
         
         marker2 = new google.maps.Marker({
-                                position: new google.maps.LatLng(28.0281155, -82.19323399999999),
+                                position: new google.maps.LatLng(28.028151, -82.189472),
                                 options: markerOptions,
                                 title: "Dinosaur World"
                                 });
@@ -186,41 +186,54 @@
 
         google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
 
-        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>McCarthy's Wildlife Sanctuary<br />12943 61st St N, West Palm Beach, FL 33412</h3>"});
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Butterfly World<br />3600 W Sample Rd, Coconut Creek, FL 33073</h3>"});
 
         infoWindows.push(infoWindow8);
         
         marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(26.2685822, -80.17165709999999),
+                                options: markerOptions,
+                                title: "Butterfly World"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>McCarthy's Wildlife Sanctuary<br />12943 61st St N, West Palm Beach, FL 33412</h3>"});
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
                                 position: new google.maps.LatLng(26.7675426, -80.2458322),
                                 options: markerOptions,
                                 title: "McCarthy's Wildlife Sanctuary"
                                 });
 
-        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
 
-        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Kennedy Space Center<br />Kennedy Space Center, SR 405, Titusville, FL 32899</h3>"});
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Kennedy Space Center<br />Kennedy Space Center, SR 405, Titusville, FL 32899</h3>"});
 
-        infoWindows.push(infoWindow9);
+        infoWindows.push(infoWindow10);
         
-        marker9 = new google.maps.Marker({
+        marker10 = new google.maps.Marker({
                                 position: new google.maps.LatLng(28.5228717, -80.6811361),
                                 options: markerOptions,
                                 title: "Kennedy Space Center"
                                 });
 
-        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
 
-        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Daytona Beach Boardwalk<br />12 N Ocean Ave, Daytona Beach, FL 32118</h3>"});
+        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>Daytona Beach Boardwalk<br />12 N Ocean Ave, Daytona Beach, FL 32118</h3>"});
 
-        infoWindows.push(infoWindow10);
+        infoWindows.push(infoWindow11);
         
-        marker10 = new google.maps.Marker({
+        marker11 = new google.maps.Marker({
                                 position: new google.maps.LatLng(29.23296819999999, -81.0100071),
                                 options: markerOptions,
                                 title: "Daytona Beach Boardwalk"
                                 });
 
-        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
+        google.maps.event.addListener(marker11, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow11.open(map, marker11); });
+
     </script>
   </head>
   <body>
