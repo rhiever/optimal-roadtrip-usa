@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="An optimized college football trip where you will see 90 Division 1 FBS teams play in 51 football games over a 3 1/2 month period in 2018.">
+    <meta name="author" content="Randal S. Olson">
+    
+    <title>Optimized college football trip for the 2018 season</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+		var routes_list = [];
+		
+		var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30, marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40, marker41, marker42, marker43, marker44, marker45, marker46, marker47, marker48, marker49, marker50, marker51;
+		var infoWindows = [];
+		
+		var markerOptions = {icon: "http://maps.gstatic.com/mapfiles/markers2/marker.png"};
+		var routeMarkerOptions = {visible: false, zIndex: 0};
+		var directionsDisplayOptions = {preserveViewport: true,
+										markerOptions: routeMarkerOptions};
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+		  var center = new google.maps.LatLng(39.833589, -98.583312);
+		  var mapOptions = {
+			zoom: 5.5,
+			center: center
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  for (i=0; i<routes_list.length; i++) {
+		  	routes_list[i].setMap(map);
+		  }
+		  marker1.setMap(map); marker2.setMap(map); marker3.setMap(map); marker4.setMap(map); marker5.setMap(map); marker6.setMap(map); marker7.setMap(map); marker8.setMap(map); marker9.setMap(map); marker10.setMap(map); marker11.setMap(map); marker12.setMap(map); marker13.setMap(map); marker14.setMap(map); marker15.setMap(map); marker16.setMap(map); marker17.setMap(map); marker18.setMap(map); marker19.setMap(map); marker20.setMap(map); marker21.setMap(map); marker22.setMap(map); marker23.setMap(map); marker24.setMap(map); marker25.setMap(map); marker26.setMap(map); marker27.setMap(map); marker28.setMap(map); marker29.setMap(map); marker30.setMap(map); marker31.setMap(map); marker32.setMap(map); marker33.setMap(map); marker34.setMap(map); marker35.setMap(map); marker36.setMap(map); marker37.setMap(map); marker38.setMap(map); marker39.setMap(map); marker40.setMap(map); marker41.setMap(map); marker42.setMap(map); marker43.setMap(map); marker44.setMap(map); marker45.setMap(map); marker46.setMap(map); marker47.setMap(map); marker48.setMap(map); marker49.setMap(map); marker50.setMap(map); marker51.setMap(map);
+		}
+
+		function calcRoute(start, end, routes) {
+		  
+		  var directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOptions);
+
+		  var waypts = [];
+		  for (var i = 0; i < routes.length; i++) {
+		  	waypts.push({
+		  	  location:routes[i],
+		  	  stopover:true});
+		  	}
+		  
+		  var request = {
+			  origin: start,
+			  destination: end,
+			  waypoints: waypts,
+			  optimizeWaypoints: false,
+			  travelMode: google.maps.TravelMode.DRIVING
+		  };
+
+		  directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);		
+			}
+		  });
+
+		  routes_list.push(directionsDisplay);
+		}
+
+		function createRoutes(route) {
+			// Google's free map API is limited to 10 waypoints, so need to break into batches
+			route.push(route[0]);
+			var subset = 0;
+			while (subset < route.length) {
+				var waypointSubset = route.slice(subset, subset + 10);
+
+				var startPoint = waypointSubset[0];
+				var midPoints = waypointSubset.slice(1, waypointSubset.length - 1);
+				var endPoint = waypointSubset[waypointSubset.length - 1];
+
+				calcRoute(startPoint, endPoint, midPoints);
+
+				subset += 9;
+			}
+		}
+
+		//optimal_route = []
+		
+		//createRoutes(optimal_route);
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+        var infoWindow1 = new google.maps.InfoWindow({ content: "<h3>New Mexico State Aggies vs. Wyoming Cowboys</h3><br />August 25, 2018<br />Aggie Memorial Stadium, Las Cruces, NM"});
+
+        infoWindows.push(infoWindow1);
+        
+        marker1 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.2794858, -106.7417134),
+                                options: markerOptions,
+                                title: "New Mexico State Aggies vs. Wyoming Cowboys"
+                                });
+
+        google.maps.event.addListener(marker1, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow1.open(map, marker1); });
+
+        var infoWindow2 = new google.maps.InfoWindow({ content: "<h3>Purdue Boilermakers vs. Northwestern Wildcats</h3><br />August 30, 2018<br />Ross-Ade Stadium, West Lafayette, IN"});
+
+        infoWindows.push(infoWindow2);
+        
+        marker2 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.43522530000001, -86.9186843),
+                                options: markerOptions,
+                                title: "Purdue Boilermakers vs. Northwestern Wildcats"
+                                });
+
+        google.maps.event.addListener(marker2, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow2.open(map, marker2); });
+
+        var infoWindow3 = new google.maps.InfoWindow({ content: "<h3>Wisconsin Badgers vs. Western Kentucky Hilltoppers</h3><br />August 31, 2018<br />Camp Randall Stadium, Madison, WI"});
+
+        infoWindows.push(infoWindow3);
+        
+        marker3 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.06994, -89.4126943),
+                                options: markerOptions,
+                                title: "Wisconsin Badgers vs. Western Kentucky Hilltoppers"
+                                });
+
+        google.maps.event.addListener(marker3, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow3.open(map, marker3); });
+
+        var infoWindow4 = new google.maps.InfoWindow({ content: "<h3>Notre Dame Fighting Irish vs. Michigan Wolverines</h3><br />September 1, 2018<br />Notre Dame Stadium, Notre Dame, IN"});
+
+        infoWindows.push(infoWindow4);
+        
+        marker4 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.6983757, -86.23392849999999),
+                                options: markerOptions,
+                                title: "Notre Dame Fighting Irish vs. Michigan Wolverines"
+                                });
+
+        google.maps.event.addListener(marker4, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow4.open(map, marker4); });
+
+        var infoWindow5 = new google.maps.InfoWindow({ content: "<h3>LSU Tigers vs. Miami Hurricanes</h3><br />September 2, 2018<br />AT&T Stadium, Arlington, TX"});
+
+        infoWindows.push(infoWindow5);
+        
+        marker5 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.7472844, -97.09449389999999),
+                                options: markerOptions,
+                                title: "LSU Tigers vs. Miami Hurricanes"
+                                });
+
+        google.maps.event.addListener(marker5, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow5.open(map, marker5); });
+
+        var infoWindow6 = new google.maps.InfoWindow({ content: "<h3>Florida State Seminoles vs. Virginia Tech Hokies</h3><br />September 3, 2018<br />Doak Campbell Stadium, Tallahassee, FL"});
+
+        infoWindows.push(infoWindow6);
+        
+        marker6 = new google.maps.Marker({
+                                position: new google.maps.LatLng(30.4381531, -84.3044201),
+                                options: markerOptions,
+                                title: "Florida State Seminoles vs. Virginia Tech Hokies"
+                                });
+
+        google.maps.event.addListener(marker6, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow6.open(map, marker6); });
+
+        var infoWindow7 = new google.maps.InfoWindow({ content: "<h3>SMU Mustangs vs. TCU Horned Frogs</h3><br />September 7, 2018<br />Gerald J. Ford Stadium, Dallas, TX"});
+
+        infoWindows.push(infoWindow7);
+        
+        marker7 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.8377223, -96.7827859),
+                                options: markerOptions,
+                                title: "SMU Mustangs vs. TCU Horned Frogs"
+                                });
+
+        google.maps.event.addListener(marker7, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow7.open(map, marker7); });
+
+        var infoWindow8 = new google.maps.InfoWindow({ content: "<h3>Texas A&M Aggies vs. Clemson Tigers</h3><br />September 8, 2018<br />Kyle Field, College Station, TX"});
+
+        infoWindows.push(infoWindow8);
+        
+        marker8 = new google.maps.Marker({
+                                position: new google.maps.LatLng(30.6102331, -96.3409787),
+                                options: markerOptions,
+                                title: "Texas A&M Aggies vs. Clemson Tigers"
+                                });
+
+        google.maps.event.addListener(marker8, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow8.open(map, marker8); });
+
+        var infoWindow9 = new google.maps.InfoWindow({ content: "<h3>Wake Forest Demon Deacons vs. Boston College Eagles</h3><br />September 13, 2018<br />BB&T Field, Winston-salem, NC"});
+
+        infoWindows.push(infoWindow9);
+        
+        marker9 = new google.maps.Marker({
+                                position: new google.maps.LatLng(36.13057209999999, -80.2545483),
+                                options: markerOptions,
+                                title: "Wake Forest Demon Deacons vs. Boston College Eagles"
+                                });
+
+        google.maps.event.addListener(marker9, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow9.open(map, marker9); });
+
+        var infoWindow10 = new google.maps.InfoWindow({ content: "<h3>Memphis Tigers vs. Georgia State Panthers</h3><br />September 14, 2018<br />Liberty Bowl Memorial Stadium, Memphis, TN"});
+
+        infoWindows.push(infoWindow10);
+        
+        marker10 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.1209429, -89.977147),
+                                options: markerOptions,
+                                title: "Memphis Tigers vs. Georgia State Panthers"
+                                });
+
+        google.maps.event.addListener(marker10, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow10.open(map, marker10); });
+
+        var infoWindow11 = new google.maps.InfoWindow({ content: "<h3>South Carolina Gamecocks vs. Marshall Thundering Herd</h3><br />September 15, 2018<br />Williams-Brice Stadium, Columbia, SC"});
+
+        infoWindows.push(infoWindow11);
+        
+        marker11 = new google.maps.Marker({
+                                position: new google.maps.LatLng(33.973077, -81.0190746),
+                                options: markerOptions,
+                                title: "South Carolina Gamecocks vs. Marshall Thundering Herd"
+                                });
+
+        google.maps.event.addListener(marker11, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow11.open(map, marker11); });
+
+        var infoWindow12 = new google.maps.InfoWindow({ content: "<h3>Temple Owls vs. Tulsa Golden Hurricane</h3><br />September 20, 2018<br />Lincoln Financial Field, Philadelphia, PA"});
+
+        infoWindows.push(infoWindow12);
+        
+        marker12 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9007674, -75.1674635),
+                                options: markerOptions,
+                                title: "Temple Owls vs. Tulsa Golden Hurricane"
+                                });
+
+        google.maps.event.addListener(marker12, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow12.open(map, marker12); });
+
+        var infoWindow13 = new google.maps.InfoWindow({ content: "<h3>Illinois Fighting Illini vs. Penn State Nittany Lions</h3><br />September 21, 2018<br />Memorial Stadium, Champaign, IL"});
+
+        infoWindows.push(infoWindow13);
+        
+        marker13 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.0991869, -88.2359556),
+                                options: markerOptions,
+                                title: "Illinois Fighting Illini vs. Penn State Nittany Lions"
+                                });
+
+        google.maps.event.addListener(marker13, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow13.open(map, marker13); });
+
+        var infoWindow14 = new google.maps.InfoWindow({ content: "<h3>Auburn Tigers vs. Arkansas Razorbacks</h3><br />September 22, 2018<br />Jordan-Hare Stadium, Auburn, AL"});
+
+        infoWindows.push(infoWindow14);
+        
+        marker14 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.6022279, -85.4890772),
+                                options: markerOptions,
+                                title: "Auburn Tigers vs. Arkansas Razorbacks"
+                                });
+
+        google.maps.event.addListener(marker14, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow14.open(map, marker14); });
+
+        var infoWindow15 = new google.maps.InfoWindow({ content: "<h3>Miami Hurricanes vs. North Carolina Tar Heels</h3><br />September 27, 2018<br />Hard Rock Stadium, Miami, FL"});
+
+        infoWindows.push(infoWindow15);
+        
+        marker15 = new google.maps.Marker({
+                                position: new google.maps.LatLng(25.9579665, -80.2388604),
+                                options: markerOptions,
+                                title: "Miami Hurricanes vs. North Carolina Tar Heels"
+                                });
+
+        google.maps.event.addListener(marker15, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow15.open(map, marker15); });
+
+        var infoWindow16 = new google.maps.InfoWindow({ content: "<h3>Colorado Buffaloes vs. UCLA Bruins</h3><br />September 28, 2018<br />Folsom Field, Boulder, CO"});
+
+        infoWindows.push(infoWindow16);
+        
+        marker16 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.0094746, -105.266905),
+                                options: markerOptions,
+                                title: "Colorado Buffaloes vs. UCLA Bruins"
+                                });
+
+        google.maps.event.addListener(marker16, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow16.open(map, marker16); });
+
+        var infoWindow17 = new google.maps.InfoWindow({ content: "<h3>Kansas Jayhawks vs. Oklahoma State Cowboys</h3><br />September 29, 2018<br />Memorial Stadium, Lawrence, KS"});
+
+        infoWindows.push(infoWindow17);
+        
+        marker17 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.9629418, -95.2463686),
+                                options: markerOptions,
+                                title: "Kansas Jayhawks vs. Oklahoma State Cowboys"
+                                });
+
+        google.maps.event.addListener(marker17, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow17.open(map, marker17); });
+
+        var infoWindow18 = new google.maps.InfoWindow({ content: "<h3>Houston Cougars vs. Tulsa Golden Hurricane</h3><br />October 4, 2018<br />TDECU Stadium, Houston, TX"});
+
+        infoWindows.push(infoWindow18);
+        
+        marker18 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.72198849999999, -95.34916229999999),
+                                options: markerOptions,
+                                title: "Houston Cougars vs. Tulsa Golden Hurricane"
+                                });
+
+        google.maps.event.addListener(marker18, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow18.open(map, marker18); });
+
+        var infoWindow19 = new google.maps.InfoWindow({ content: "<h3>BYU Cougars vs. Utah State Aggies</h3><br />October 5, 2018<br />LaVell Edwards Stadium, Provo, UT"});
+
+        infoWindows.push(infoWindow19);
+        
+        marker19 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.2572768, -111.6545582),
+                                options: markerOptions,
+                                title: "BYU Cougars vs. Utah State Aggies"
+                                });
+
+        google.maps.event.addListener(marker19, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow19.open(map, marker19); });
+
+        var infoWindow20 = new google.maps.InfoWindow({ content: "<h3>Oklahoma Sooners vs. Texas Longhorns</h3><br />October 6, 2018<br />Cotton Bowl, Dallas, TX"});
+
+        infoWindows.push(infoWindow20);
+        
+        marker20 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.7795083, -96.7595489),
+                                options: markerOptions,
+                                title: "Oklahoma Sooners vs. Texas Longhorns"
+                                });
+
+        google.maps.event.addListener(marker20, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow20.open(map, marker20); });
+
+        var infoWindow21 = new google.maps.InfoWindow({ content: "<h3>Arkansas State Red Wolves vs. Appalachian State Mountaineers</h3><br />October 9, 2018<br />Centennial Bank Stadium, Jonesboro, AR"});
+
+        infoWindows.push(infoWindow21);
+        
+        marker21 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.8489841, -90.66752129999999),
+                                options: markerOptions,
+                                title: "Arkansas State Red Wolves vs. Appalachian State Mountaineers"
+                                });
+
+        google.maps.event.addListener(marker21, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow21.open(map, marker21); });
+
+        var infoWindow22 = new google.maps.InfoWindow({ content: "<h3>Texas State Bobcats vs. Georgia Southern Eagles</h3><br />October 11, 2018<br />Bobcat Stadium, San Marcos, TX"});
+
+        infoWindows.push(infoWindow22);
+        
+        marker22 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.8910008, -97.92557350000001),
+                                options: markerOptions,
+                                title: "Texas State Bobcats vs. Georgia Southern Eagles"
+                                });
+
+        google.maps.event.addListener(marker22, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow22.open(map, marker22); });
+
+        var infoWindow23 = new google.maps.InfoWindow({ content: "<h3>Utah Utes vs. Arizona Wildcats</h3><br />October 12, 2018<br />Rice-Eccles Stadium, Salt Lake City, UT"});
+
+        infoWindows.push(infoWindow23);
+        
+        marker23 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.75975, -111.8490319),
+                                options: markerOptions,
+                                title: "Utah Utes vs. Arizona Wildcats"
+                                });
+
+        google.maps.event.addListener(marker23, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow23.open(map, marker23); });
+
+        var infoWindow24 = new google.maps.InfoWindow({ content: "<h3>Georgia Tech Yellow Jackets vs. Duke Blue Devils</h3><br />October 13, 2018<br />Bobby Dodd Stadium, Atlanta, GA"});
+
+        infoWindows.push(infoWindow24);
+        
+        marker24 = new google.maps.Marker({
+                                position: new google.maps.LatLng(33.7724449, -84.3928054),
+                                options: markerOptions,
+                                title: "Georgia Tech Yellow Jackets vs. Duke Blue Devils"
+                                });
+
+        google.maps.event.addListener(marker24, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow24.open(map, marker24); });
+
+        var infoWindow25 = new google.maps.InfoWindow({ content: "<h3>Arizona State Sun Devils vs. Stanford Cardinal</h3><br />October 18, 2018<br />Sun Devil Stadium, Tempe, AZ"});
+
+        infoWindows.push(infoWindow25);
+        
+        marker25 = new google.maps.Marker({
+                                position: new google.maps.LatLng(33.4262239, -111.9326491),
+                                options: markerOptions,
+                                title: "Arizona State Sun Devils vs. Stanford Cardinal"
+                                });
+
+        google.maps.event.addListener(marker25, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow25.open(map, marker25); });
+
+        var infoWindow26 = new google.maps.InfoWindow({ content: "<h3>Boise State Broncos vs. Colorado State Rams</h3><br />October 19, 2018<br />Albertsons Stadium, Boise, ID"});
+
+        infoWindows.push(infoWindow26);
+        
+        marker26 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.6028673, -116.195832),
+                                options: markerOptions,
+                                title: "Boise State Broncos vs. Colorado State Rams"
+                                });
+
+        google.maps.event.addListener(marker26, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow26.open(map, marker26); });
+
+        var infoWindow27 = new google.maps.InfoWindow({ content: "<h3>Tennessee Volunteers vs. Alabama Crimson Tide</h3><br />October 20, 2018<br />Neyland Stadium, Knoxville, TN"});
+
+        infoWindows.push(infoWindow27);
+        
+        marker27 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.9550131, -83.92501279999999),
+                                options: markerOptions,
+                                title: "Tennessee Volunteers vs. Alabama Crimson Tide"
+                                });
+
+        google.maps.event.addListener(marker27, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow27.open(map, marker27); });
+
+        var infoWindow28 = new google.maps.InfoWindow({ content: "<h3>South Alabama Jaguars vs. Troy Trojans</h3><br />October 23, 2018<br />Ladd-Peebles Stadium, Mobile, AL"});
+
+        infoWindows.push(infoWindow28);
+        
+        marker28 = new google.maps.Marker({
+                                position: new google.maps.LatLng(30.6730374, -88.07557039999999),
+                                options: markerOptions,
+                                title: "South Alabama Jaguars vs. Troy Trojans"
+                                });
+
+        google.maps.event.addListener(marker28, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow28.open(map, marker28); });
+
+        var infoWindow29 = new google.maps.InfoWindow({ content: "<h3>West Virginia Mountaineers vs. Baylor Bears</h3><br />October 25, 2018<br />Milan Puskar Stadium, Morgantown, WV"});
+
+        infoWindows.push(infoWindow29);
+        
+        marker29 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.6502744, -79.95518729999999),
+                                options: markerOptions,
+                                title: "West Virginia Mountaineers vs. Baylor Bears"
+                                });
+
+        google.maps.event.addListener(marker29, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow29.open(map, marker29); });
+
+        var infoWindow30 = new google.maps.InfoWindow({ content: "<h3>Minnesota Golden Gophers vs. Indiana Hoosiers</h3><br />October 26, 2018<br />TCF Bank Stadium, Minneapolis, MN"});
+
+        infoWindows.push(infoWindow30);
+        
+        marker30 = new google.maps.Marker({
+                                position: new google.maps.LatLng(44.976525, -93.22454619999999),
+                                options: markerOptions,
+                                title: "Minnesota Golden Gophers vs. Indiana Hoosiers"
+                                });
+
+        google.maps.event.addListener(marker30, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow30.open(map, marker30); });
+
+        var infoWindow31 = new google.maps.InfoWindow({ content: "<h3>Georgia Bulldogs vs. Florida Gators</h3><br />October 27, 2018<br />EverBank Field, Jacksonville, FL"});
+
+        infoWindows.push(infoWindow31);
+        
+        marker31 = new google.maps.Marker({
+                                position: new google.maps.LatLng(30.323972, -81.63728929999999),
+                                options: markerOptions,
+                                title: "Georgia Bulldogs vs. Florida Gators"
+                                });
+
+        google.maps.event.addListener(marker31, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow31.open(map, marker31); });
+
+        var infoWindow32 = new google.maps.InfoWindow({ content: "<h3>Bowling Green Falcons vs. Kent State Golden Flashes</h3><br />October 30, 2018<br />Doyt Perry Stadium, Bowling Green, OH"});
+
+        infoWindows.push(infoWindow32);
+        
+        marker32 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.3780114, -83.6225),
+                                options: markerOptions,
+                                title: "Bowling Green Falcons vs. Kent State Golden Flashes"
+                                });
+
+        google.maps.event.addListener(marker32, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow32.open(map, marker32); });
+
+        var infoWindow33 = new google.maps.InfoWindow({ content: "<h3>Toledo Rockets vs. Ball State Cardinals</h3><br />October 31, 2018<br />Glass Bowl, Toledo, OH"});
+
+        infoWindows.push(infoWindow33);
+        
+        marker33 = new google.maps.Marker({
+                                position: new google.maps.LatLng(41.6574777, -83.6135652),
+                                options: markerOptions,
+                                title: "Toledo Rockets vs. Ball State Cardinals"
+                                });
+
+        google.maps.event.addListener(marker33, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow33.open(map, marker33); });
+
+        var infoWindow34 = new google.maps.InfoWindow({ content: "<h3>UCF Knights vs. Temple Owls</h3><br />November 1, 2018<br />Spectrum Stadium, Orlando, FL"});
+
+        infoWindows.push(infoWindow34);
+        
+        marker34 = new google.maps.Marker({
+                                position: new google.maps.LatLng(28.6082145, -81.1926196),
+                                options: markerOptions,
+                                title: "UCF Knights vs. Temple Owls"
+                                });
+
+        google.maps.event.addListener(marker34, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow34.open(map, marker34); });
+
+        var infoWindow35 = new google.maps.InfoWindow({ content: "<h3>Virginia Cavaliers vs. Pittsburgh Panthers</h3><br />November 2, 2018<br />Scott Stadium, Charlottesville, VA"});
+
+        infoWindows.push(infoWindow35);
+        
+        marker35 = new google.maps.Marker({
+                                position: new google.maps.LatLng(38.0311032, -78.5136879),
+                                options: markerOptions,
+                                title: "Virginia Cavaliers vs. Pittsburgh Panthers"
+                                });
+
+        google.maps.event.addListener(marker35, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow35.open(map, marker35); });
+
+        var infoWindow36 = new google.maps.InfoWindow({ content: "<h3>Ohio State Buckeyes vs. Nebraska Cornhuskers</h3><br />November 3, 2018<br />Ohio Stadium, Columbus, OH"});
+
+        infoWindows.push(infoWindow36);
+        
+        marker36 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.00165760000001, -83.01972789999999),
+                                options: markerOptions,
+                                title: "Ohio State Buckeyes vs. Nebraska Cornhuskers"
+                                });
+
+        google.maps.event.addListener(marker36, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow36.open(map, marker36); });
+
+        var infoWindow37 = new google.maps.InfoWindow({ content: "<h3>Buffalo Bulls vs. Kent State Golden Flashes</h3><br />November 6, 2018<br />UB Stadium, Buffalo, NY"});
+
+        infoWindows.push(infoWindow37);
+        
+        marker37 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.99913340000001, -78.7775113),
+                                options: markerOptions,
+                                title: "Buffalo Bulls vs. Kent State Golden Flashes"
+                                });
+
+        google.maps.event.addListener(marker37, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow37.open(map, marker37); });
+
+        var infoWindow38 = new google.maps.InfoWindow({ content: "<h3>Miami (OH) RedHawks vs. Ohio Bobcats</h3><br />November 7, 2018<br />Yager Stadium, Oxford, OH"});
+
+        infoWindows.push(infoWindow38);
+        
+        marker38 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.5195186, -84.7329379),
+                                options: markerOptions,
+                                title: "Miami (OH) RedHawks vs. Ohio Bobcats"
+                                });
+
+        google.maps.event.addListener(marker38, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow38.open(map, marker38); });
+
+        var infoWindow39 = new google.maps.InfoWindow({ content: "<h3>NC State Wolfpack vs. Wake Forest Demon Deacons</h3><br />November 8, 2018<br />Carter-Finley Stadium, Raleigh, NC"});
+
+        infoWindows.push(infoWindow39);
+        
+        marker39 = new google.maps.Marker({
+                                position: new google.maps.LatLng(35.8008001, -78.7195655),
+                                options: markerOptions,
+                                title: "NC State Wolfpack vs. Wake Forest Demon Deacons"
+                                });
+
+        google.maps.event.addListener(marker39, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow39.open(map, marker39); });
+
+        var infoWindow40 = new google.maps.InfoWindow({ content: "<h3>Syracuse Orange vs. Louisville Cardinals</h3><br />November 9, 2018<br />Carrier Dome, Syracuse, NY"});
+
+        infoWindows.push(infoWindow40);
+        
+        marker40 = new google.maps.Marker({
+                                position: new google.maps.LatLng(43.0362269, -76.1363161),
+                                options: markerOptions,
+                                title: "Syracuse Orange vs. Louisville Cardinals"
+                                });
+
+        google.maps.event.addListener(marker40, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow40.open(map, marker40); });
+
+        var infoWindow41 = new google.maps.InfoWindow({ content: "<h3>USC Trojans vs. California Golden Bears</h3><br />November 10, 2018<br />Los Angeles Memorial Coliseum, Los Angeles, CA"});
+
+        infoWindows.push(infoWindow41);
+        
+        marker41 = new google.maps.Marker({
+                                position: new google.maps.LatLng(34.0140526, -118.2878754),
+                                options: markerOptions,
+                                title: "USC Trojans vs. California Golden Bears"
+                                });
+
+        google.maps.event.addListener(marker41, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow41.open(map, marker41); });
+
+        var infoWindow42 = new google.maps.InfoWindow({ content: "<h3>Ball State Cardinals vs. Western Michigan Broncos</h3><br />November 13, 2018<br />Scheumann Stadium, Muncie, IN"});
+
+        infoWindows.push(infoWindow42);
+        
+        marker42 = new google.maps.Marker({
+                                position: new google.maps.LatLng(40.215998, -85.416771),
+                                options: markerOptions,
+                                title: "Ball State Cardinals vs. Western Michigan Broncos"
+                                });
+
+        google.maps.event.addListener(marker42, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow42.open(map, marker42); });
+
+        var infoWindow43 = new google.maps.InfoWindow({ content: "<h3>Ohio Bobcats vs. Buffalo Bulls</h3><br />November 14, 2018<br />Peden Stadium, Athens, OH"});
+
+        infoWindows.push(infoWindow43);
+        
+        marker43 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.3210165, -82.1029537),
+                                options: markerOptions,
+                                title: "Ohio Bobcats vs. Buffalo Bulls"
+                                });
+
+        google.maps.event.addListener(marker43, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow43.open(map, marker43); });
+
+        var infoWindow44 = new google.maps.InfoWindow({ content: "<h3>Houston Cougars vs. Tulane Green Wave</h3><br />November 15, 2018<br />TDECU Stadium, Houston, TX"});
+
+        infoWindows.push(infoWindow44);
+        
+        marker44 = new google.maps.Marker({
+                                position: new google.maps.LatLng(29.72195877801149, -95.34906695083768),
+                                options: markerOptions,
+                                title: "Houston Cougars vs. Tulane Green Wave"
+                                });
+
+        google.maps.event.addListener(marker44, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow44.open(map, marker44); });
+
+        var infoWindow45 = new google.maps.InfoWindow({ content: "<h3>SMU Mustangs vs. Memphis Tigers</h3><br />November 16, 2018<br />Gerald J. Ford Stadium, Dallas, TX"});
+
+        infoWindows.push(infoWindow45);
+        
+        marker45 = new google.maps.Marker({
+                                position: new google.maps.LatLng(32.8376894622777, -96.78268911721409),
+                                options: markerOptions,
+                                title: "SMU Mustangs vs. Memphis Tigers"
+                                });
+
+        google.maps.event.addListener(marker45, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow45.open(map, marker45); });
+
+        var infoWindow46 = new google.maps.InfoWindow({ content: "<h3>Kansas State Wildcats vs. Texas Tech Red Raiders</h3><br />November 17, 2018<br />Bill Snyder Family Stadium, Manhattan, KS"});
+
+        infoWindows.push(infoWindow46);
+        
+        marker46 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.2020041, -96.5938552),
+                                options: markerOptions,
+                                title: "Kansas State Wildcats vs. Texas Tech Red Raiders"
+                                });
+
+        google.maps.event.addListener(marker46, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow46.open(map, marker46); });
+
+        var infoWindow47 = new google.maps.InfoWindow({ content: "<h3>Western Michigan Broncos vs. Northern Illinois Huskies</h3><br />November 20, 2018<br />Waldo Stadium, Kalamazoo, MI"});
+
+        infoWindows.push(infoWindow47);
+        
+        marker47 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.2860064, -85.6007573),
+                                options: markerOptions,
+                                title: "Western Michigan Broncos vs. Northern Illinois Huskies"
+                                });
+
+        google.maps.event.addListener(marker47, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow47.open(map, marker47); });
+
+        var infoWindow48 = new google.maps.InfoWindow({ content: "<h3>Ole Miss Rebels vs. Mississippi State Bulldogs</h3><br />November 22, 2018<br />Vaught-Hemingway Stadium, Oxford, MS"});
+
+        infoWindows.push(infoWindow48);
+        
+        marker48 = new google.maps.Marker({
+                                position: new google.maps.LatLng(34.3619837, -89.53420760000002),
+                                options: markerOptions,
+                                title: "Ole Miss Rebels vs. Mississippi State Bulldogs"
+                                });
+
+        google.maps.event.addListener(marker48, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow48.open(map, marker48); });
+
+        var infoWindow49 = new google.maps.InfoWindow({ content: "<h3>Washington State Cougars vs. Washington Huskies</h3><br />November 23, 2018<br />Martin Stadium, Pullman, WA"});
+
+        infoWindows.push(infoWindow49);
+        
+        marker49 = new google.maps.Marker({
+                                position: new google.maps.LatLng(46.731831, -117.1604991),
+                                options: markerOptions,
+                                title: "Washington State Cougars vs. Washington Huskies"
+                                });
+
+        google.maps.event.addListener(marker49, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow49.open(map, marker49); });
+
+        var infoWindow50 = new google.maps.InfoWindow({ content: "<h3>Michigan State Spartans vs. Rutgers Scarlet Knights</h3><br />November 24, 2018<br />Spartan Stadium, East Lansing, MI"});
+
+        infoWindows.push(infoWindow50);
+        
+        marker50 = new google.maps.Marker({
+                                position: new google.maps.LatLng(42.7279585, -84.4848524),
+                                options: markerOptions,
+                                title: "Michigan State Spartans vs. Rutgers Scarlet Knights"
+                                });
+
+        google.maps.event.addListener(marker50, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow50.open(map, marker50); });
+
+        var infoWindow51 = new google.maps.InfoWindow({ content: "<h3>Navy Midshipmen vs. Army Black Knights</h3><br />December 8, 2018<br />Lincoln Financial Field, Philadelphia, PA"});
+
+        infoWindows.push(infoWindow51);
+        
+        marker51 = new google.maps.Marker({
+                                position: new google.maps.LatLng(39.9007274992326, -75.16738833253649),
+                                options: markerOptions,
+                                title: "Navy Midshipmen vs. Army Black Knights"
+                                });
+
+        google.maps.event.addListener(marker51, "mouseover", function() { for (var i = 0; i < infoWindows.length; i++) { infoWindows[i].close(); }; infoWindow51.open(map, marker51); });
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
